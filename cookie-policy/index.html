@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <link rel="stylesheet" href="/static/css/opshub-ui-scale.css?v=20260615-01">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1e3a8a">
+  <title>Cookie Policy – OpsHub / HUB2GO</title>
+  <meta name="description" content="Cookie Policy OpsHub e HUB2GO: tipologie di cookie, finalità, durata e diritti dell'utente sul sito opshub.it.">
+  <link rel="canonical" href="https://opshub.it/cookie-policy/">
+  <script src="/static/js/opshub_site_consent.js"></script>
+<script>
+  (function () {
+    window.dataLayer = window.dataLayer || [];
+    if (typeof window.gtag !== 'function') {
+      window.gtag = function(){ window.dataLayer.push(arguments); };
+    }
+
+    function normalizeState(value) {
+      if (value === 'granted' || value === true || value === 'true' || value === 1 || value === '1') return 'granted';
+      return 'denied';
+    }
+
+    function toStatus(value) {
+      return normalizeState(value) === 'granted' ? 'granted' : 'denied';
+    }
+
+    if (!window.__siteConsentDefaultApplied) {
+      window.gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+
+      window.__siteConsentDefaultApplied = true;
+    }
+
+    window.updateSiteConsent = function (options) {
+      var opts = options || {};
+      var analytics = normalizeState(opts.analytics);
+      var marketing = normalizeState(opts.marketing);
+
+      window.gtag('consent', 'update', {
+        'analytics_storage': analytics,
+        'ad_storage': marketing,
+        'ad_user_data': marketing,
+        'ad_personalization': marketing
+      });
+
+      window.dataLayer.push({
+        event: 'consent_updated',
+        analytics: toStatus(analytics),
+        marketing: toStatus(marketing)
+      });
+    };
+
+    function syncConsentFromCookies() {
+      if (!window.OpsHubSiteConsent) return;
+      var state = window.OpsHubSiteConsent.readConsentFromCookies();
+      if (!state) return;
+      window.updateSiteConsent({
+        analytics: state.analytics ? 'granted' : 'denied',
+        marketing: state.marketing ? 'granted' : 'denied'
+      });
+    }
+
+    window.syncSiteConsentFromCookies = syncConsentFromCookies;
+    syncConsentFromCookies();
+  })();
+</script>
+  
+<script type="text/javascript">
+(function () {
+  var h = (location.hostname || '').toLowerCase();
+  if (h !== 'opshub.it' && h !== 'www.opshub.it') return;
+  function inject() {
+    (function(c, l, a, r, i, t, y) {
+      c[a] = c[a] || function() { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "w1ufji0wfh");
+  }
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(inject, { timeout: 3500 });
+  } else if (document.readyState === 'complete') {
+    setTimeout(inject, 1);
+  } else {
+    window.addEventListener('load', function () { setTimeout(inject, 1); }, { once: true });
+  }
+})();
+</script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #3b82f6;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      min-height: 100vh;
+      padding: 2rem 0;
+    }
+    .cookie-policy-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 3rem;
+    }
+    .cookie-policy-header {
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+    .cookie-policy-header h1 {
+      color: var(--primary);
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    .cookie-section {
+      margin-bottom: 2rem;
+    }
+    .cookie-section h2 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--primary-light);
+      padding-left: 1rem;
+    }
+    .cookie-type {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary-light);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    .cookie-type h3 {
+      color: var(--primary);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .btn-back {
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 2rem;
+      transition: background 0.2s;
+    }
+    .btn-back:hover {
+      background: var(--primary-light);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="cookie-policy-container">
+    <div class="cookie-policy-header">
+      <h1><i class="fas fa-cookie-bite me-2"></i>Cookie Policy</h1>
+      <p class="text-muted">Ultimo aggiornamento: 3 Giugno 2026</p>
+    </div>
+
+    <div class="cookie-section">
+      <h2>1. Cosa sono i Cookie</h2>
+      <p>
+        I cookie sono piccoli file di testo che vengono memorizzati sul tuo dispositivo quando visiti un sito web. 
+        Permettono al sito di ricordare le tue azioni e preferenze per un determinato periodo di tempo, 
+        così non devi reinserirle ogni volta che torni sul sito o navighi da una pagina all'altra.
+      </p>
+    </div>
+
+    <div class="cookie-section">
+      <h2>2. Come Utilizziamo i Cookie</h2>
+      <p>
+        Il sito <strong>OpsHub</strong> (inclusa l'esperienza mobile HUB2GO) utilizza i cookie per migliorare la tua esperienza di navigazione 
+        e per raccogliere informazioni statistiche sulle visite al sito.
+      </p>
+    </div>
+
+    <div class="cookie-section">
+      <h2>3. Tipi di Cookie Utilizzati</h2>
+      
+      <div class="cookie-type">
+        <h3><i class="fas fa-check-circle text-success me-2"></i>Cookie Essenziali (Sempre Attivi)</h3>
+        <p>
+          Questi cookie sono necessari per il funzionamento del sito e non possono essere disattivati. 
+          Vengono generalmente impostati solo in risposta ad azioni da te effettuate che equivalgono 
+          a una richiesta di servizi, come l'impostazione delle preferenze sulla privacy, l'accesso o 
+          la compilazione di moduli.
+        </p>
+        <ul>
+          <li><strong>cookie_consent</strong>: Memorizza le tue preferenze sui cookie (durata: 365 giorni)</li>
+          <li><strong>cookie_analytics</strong>: Memorizza la tua scelta sui cookie di analisi (durata: 365 giorni)</li>
+          <li><strong>cookie_marketing</strong>: Memorizza la tua scelta sui cookie di marketing e pubblicità (durata: 365 giorni)</li>
+        </ul>
+      </div>
+
+      <div class="cookie-type">
+        <h3><i class="fas fa-chart-bar text-info me-2"></i>Cookie di Analisi</h3>
+        <p>
+          Questi cookie ci permettono di contare le visite e le fonti di traffico, così possiamo misurare 
+          e migliorare le prestazioni del nostro sito. Ci aiutano a sapere quali pagine sono le più e meno 
+          popolari e vedere come i visitatori si muovono all'interno del sito.
+        </p>
+        <p>
+          <strong>Puoi disattivare questi cookie nelle Impostazioni Cookie.</strong>
+        </p>
+        <ul>
+          <li><strong>visit_session</strong>: Identificatore univoco di sessione per il tracciamento delle visite (durata: 1 giorno)</li>
+          <li><strong>Google Analytics (via GTM)</strong>: Statistiche aggregate su visite, pagine e sorgenti di traffico. Attivo in base al consenso espresso nel banner cookie.</li>
+          <li><strong>Microsoft Clarity</strong> (<code>_clck</code>, <code>_clsk</code>, <code>CLID</code>, <code>ANONCHK</code>, <code>MR</code>, <code>SM</code>): Analisi di utilizzo del sito (heatmap, scroll, click, registrazione sessioni in forma aggregata) per migliorare usabilità e performance. Caricamento differito dopo il render della pagina. Attivo in base al consenso analytics e solo su <strong>opshub.it</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="cookie-type">
+        <h3><i class="fas fa-bullseye text-warning me-2"></i>Cookie di Marketing e Pubblicità</h3>
+        <p>
+          Questi strumenti permettono di misurare l'efficacia delle campagne pubblicitarie, attribuire conversioni
+          e creare audience per annunci pertinenti. Sono attivati <strong>esclusivamente dopo consenso</strong>
+          espresso nel banner cookie (categoria «Marketing e pubblicità»).
+        </p>
+        <ul>
+          <li>
+            <strong>LinkedIn Insight Tag</strong><br>
+            <strong>Fornitore:</strong> LinkedIn Ireland Unlimited Company<br>
+            <strong>Finalità:</strong> misurazione delle campagne, attribuzione delle conversioni, creazione di audience e retargeting<br>
+            <strong>Categoria:</strong> Marketing<br>
+            <strong>Attivazione:</strong> esclusivamente dopo consenso marketing<br>
+            <strong>Partner ID:</strong> 10536761<br>
+            <strong>Domini contattati:</strong> <code>snap.licdn.com</code>, <code>px.ads.linkedin.com</code>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cookie-section">
+      <h2>4. Gestione dei Cookie</h2>
+      <p>
+        Puoi controllare e/o eliminare i cookie come desideri. Puoi eliminare tutti i cookie che sono già 
+        sul tuo dispositivo e puoi impostare la maggior parte dei browser per impedire che vengano inseriti. 
+        Tuttavia, se fai questo, potresti dover regolare manualmente alcune preferenze ogni volta che visiti 
+        un sito e alcuni servizi e funzionalità potrebbero non funzionare.
+      </p>
+      <p>
+        Per modificare le tue preferenze sui cookie, puoi utilizzare il banner dei cookie che appare 
+        quando visiti il sito per la prima volta, oppure cliccare su "Impostazioni Cookie" in qualsiasi momento.
+      </p>
+    </div>
+
+    <div class="cookie-section">
+      <h2>5. Tracciamento statistico e gestione consenso</h2>
+      <p>
+        Il sito utilizza <strong>Google Tag Manager (GTM)</strong> come layer di gestione tag e
+        <strong>Microsoft Clarity</strong> per analisi comportamentale del sito pubblico (heatmap, metriche di interazione,
+        registrazione sessioni). Gli strumenti di analisi sono subordinati alle preferenze cookie espresse nel banner.
+      </p>
+      <p>
+        Il consenso viene inizializzato in modalità predefinita restrittiva (consenso negato) e aggiornato solo dopo scelta
+        dell'utente tramite banner cookie. In assenza di scelta, i cookie non necessari restano disattivati.
+      </p>
+    </div>
+
+    <div class="cookie-section">
+      <h2>6. Cookie di Terze Parti</h2>
+      <p>
+        Possono essere presenti tecnologie di terze parti collegate a strumenti statistici o marketing, tra cui:
+      </p>
+      <ul>
+        <li><strong>Google LLC</strong> — Google Tag Manager / Google Analytics (gestione tag e statistiche)</li>
+        <li><strong>Microsoft Corporation</strong> — Microsoft Clarity (analisi di utilizzo e miglioramento UX del sito)</li>
+        <li><strong>LinkedIn Ireland Unlimited Company</strong> — LinkedIn Insight Tag (marketing, misurazione campagne e retargeting; solo con consenso marketing)</li>
+      </ul>
+      <p>
+        Tali strumenti sono attivati solo in base al consenso espresso nel banner cookie, ove richiesto dalla normativa applicabile.
+      </p>
+    </div>
+
+    <div class="cookie-section">
+      <h2>7. Contatti</h2>
+      <p>
+        Per qualsiasi domanda riguardo alla nostra Cookie Policy, puoi contattarci:
+      </p>
+      <ul>
+        <li><strong>Email:</strong> <span class="opshub-email-plain">info&#64;opshub.it</span> — oppure <a href="/contatti/">modulo contatti</a></li>
+      </ul>
+    </div>
+
+    <a href="/landing/" class="btn-back">
+      <i class="fas fa-arrow-left me-2"></i>Torna alla Home
+    </a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+  .site-cookie-wrap {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99990;
+    padding: 0.75rem;
+    display: none;
+    pointer-events: none;
+  }
+  .site-cookie-wrap.is-open { display: block; }
+  .site-cookie-banner {
+    max-width: 980px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #e4e4e7;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 1rem 1.25rem;
+    pointer-events: auto;
+  }
+  .site-cookie-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.45rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .site-cookie-title i { color: #1e3a8a; }
+  .site-cookie-text {
+    margin: 0 0 0.75rem;
+    color: #3f3f46;
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+  .site-cookie-text a { color: #1e3a8a; font-weight: 600; }
+  .site-cookie-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .site-cookie-actions .btn { border-radius: 10px; font-size: 0.88rem; font-weight: 600; }
+  .site-cookie-modal-wrap {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(15, 23, 42, 0.45);
+  }
+  .site-cookie-modal-wrap.is-open { display: flex; }
+  .site-cookie-modal {
+    width: min(100%, 520px);
+    max-height: min(90vh, 640px);
+    overflow: auto;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #e4e4e7;
+    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.22);
+  }
+  .site-cookie-modal-header,
+  .site-cookie-modal-body,
+  .site-cookie-modal-footer {
+    padding: 1rem 1.15rem;
+  }
+  .site-cookie-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border-bottom: 1px solid #e4e4e7;
+  }
+  .site-cookie-modal-title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .site-cookie-modal-close {
+    border: none;
+    background: transparent;
+    color: #64748b;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.15rem 0.35rem;
+  }
+  .site-cookie-modal-close:hover { color: #0f172a; }
+  .site-cookie-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    border-top: 1px solid #e4e4e7;
+  }
+  @media (max-width: 768px) {
+    .site-cookie-banner { padding: 0.9rem; }
+    .site-cookie-actions { gap: 0.45rem; }
+    .site-cookie-actions .btn { flex: 1 1 auto; min-width: 0; }
+  }
+</style>
+
+<div id="siteCookieBanner" class="site-cookie-wrap" aria-live="polite" aria-label="Preferenze cookie">
+  <div class="site-cookie-banner">
+    <div class="site-cookie-title">
+      <i class="fas fa-cookie-bite" aria-hidden="true"></i>
+      <span>Utilizziamo i cookie</span>
+    </div>
+    <p class="site-cookie-text">
+      Usiamo cookie tecnici e, solo con il tuo consenso, strumenti di analisi e marketing.
+      Puoi accettare tutti i cookie, rifiutare quelli non necessari o personalizzare le preferenze.
+      <a href="/cookie-policy">Maggiori informazioni</a>.
+    </p>
+    <div class="site-cookie-actions">
+      <button id="siteCookieAccept" type="button" class="btn btn-primary">Accetta tutti</button>
+      <button id="siteCookieReject" type="button" class="btn btn-outline-secondary">Rifiuta non necessari</button>
+      <button id="siteCookieSettings" type="button" class="btn btn-link">Personalizza</button>
+    </div>
+  </div>
+</div>
+
+<div id="siteCookieSettingsModal" class="site-cookie-modal-wrap" role="dialog" aria-modal="true" aria-labelledby="siteCookieSettingsTitle" aria-hidden="true">
+  <div class="site-cookie-modal">
+    <div class="site-cookie-modal-header">
+      <h2 class="site-cookie-modal-title" id="siteCookieSettingsTitle">Personalizza</h2>
+      <button type="button" class="site-cookie-modal-close" id="siteCookieModalClose" aria-label="Chiudi">&times;</button>
+    </div>
+    <div class="site-cookie-modal-body">
+      <div class="mb-3">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="siteCookieEssential" checked disabled>
+          <label class="form-check-label" for="siteCookieEssential">
+            <strong>Cookie necessari</strong>
+            <small class="d-block text-muted">Sempre attivi — necessari per il funzionamento del sito</small>
+          </label>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="siteCookieAnalytics">
+          <label class="form-check-label" for="siteCookieAnalytics">
+            <strong>Analisi e misurazione</strong>
+            <small class="d-block text-muted">Permettono di comprendere, in forma statistica, come viene utilizzato il sito.</small>
+          </label>
+        </div>
+      </div>
+      <div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="siteCookieMarketing">
+          <label class="form-check-label" for="siteCookieMarketing">
+            <strong>Marketing e pubblicità</strong>
+            <small class="d-block text-muted">Permettono di misurare le campagne pubblicitarie e creare audience per annunci pertinenti. Include LinkedIn Insight Tag.</small>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="site-cookie-modal-footer">
+      <button type="button" class="btn btn-secondary" id="siteCookieModalCancel">Annulla</button>
+      <button type="button" class="btn btn-primary" id="siteCookieSaveSettings">Salva preferenze</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var consentApi = window.OpsHubSiteConsent;
+    if (!consentApi) return;
+
+    function bannerEl() { return document.getElementById('siteCookieBanner'); }
+    function modalEl() { return document.getElementById('siteCookieSettingsModal'); }
+
+    function showBannerIfNeeded() {
+      var consent = consentApi.getCookie(consentApi.COOKIE_CONSENT);
+      var banner = bannerEl();
+      if (!banner) return;
+      if (!consent) banner.classList.add('is-open');
+    }
+
+    function hideBanner() {
+      var banner = bannerEl();
+      if (!banner) return;
+      banner.classList.remove('is-open');
+    }
+
+    function applyAndHide(analyticsEnabled, marketingEnabled) {
+      consentApi.applyConsent({ analytics: analyticsEnabled, marketing: marketingEnabled });
+      hideBanner();
+    }
+
+    function loadModalPreferences() {
+      var analyticsInput = document.getElementById('siteCookieAnalytics');
+      var marketingInput = document.getElementById('siteCookieMarketing');
+      if (analyticsInput) analyticsInput.checked = consentApi.getCookie(consentApi.COOKIE_ANALYTICS) === 'true';
+      if (marketingInput) marketingInput.checked = consentApi.getCookie(consentApi.COOKIE_MARKETING) === 'true';
+    }
+
+    function openSettingsModal() {
+      var modal = modalEl();
+      if (!modal) return;
+      loadModalPreferences();
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSettingsModal() {
+      var modal = modalEl();
+      if (!modal) return;
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    var acceptBtn = document.getElementById('siteCookieAccept');
+    var rejectBtn = document.getElementById('siteCookieReject');
+    var settingsBtn = document.getElementById('siteCookieSettings');
+    var saveBtn = document.getElementById('siteCookieSaveSettings');
+    var closeBtn = document.getElementById('siteCookieModalClose');
+    var cancelBtn = document.getElementById('siteCookieModalCancel');
+
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', function () {
+        applyAndHide(true, true);
+      });
+    }
+    if (rejectBtn) {
+      rejectBtn.addEventListener('click', function () {
+        applyAndHide(false, false);
+      });
+    }
+    if (settingsBtn) {
+      settingsBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openSettingsModal();
+      });
+    }
+    if (saveBtn) {
+      saveBtn.addEventListener('click', function () {
+        var analytics = !!document.getElementById('siteCookieAnalytics')?.checked;
+        var marketing = !!document.getElementById('siteCookieMarketing')?.checked;
+        applyAndHide(analytics, marketing);
+        closeSettingsModal();
+      });
+    }
+    if (closeBtn) closeBtn.addEventListener('click', closeSettingsModal);
+    if (cancelBtn) cancelBtn.addEventListener('click', closeSettingsModal);
+
+    if (modalEl()) {
+      modalEl().addEventListener('click', function (e) {
+        if (e.target === modalEl()) closeSettingsModal();
+      });
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modalEl() && modalEl().classList.contains('is-open')) {
+        closeSettingsModal();
+      }
+    });
+
+    window.openSiteCookieSettings = openSettingsModal;
+
+    consentApi.syncConsentFromCookies();
+    setTimeout(showBannerIfNeeded, 700);
+  })();
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2c90300cf2bea51',t:'MTc4Njk3MzE5OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

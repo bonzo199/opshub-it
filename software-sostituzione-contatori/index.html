@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <link rel="stylesheet" href="/static/css/opshub-ui-scale.css?v=20260615-01">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1e3a8a">
+  
+
+  <title>Software sostituzione contatori gas e acqua | OpsHub</title>
+  <meta name="description" content="Pianifica e controlla campagne di sostituzione contatori con squadre, appuntamenti, prove fotografiche, pallet, matricole e consuntivi.">
+  
+  <link rel="canonical" href="https://opshub.it/software-sostituzione-contatori/">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  
+  
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@id": "https://opshub.it/#organization", "@type": "Organization", "logo": "https://opshub.it/static/public/seo/hub2go-logo.png", "name": "OpsHub", "sameAs": ["https://www.linkedin.com/company/opshubitalia/"], "url": "https://opshub.it"}</script>
+  
+
+
+
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://opshub.it/", "name": "Home", "position": 1}, {"@type": "ListItem", "item": "https://opshub.it/software-sostituzione-contatori/", "name": "Software sostituzione contatori", "position": 2}]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Da dove parte il flusso di sostituzione contatori in OpsHub?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Parte dalla Centrale Operativa: importi gli ordini di sostituzione, vengono geocodificati e mostrati su mappa, poi l'algoritmo costruisce il giro ottimizzato per squadra e per data. Da li gli interventi scendono nell'app dei tecnici."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Come si ottimizza il giro dei tecnici sulla mappa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OpsHub geocodifica gli indirizzi, mostra gli ordini su mappa e calcola il percorso ottimale per ogni squadra in base a parametri configurabili (orari, fasce, vincoli). Puoi rifare il calcolo, modificare manualmente l'ordine e confermare il giro."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Come avviene la presa in carico dei contatori in magazzino?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Il tecnico apre l'app nel magazzino di riferimento, inquadra il QR o il codice a barre del contatore e lo prende in carico. La giacenza si aggiorna in tempo reale, l'assegnazione resta tracciata per matricola, magazzino, data e responsabile."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Come si gestiscono gli smontati e la riconsegna al committente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ogni smontato viene registrato in app con foto e note. Le regole di pallettizzazione raggruppano i contatori smontati e suggeriscono se devono essere rottamati o riconsegnati al committente. Quando il pallet e chiuso, parte la riconsegna pallettizzata."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "OpsHub gestisce piu magazzini e piu squadre contemporaneamente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Si. Le giacenze sono per magazzino, le assegnazioni sono per tecnico/squadra e la Centrale Operativa coordina pianificazione e riprogrammazioni. Ogni movimento (carico, trasferimento, presa in carico, installato, smontato, reso) resta tracciato."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Come funziona la consuntivazione degli interventi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gli esiti registrati in campo alimentano l'analisi esecuzioni: vengono valorizzati su listino di struttura e calibro, con controlli su interventi non registrati e fuori fascia. Da qui esci con consuntivi difendibili verso il committente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "OpsHub funziona offline in cantiere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Si. L'app mobile lavora anche senza rete: scansioni QR, esiti, foto e note vengono salvati sul dispositivo e sincronizzati automaticamente quando la connessione torna disponibile."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "OpsHub gestisce sia contatori idrici sia contatori gas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Si. Lo stesso flusso (Centrale Operativa, app, magazzini, pallet smontati) copre sia sostituzione contatori gas sia sostituzione contatori idrici, con PdR/PdL e matricole tracciate end-to-end."
+      }
+    }
+  ]
+}
+</script>
+
+
+
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@id": "https://opshub.it/#organization", "@type": "Organization", "logo": "https://opshub.it/static/public/seo/hub2go-logo.png", "name": "OpsHub", "url": "https://opshub.it"}, {"@id": "https://opshub.it/#website", "@type": "WebSite", "name": "OpsHub", "publisher": {"@id": "https://opshub.it/#organization"}, "url": "https://opshub.it"}, {"@id": "https://opshub.it/software-sostituzione-contatori/#webpage", "@type": "WebPage", "about": {"@id": "https://opshub.it/software-sostituzione-contatori/#service"}, "description": "Pianifica e controlla campagne di sostituzione contatori con squadre, appuntamenti, prove fotografiche, pallet, matricole e consuntivi.", "isPartOf": {"@id": "https://opshub.it/#website"}, "name": "Software sostituzione contatori gas e acqua | OpsHub", "url": "https://opshub.it/software-sostituzione-contatori/"}, {"@id": "https://opshub.it/software-sostituzione-contatori/#service", "@type": "Service", "areaServed": {"@type": "Country", "name": "Italy"}, "description": "Pianifica e controlla campagne di sostituzione contatori con squadre, appuntamenti, prove fotografiche, pallet, matricole e consuntivi.", "name": "Software sostituzione contatori gas e acqua", "provider": {"@id": "https://opshub.it/#organization"}, "serviceType": "Sostituzione contatori"}]}</script>
+
+  <link rel="icon" href="/static/public/seo/hub2go-logo.png" type="image/png" sizes="32x32">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OpsHub">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:url" content="https://opshub.it/software-sostituzione-contatori/">
+  <meta property="og:title" content="Software sostituzione contatori: dalla Centrale Operativa alla pallettizzazione degli smontati">
+  <meta property="og:description" content="Pianificazione e ottimizzazione del giro su mappa, app mobile per la presa in carico dei contatori nei magazzini con QR/barcode, controllo giacenze e consuntivazione, riconsegne e pallettizzazione degli smontati con suggerimento rottamazione/riconsegna.">
+  <meta property="og:image" content="https://opshub.it/static/public/seo/hub2go-logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Software sostituzione contatori: dalla Centrale Operativa alla pallettizzazione degli smontati">
+  <meta name="twitter:description" content="Pianificazione e ottimizzazione del giro su mappa, app mobile per la presa in carico dei contatori nei magazzini con QR/barcode, controllo giacenze e consuntivazione, riconsegne e pallettizzazione degli smontati con suggerimento rottamazione/riconsegna.">
+  <meta name="twitter:image" content="https://opshub.it/static/public/seo/hub2go-logo.png">
+
+  <script src="/static/js/opshub_site_consent.js"></script>
+<script>
+  (function () {
+    window.dataLayer = window.dataLayer || [];
+    if (typeof window.gtag !== 'function') {
+      window.gtag = function(){ window.dataLayer.push(arguments); };
+    }
+
+    function normalizeState(value) {
+      if (value === 'granted' || value === true || value === 'true' || value === 1 || value === '1') return 'granted';
+      return 'denied';
+    }
+
+    function toStatus(value) {
+      return normalizeState(value) === 'granted' ? 'granted' : 'denied';
+    }
+
+    if (!window.__siteConsentDefaultApplied) {
+      window.gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+
+      window.__siteConsentDefaultApplied = true;
+    }
+
+    window.updateSiteConsent = function (options) {
+      var opts = options || {};
+      var analytics = normalizeState(opts.analytics);
+      var marketing = normalizeState(opts.marketing);
+
+      window.gtag('consent', 'update', {
+        'analytics_storage': analytics,
+        'ad_storage': marketing,
+        'ad_user_data': marketing,
+        'ad_personalization': marketing
+      });
+
+      window.dataLayer.push({
+        event: 'consent_updated',
+        analytics: toStatus(analytics),
+        marketing: toStatus(marketing)
+      });
+    };
+
+    function syncConsentFromCookies() {
+      if (!window.OpsHubSiteConsent) return;
+      var state = window.OpsHubSiteConsent.readConsentFromCookies();
+      if (!state) return;
+      window.updateSiteConsent({
+        analytics: state.analytics ? 'granted' : 'denied',
+        marketing: state.marketing ? 'granted' : 'denied'
+      });
+    }
+
+    window.syncSiteConsentFromCookies = syncConsentFromCookies;
+    syncConsentFromCookies();
+  })();
+</script>
+  
+<script type="text/javascript">
+(function () {
+  var h = (location.hostname || '').toLowerCase();
+  if (h !== 'opshub.it' && h !== 'www.opshub.it') return;
+  function inject() {
+    (function(c, l, a, r, i, t, y) {
+      c[a] = c[a] || function() { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "w1ufji0wfh");
+  }
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(inject, { timeout: 3500 });
+  } else if (document.readyState === 'complete') {
+    setTimeout(inject, 1);
+  } else {
+    window.addEventListener('load', function () { setTimeout(inject, 1); }, { once: true });
+  }
+})();
+</script>
+  
+<script>
+(function (w, d, s, l, i) {
+  var h = (location.hostname || '').toLowerCase();
+  if (h !== 'opshub.it' && h !== 'www.opshub.it') return;
+  w[l] = w[l] || [];
+  function inject() {
+    w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+    var j = d.createElement(s);
+    var f = d.getElementsByTagName(s)[0];
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i;
+    f.parentNode.insertBefore(j, f);
+  }
+  if (d.readyState === 'complete') inject();
+  else w.addEventListener('load', inject, { once: true });
+})(window, document, 'script', 'dataLayer', 'GTM-5N67ZLR5');
+</script>
+  
+<style id="opshub-lcp-critical">
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #0f172a;
+    line-height: 1.6;
+  }
+  .navbar-public,
+  .public-hero {
+    background: linear-gradient(135deg, #1e40af 0%, #2563eb 55%, #4f46e5 100%);
+  }
+  .navbar-public {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 0.75rem 0;
+  }
+  .main-public { padding-top: 76px; min-height: 60vh; }
+  .public-hero h1 {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .home-hero-visual { min-height: 260px; }
+  @media (min-width: 992px) {
+    .home-hero-visual { min-height: 440px; }
+  }
+</style>
+  
+<link rel="preload" href="/static/public/seo/hub2go-logo.webp" as="image" type="image/webp" fetchpriority="high">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/solid.min.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/brands.min.css" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/solid.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/brands.min.css">
+</noscript>
+
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #3b82f6;
+      --accent: #60a5fa;
+      --success: #10b981;
+      --dark: #0f172a;
+      --gray-50: #fafafa;
+      --gray-100: #f4f4f5;
+      --gray-200: #e4e4e7;
+      --gray-500: #71717a;
+      --gray-700: #3f3f46;
+      --white: #ffffff;
+      --max-w-text: 720px;
+      --max-w-content: 1100px;
+      --opshub-navy: #0f172a;
+      --opshub-blue: #1e3a8a;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--dark); line-height: 1.6; overflow-x: hidden; }
+    section[id] { scroll-margin-top: 80px; }
+
+    .navbar-public {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      padding: 0.75rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar-brand-public {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      flex: 0 0 auto;
+    }
+    .navbar-brand-public picture {
+      display: block;
+      flex-shrink: 0;
+      line-height: 0;
+      width: max-content;
+      max-width: min(240px, 50vw);
+    }
+    .navbar-brand-public img {
+      display: block;
+      height: 46px;
+      width: auto;
+      max-width: none;
+      object-fit: contain;
+    }
+    .navbar-brand-public:hover { color: white; }
+    .nav-link-public { color: rgba(255,255,255,0.9); font-weight: 600; padding: 0.5rem 0.75rem; text-decoration: none; font-size: 0.95rem; border-radius: 8px; }
+    .nav-link-public:hover { color: white; background: rgba(255,255,255,0.1); }
+    .nav-link-public.active { color: white; background: rgba(255,255,255,0.2); }
+    .nav-link-login { margin-left: 0.25rem; }
+    .nav-link-public.btn-provalo-gratis { background: #fbbf24; color: #0f172a; padding: 0.45rem 0.9rem; }
+    .nav-link-public.btn-provalo-gratis:hover { background: #facc15; color: #0f172a; }
+    .btn-nav-cta-public { background: white; color: var(--primary); padding: 0.5rem 1rem; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.9rem; }
+    .btn-nav-cta-public:hover { color: var(--primary); }
+    .navbar-toggler-public { background: rgba(255,255,255,0.2); border: none; color: white; padding: 0.5rem 0.75rem; border-radius: 8px; }
+    .navbar-collapse-public { display: flex; align-items: center; gap: 0.25rem; flex-wrap: wrap; }
+        .nav-dropdown-public { position: relative; }
+    .nav-dropdown-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+    }
+    .navbar-public .nav-moduli-dropdown > .nav-moduli-toggle-btn {
+      padding: 0.42rem 0.55rem 0.42rem 0.8rem;
+      border: none;
+      background: transparent;
+      box-shadow: none;
+    }
+    .navbar-public .nav-moduli-dropdown > .nav-moduli-toggle-btn:hover,
+    .navbar-public .nav-moduli-dropdown.is-open > .nav-moduli-toggle-btn,
+    .navbar-public .nav-moduli-dropdown > .nav-moduli-toggle-btn.active {
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+    }
+    .nav-moduli-toggle-text { white-space: nowrap; }
+    .nav-dropdown-indicator {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.4rem;
+      height: 1.4rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.28);
+      border: none;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .nav-dropdown-arrow {
+      display: block;
+      font-size: 1rem;
+      font-weight: 800;
+      line-height: 1;
+      color: #fff;
+      transform: translateY(-1px);
+      transition: transform 0.2s ease;
+    }
+    .nav-moduli-dropdown.is-open .nav-dropdown-arrow { transform: translateY(-1px) rotate(180deg); }
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.4rem);
+      left: 0;
+      min-width: min(300px, 88vw);
+      max-height: min(70vh, 460px);
+      overflow-y: auto;
+      background: #fff;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 12px;
+      box-shadow: 0 18px 44px rgba(15, 23, 42, 0.2);
+      padding: 0.45rem;
+      z-index: 1100;
+    }
+    .navbar-public .nav-dropdown-menu .nav-dropdown-item {
+      display: block;
+      padding: 0.5rem 0.7rem;
+      border-radius: 8px;
+      color: var(--opshub-navy, #0f172a) !important;
+      font-size: 0.86rem;
+      font-weight: 600;
+      line-height: 1.35;
+      text-decoration: none !important;
+    }
+    .navbar-public .nav-dropdown-menu .nav-dropdown-item:hover {
+      background: #eff6ff;
+      color: var(--opshub-blue, #1e3a8a) !important;
+    }
+    @media (min-width: 992px) {
+      .nav-moduli-dropdown:hover .nav-dropdown-menu,
+      .nav-moduli-dropdown.is-open .nav-dropdown-menu { display: block; }
+    }
+    @media (max-width: 991px) {
+      .nav-moduli-dropdown { width: 100%; }
+      .nav-dropdown-toggle { width: 100%; justify-content: space-between; text-align: left; }
+      .navbar-public .nav-moduli-dropdown > .nav-moduli-toggle-btn {
+        width: 100%;
+        padding: 0.55rem 0.85rem;
+      }
+      .nav-dropdown-indicator {
+        min-width: 1.55rem;
+        height: 1.55rem;
+        background: rgba(255, 255, 255, 0.45);
+      }
+      .nav-dropdown-arrow { font-size: 1.1rem; }
+      .nav-moduli-dropdown.is-open .nav-dropdown-menu { display: block; }
+      .nav-dropdown-menu {
+        position: static;
+        width: 100%;
+        min-width: 0;
+        max-height: none;
+        margin: 0.25rem 0 0.5rem;
+        padding: 0.35rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: none;
+      }
+      .nav-dropdown-item {
+        color: rgba(255, 255, 255, 0.92) !important;
+        padding: 0.55rem 0.85rem;
+      }
+      .nav-dropdown-item:hover {
+        background: rgba(255, 255, 255, 0.14);
+        color: #fff !important;
+      }
+    }
+    @media (max-width: 991px) {
+      .navbar-public .d-flex { flex-wrap: wrap; }
+      .navbar-collapse-public { display: none; flex-direction: column; width: 100%; padding: 1rem 0; order: 99; }
+      .navbar-collapse-public.is-open { display: flex; }
+      .nav-link-public { width: 100%; padding: 0.5rem 1rem; }
+    }
+
+    .section-public { padding: 4rem 0; }
+    .section-public-gray { background: var(--gray-100); }
+    .section-public-alt { background: var(--gray-50); }
+    .section-title-public { font-size: clamp(1.5rem, 2.8vw, 2rem); font-weight: 800; color: var(--dark); margin-bottom: 0.75rem; }
+    .section-subtitle-public { font-size: 1rem; color: var(--gray-700); max-width: var(--max-w-text); line-height: 1.55; }
+
+    .card-public {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 1.5rem;
+      height: 100%;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .card-public:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.06); border-color: var(--primary-light); }
+    .card-public h3, .card-public h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--dark); }
+    .card-public p { font-size: 0.95rem; color: var(--gray-700); margin: 0; line-height: 1.5; }
+    .card-public a { color: var(--primary); font-weight: 600; text-decoration: none; }
+    .card-public a:hover { text-decoration: underline; }
+
+    .btn-cta-primary-public {
+      display: inline-flex; align-items: center; justify-content: center; padding: 0.85rem 1.75rem; font-size: 1rem; font-weight: 700;
+      border-radius: 8px; border: none; text-decoration: none; cursor: pointer;
+      background: #fbbf24; color: #0f172a;
+      box-shadow: 0 4px 14px rgba(251, 191, 36, 0.4); transition: transform .1s ease, box-shadow .1s ease;
+    }
+    .btn-cta-primary-public:hover { background: #facc15; color: #0f172a; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(251, 191, 36, 0.5); }
+    .btn-outline-primary-public { border: 2px solid var(--primary); color: var(--primary); background: transparent; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+    .btn-outline-primary-public:hover { background: var(--primary); color: white; }
+
+    .footer-public { background: var(--primary); color: rgba(255,255,255,0.85); padding: 2.5rem 0 1.5rem; margin-top: 0; }
+    .footer-public a { color: white; text-decoration: none; font-size: 0.9rem; }
+    .footer-public a:hover { text-decoration: underline; }
+    .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; max-width: var(--max-w-content); margin: 0 auto; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; text-align: center; } }
+    .footer-brand { font-size: 1.1rem; color: white; }
+    .footer-tagline { font-size: 0.9rem; margin: 0.5rem 0 0; opacity: 0.9; }
+    .footer-links, .footer-legal { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1rem; margin-top: 2rem; text-align: center; font-size: 0.85rem; }
+
+    .cta-block-public {
+      padding: 3rem 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      text-align: center;
+    }
+    .cta-block-public .cta-title-public { font-size: clamp(1.35rem, 2.2vw, 1.75rem); font-weight: 800; color: white; margin-bottom: 0.5rem; }
+    .cta-block-public .cta-subtitle-public { font-size: 1rem; color: rgba(255,255,255,0.9); margin-bottom: 1.5rem; max-width: 36em; margin-left: auto; margin-right: auto; line-height: 1.5; }
+    .cta-block-public .btn-cta-primary-public { background: #fbbf24; color: #0f172a; }
+
+    .main-public { padding-top: 76px; min-height: 60vh; }
+    
+/* CSS specifico per la landing SEO (solo questa pagina). */
+.seo-hero { position: relative; overflow: hidden; }
+.seo-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 420px at 8% 20%, rgba(96,165,250,0.28), transparent 62%),
+    radial-gradient(700px 360px at 88% 32%, rgba(251,191,36,0.18), transparent 65%),
+    radial-gradient(800px 420px at 55% 110%, rgba(16,185,129,0.12), transparent 60%);
+  pointer-events: none;
+}
+.seo-hero .container { position: relative; z-index: 2; }
+.counter-hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
+.counter-hero-actions .btn-outline-primary-public { border-color: rgba(255,255,255,0.9); color: white; }
+.counter-hero-actions .btn-outline-primary-public:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,1); }
+
+/* ============================================================
+   Mockup hero: anteprima della pagina Centrale Operativa -
+   Ottimizzazione Avanzata (mappa con giro ottimizzato e
+   modifica percorsi drag&drop).
+   ============================================================ */
+.opshub-window {
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(15, 23, 42, 0.45), 0 8px 22px rgba(15,23,42,0.25);
+  border: 1px solid rgba(15,23,42,0.18);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #475569;
+  position: relative;
+}
+.opshub-stage { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); padding: 0.9rem 0.9rem 0.9rem; }
+
+.opshub-page-head {
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.8rem 0.9rem;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.06);
+  margin-bottom: 0.7rem;
+}
+.opshub-page-head h4 { font-size: 1rem; font-weight: 800; color: #1e3a8a; margin: 0 0 0.45rem 0; }
+.opshub-page-head h4 i { color: #f59e0b; }
+.opshub-alert {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  display: flex; align-items: center; gap: 0.45rem;
+  text-align: left;
+}
+.opshub-alert i { font-size: 0.78rem; }
+.opshub-alert strong { font-weight: 800; }
+
+.opshub-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-bottom: 0.7rem; }
+.opshub-metric {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.55rem 0.6rem;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+.opshub-metric .v { font-size: 1.05rem; font-weight: 800; line-height: 1; }
+.opshub-metric .l { font-size: 0.6rem; opacity: 0.92; margin-top: 0.18rem; line-height: 1.1; }
+.opshub-metric .bar { height: 4px; background: rgba(255,255,255,0.22); border-radius: 6px; margin-top: 0.4rem; overflow: hidden; }
+.opshub-metric .bar span { display: block; height: 100%; background: linear-gradient(135deg, #3b82f6, #60a5fa); border-radius: 6px; }
+
+.opshub-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.07);
+  margin-bottom: 0.7rem;
+}
+.opshub-card-head {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: #fff;
+  padding: 0.45rem 0.8rem;
+  font-weight: 700;
+  font-size: 0.78rem;
+  display: flex; align-items: center; gap: 0.45rem;
+}
+
+.opshub-map { position: relative; height: 220px; background: linear-gradient(180deg, #e0e7ff 0%, #f1f5f9 100%); }
+.opshub-map svg { width: 100%; height: 100%; display: block; }
+.opshub-map-controls {
+  position: absolute; top: 6px; right: 6px;
+  background: #fff; border-radius: 6px; padding: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  display: flex; gap: 4px;
+}
+.opshub-map-controls button { font-size: 0.62rem; padding: 0.22rem 0.4rem; border: 0; border-radius: 4px; font-weight: 700; cursor: pointer; }
+.opshub-map-controls .btn-edit { background: #10b981; color: #fff; }
+.opshub-map-controls .btn-reset { background: #06b6d4; color: #fff; }
+.opshub-map-legend {
+  position: absolute; left: 6px; bottom: 6px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 6px; padding: 0.3rem 0.5rem;
+  font-size: 0.6rem; color: #0f172a;
+  display: flex; flex-direction: column; gap: 0.18rem;
+  box-shadow: 0 2px 8px rgba(15,23,42,0.1);
+}
+.opshub-map-legend .row { display: flex; align-items: center; gap: 0.35rem; }
+.opshub-map-legend .row .dot { width: 8px; height: 8px; border-radius: 999px; }
+
+.opshub-squadre { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; padding: 0.6rem; background: #f8f9fa; }
+.opshub-squadra { background: #f8f9fa; border-radius: 6px; }
+.opshub-squadra-head {
+  background: #3b82f6; color: #fff;
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.65rem; font-weight: 700;
+  display: flex; align-items: center; gap: 0.35rem; justify-content: space-between;
+  margin-bottom: 0.3rem;
+}
+.opshub-squadra-head.alt { background: #60a5fa; }
+.opshub-squadra-head.alt2 { background: #1e3a8a; }
+.opshub-squadra-head .badge { background: rgba(255,255,255,0.2); padding: 0.05rem 0.3rem; border-radius: 4px; font-size: 0.55rem; }
+.opshub-squadra-head .chev { margin-left: auto; opacity: 0.8; font-size: 0.55rem; }
+.opshub-day-head {
+  background: #60a5fa; color: #fff;
+  padding: 0.18rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.58rem; font-weight: 600;
+  display: flex; align-items: center; gap: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+.opshub-day-head .badge { background: rgba(255,255,255,0.25); padding: 0.05rem 0.25rem; border-radius: 3px; font-size: 0.55rem; margin-left: auto; }
+.opshub-int {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 0.4rem 0.45rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.62rem;
+  position: relative;
+}
+.opshub-int .top { display: flex; align-items: center; gap: 0.3rem; margin-bottom: 0.2rem; }
+.opshub-int .ord-badge { background: #3b82f6; color: #fff; padding: 0.05rem 0.32rem; border-radius: 4px; font-size: 0.55rem; font-weight: 800; min-width: 14px; text-align: center; }
+.opshub-int .title { font-weight: 700; font-size: 0.62rem; color: #0f172a; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.opshub-int .data-badge { background: #1e40af; color: #fff; padding: 0.05rem 0.3rem; border-radius: 3px; font-size: 0.5rem; font-weight: 700; }
+.opshub-int .info { color: #64748b; font-size: 0.58rem; line-height: 1.3; display: flex; align-items: center; gap: 0.25rem; }
+.opshub-int .info i { color: #94a3b8; width: 8px; }
+.opshub-int .grip { position: absolute; right: 0.35rem; top: 0.35rem; color: #cbd5e1; font-size: 0.55rem; }
+
+@media (max-width: 991.98px) {
+  .opshub-metrics { grid-template-columns: repeat(2, 1fr); }
+  .opshub-squadre { grid-template-columns: 1fr; }
+}
+
+.kpi-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+.kpi-strip .kpi-box { background: #fff; border: 1px solid var(--gray-200); border-radius: 12px; padding: 1.25rem 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.kpi-strip .kpi-top { display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--primary); font-weight: 900; }
+.kpi-strip .kpi-top i { width: 34px; height: 34px; border-radius: 10px; background: rgba(30,58,138,0.1); display: inline-flex; align-items: center; justify-content: center; }
+.kpi-strip .kpi-value { font-size: 1.15rem; font-weight: 900; color: var(--dark); line-height: 1.1; }
+.kpi-strip .kpi-note { margin-top: 0.25rem; font-size: 0.9rem; color: var(--gray-700); }
+@media (max-width: 991px) {
+  .kpi-strip { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 575px) {
+  .kpi-strip { grid-template-columns: 1fr; }
+}
+
+  </style>
+
+  
+</head>
+<body>
+  <script>
+(function () {
+  var h = (location.hostname || '').toLowerCase();
+  if (h !== 'opshub.it' && h !== 'www.opshub.it') return;
+  var ns = document.createElement('noscript');
+  ns.innerHTML = '<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5N67ZLR5" height="0" width="0" style="display:none;visibility:hidden"></iframe>';
+  (document.body || document.documentElement).appendChild(ns);
+})();
+</script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar-public">
+
+
+
+  <div class="container">
+
+
+
+    <div class="d-flex justify-content-between align-items-center">
+
+
+
+      <a href="/" class="navbar-brand-public">
+
+
+
+        <picture>
+
+
+
+          <source srcset="/static/public/seo/hub2go-logo.webp" type="image/webp">
+
+
+
+          <img src="/static/public/seo/hub2go-logo.png" width="96" height="46" alt="OpsHub" decoding="async" fetchpriority="high" onerror="this.style.display='none'">
+
+
+
+        </picture>
+
+
+
+      </a>
+
+
+
+      <button class="navbar-toggler-public d-lg-none" type="button" aria-label="Menu" id="navToggle">
+
+
+
+        <i class="fas fa-bars"></i>
+
+
+
+      </button>
+
+
+
+      <div class="navbar-collapse-public" id="navbarPublic">
+
+
+
+        <a href="/" class="nav-link-public ">Home</a>
+
+
+
+        <div class="nav-dropdown-public nav-soluzioni-dropdown">
+
+
+
+          <button
+
+
+
+            type="button"
+
+
+
+            class="nav-link-public nav-dropdown-toggle nav-soluzioni-toggle-btn active"
+
+
+
+            id="navSoluzioniToggle"
+
+
+
+            aria-expanded="false"
+
+
+
+            aria-haspopup="true"
+
+
+
+            aria-controls="navSoluzioniMenu"
+
+
+
+            aria-label="Soluzioni e moduli, apri menu"
+
+
+
+          >
+
+
+
+            <span class="nav-moduli-toggle-text">Soluzioni</span>
+
+
+
+            <span class="nav-dropdown-indicator" aria-hidden="true"><span class="nav-dropdown-arrow">▾</span></span>
+
+
+
+          </button>
+
+
+
+          <div class="nav-dropdown-menu nav-soluzioni-menu-wide" id="navSoluzioniMenu" role="menu" aria-labelledby="navSoluzioniToggle">
+
+
+
+            <div class="nav-dropdown-group">
+
+
+
+              <p class="nav-dropdown-group-title" role="presentation">Soluzioni principali</p>
+
+
+
+              
+
+
+
+              <a href="/software-gestione-cantieri/" class="nav-dropdown-item" role="menuitem">Gestione cantieri</a>
+
+
+
+              
+
+
+
+              <a href="/software-controllo-margini-commessa/" class="nav-dropdown-item" role="menuitem">Controllo margini e SAL</a>
+
+
+
+              
+
+
+
+              <a href="/software-gestione-subappalti/" class="nav-dropdown-item" role="menuitem">Gestione subappalti</a>
+
+
+
+              
+
+
+
+              <a href="/tracciabilita-cantiere/" class="nav-dropdown-item" role="menuitem">Tracciabilità cantiere</a>
+
+
+
+              
+
+
+
+              <a href="/software-compliance-cantieri/" class="nav-dropdown-item" role="menuitem">Compliance cantieri</a>
+
+
+
+              
+
+
+
+              <a href="/gare-appalto-offerte-tecniche/" class="nav-dropdown-item" role="menuitem">Gare e offerte tecniche</a>
+
+
+
+              
+
+
+
+            </div>
+
+
+
+            <div class="nav-dropdown-group">
+
+
+
+              <p class="nav-dropdown-group-title" role="presentation">Moduli operativi</p>
+
+
+
+              
+
+
+
+              <a href="/moduli/" class="nav-dropdown-item" role="menuitem">Panoramica moduli</a>
+
+
+
+              
+
+
+
+              <a href="/utilities/" class="nav-dropdown-item" role="menuitem">Utilities e gestione rete</a>
+
+
+
+              
+
+
+
+              <a href="/software-gestione-interventi-tecnici/" class="nav-dropdown-item" role="menuitem">Gestione interventi tecnici</a>
+
+
+
+              
+
+
+
+              <a href="/badge_digitale/" class="nav-dropdown-item" role="menuitem">Badge digitale</a>
+
+
+
+              
+
+
+
+              <a href="/cartellino-digitale-cantiere/" class="nav-dropdown-item" role="menuitem">Cartellino digitale cantiere</a>
+
+
+
+              
+
+
+
+              <a href="/software-gestione-squadre-tecniche/" class="nav-dropdown-item" role="menuitem">Squadre tecniche</a>
+
+
+
+              
+
+
+
+              <a href="/field-service-management-utilities/" class="nav-dropdown-item" role="menuitem">Field service utilities</a>
+
+
+
+              
+
+
+
+              <a href="/software-sostituzione-contatori/" class="nav-dropdown-item" role="menuitem">Sostituzione contatori</a>
+
+
+
+              
+
+
+
+              <a href="/software-gestione-contatori-gas/" class="nav-dropdown-item" role="menuitem">Logistica contatori</a>
+
+
+
+              
+
+
+
+            </div>
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+        <a href="/casi-studio/" class="nav-link-public ">Casi d&apos;uso</a>
+
+
+
+        <a href="/risorse/" class="nav-link-public ">Guide operative</a>
+
+
+
+        <a href="/landing/" class="nav-link-public ">Panoramica</a>
+
+
+
+        <a href="/il_problema/" class="nav-link-public ">Il problema</a>
+
+
+
+        <a href="/contatti/" class="nav-link-public ">Contatti</a>
+
+
+
+        <a href="/demo/" class="nav-link-public" data-cta="app-mobile">App mobile</a>
+
+
+
+        <a href="/landing/" class="nav-link-public" data-cta="demo">Richiedi demo</a>
+
+
+
+        <a href="#trial-timbrature" class="nav-link-public btn-provalo-gratis cta-yellow" data-cta="trial">Provalo gratis</a>
+
+
+
+        <a href="https://bot.ops-on.site/login" class="nav-link-public nav-link-login">Accedi</a>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+</nav>
+
+
+
+
+
+  <main class="main-public">
+    
+<section class="section-public seo-hero" style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); padding: 6rem 0 4rem; margin-top: -76px; padding-top: 7rem;">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-5">
+        <h1 class="mb-3" style="font-size: clamp(1.7rem, 3.2vw, 2.2rem); font-weight: 900; color: white; line-height: 1.18;">
+          Software per sostituzione contatori gas e acqua
+        </h1>
+        <p class="mb-3" style="font-size: 1.02rem; color: rgba(255,255,255,0.95); line-height: 1.55;">
+          Il flusso parte dalla <strong>Centrale Operativa</strong>: gli ordini vengono geocodificati, messi in mappa e organizzati in giri ottimizzati per squadra. Da li scendono nell'app dei tecnici, che prendono in carico i contatori nei magazzini scansionando QR e codici a barre.
+        </p>
+        <p class="mb-0" style="font-size: 0.98rem; color: rgba(255,255,255,0.92); line-height: 1.55;">
+          Tutto resta tracciato: giacenze per magazzino, consuntivazione automatica e gestione degli smontati con regole di <strong>pallettizzazione</strong> che suggeriscono se rottamare o riconsegnare.
+        </p>
+
+        <div class="counter-hero-actions">
+          <a href="/contatti/" class="btn-cta-primary-public" data-cta="demo">Richiedi una Demo</a>
+          <a href="#centrale-operativa" class="btn-outline-primary-public" data-cta="features">Scopri il flusso</a>
+        </div>
+
+        <p class="mt-3 mb-0" style="color: rgba(255,255,255,0.88); font-size: 0.92rem; max-width: 44em;">
+          Per imprese che lavorano in subappalto utilities: workflow operativo, evidenze verificabili e collegamento ai consuntivi di commessa.
+        </p>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="opshub-window" aria-label="Anteprima Centrale Operativa - Ottimizzazione Avanzata">
+          <div class="opshub-stage">
+            <div class="opshub-page-head">
+              <h4><i class="fas fa-rocket"></i> Ottimizzazione Avanzata</h4>
+              <div class="opshub-alert">
+                <i class="fas fa-check-circle"></i>
+                <span><strong>Ottimizzazione completata con successo!</strong> Tutti gli interventi sono stati pianificati.</span>
+              </div>
+            </div>
+
+            <div class="opshub-metrics">
+              <div class="opshub-metric">
+                <div class="v">187.4</div>
+                <div class="l">Km Totali</div>
+                <div class="bar"><span style="width:78%"></span></div>
+              </div>
+              <div class="opshub-metric">
+                <div class="v">0.25</div>
+                <div class="l">Efficienza (int/km)</div>
+                <div class="bar"><span style="width:50%"></span></div>
+              </div>
+              <div class="opshub-metric">
+                <div class="v">3</div>
+                <div class="l">Squadre Utilizzate</div>
+                <div class="bar"><span style="width:38%"></span></div>
+              </div>
+              <div class="opshub-metric">
+                <div class="v">87.5%</div>
+                <div class="l">Bilanciamento Carico</div>
+                <div class="bar"><span style="width:88%"></span></div>
+              </div>
+            </div>
+
+            <div class="opshub-card">
+              <div class="opshub-card-head"><i class="fas fa-map-marked-alt"></i> Mappa Percorso Ottimizzato</div>
+              <div class="opshub-map">
+                <svg viewBox="0 0 600 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <!-- Filtro ombra marker stile Leaflet -->
+                    <filter id="osmShadow" x="-50%" y="-50%" width="200%" height="200%">
+                      <feDropShadow dx="0" dy="2" stdDeviation="1.6" flood-color="#000" flood-opacity="0.32"/>
+                    </filter>
+                    <!-- Pattern di sfondo tipo tile OSM (cream + leggera trama) -->
+                    <pattern id="osmTile" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+                      <rect width="60" height="60" fill="#f2efe9"/>
+                      <path d="M0 60 L60 0" stroke="#ebe7df" stroke-width="0.4"/>
+                    </pattern>
+                  </defs>
+
+                  <!-- base map -->
+                  <rect width="600" height="240" fill="url(#osmTile)"/>
+
+                  <!-- aree verdi (parchi) -->
+                  <path d="M-10,200 Q40,150 110,170 T210,200 L210,260 L-10,260 Z" fill="#cfe6c8" opacity="0.85"/>
+                  <ellipse cx="475" cy="195" rx="80" ry="38" fill="#cfe6c8" opacity="0.85"/>
+
+                  <!-- corso d'acqua -->
+                  <path d="M-20,130 C100,150 220,108 340,128 C460,148 540,118 620,140" stroke="#aacae6" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.9"/>
+
+                  <!-- strade principali (casing scuro + interno chiaro per effetto OSM) -->
+                  <g stroke-linecap="round">
+                    <path d="M-10,55 C100,42 220,70 320,52 C420,38 510,60 615,48" stroke="#d6c280" stroke-width="9" fill="none"/>
+                    <path d="M-10,55 C100,42 220,70 320,52 C420,38 510,60 615,48" stroke="#fff5b8" stroke-width="6" fill="none"/>
+
+                    <path d="M-10,170 C90,158 180,182 280,168 C380,154 480,178 615,162" stroke="#d6c280" stroke-width="9" fill="none"/>
+                    <path d="M-10,170 C90,158 180,182 280,168 C380,154 480,178 615,162" stroke="#fff5b8" stroke-width="6" fill="none"/>
+
+                    <path d="M95,-10 C100,80 110,150 120,250" stroke="#d6c280" stroke-width="8" fill="none"/>
+                    <path d="M95,-10 C100,80 110,150 120,250" stroke="#fff5b8" stroke-width="5" fill="none"/>
+
+                    <path d="M395,-10 C385,80 415,160 395,250" stroke="#d6c280" stroke-width="8" fill="none"/>
+                    <path d="M395,-10 C385,80 415,160 395,250" stroke="#fff5b8" stroke-width="5" fill="none"/>
+
+                    <path d="M540,-10 C545,90 525,170 555,250" stroke="#d6c280" stroke-width="8" fill="none"/>
+                    <path d="M540,-10 C545,90 525,170 555,250" stroke="#fff5b8" stroke-width="5" fill="none"/>
+                  </g>
+
+                  <!-- strade secondarie -->
+                  <g stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.95">
+                    <path d="M30,90 L260,110"/>
+                    <path d="M260,30 L290,210"/>
+                    <path d="M40,210 L350,200"/>
+                    <path d="M430,30 L470,210"/>
+                    <path d="M450,100 L600,115"/>
+                  </g>
+
+                  <!-- ============= ROUTE POLYLINES (stile Leaflet: solid, weight 4, opacity .9) ============= -->
+                  <!-- Squadra 1 (rosso #FF4757) -->
+                  <path d="M70,80 L130,72 L185,90 L240,76 L295,95 L350,82" stroke="#FF4757" stroke-width="4" stroke-opacity="0.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <!-- Squadra 2 (verde #2ED573) -->
+                  <path d="M85,195 L145,180 L205,200 L270,182 L335,198 L395,180" stroke="#2ED573" stroke-width="4" stroke-opacity="0.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <!-- Squadra 3 (blu #3742FA) -->
+                  <path d="M395,55 L450,72 L495,55 L540,80 L575,108" stroke="#3742FA" stroke-width="4" stroke-opacity="0.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+                  <!-- Frecce direzionali (▲) -->
+                  <g font-family="Arial, sans-serif" font-size="12" font-weight="bold" pointer-events="none">
+                    <text x="160" y="78" fill="#FF4757" transform="rotate(96 160 78)">&#9650;</text>
+                    <text x="270" y="84" fill="#FF4757" transform="rotate(110 270 84)">&#9650;</text>
+                    <text x="175" y="190" fill="#2ED573" transform="rotate(108 175 190)">&#9650;</text>
+                    <text x="305" y="190" fill="#2ED573" transform="rotate(105 305 190)">&#9650;</text>
+                    <text x="475" y="62" fill="#3742FA" transform="rotate(115 475 62)">&#9650;</text>
+                    <text x="560" y="95" fill="#3742FA" transform="rotate(140 560 95)">&#9650;</text>
+                  </g>
+
+                  <!-- ============= MARKER NUMERATI (stile divIcon Leaflet 26x26, bordo bianco 3px) ============= -->
+                  <g font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" fill="#fff" filter="url(#osmShadow)">
+                    <!-- Squadra 1 (rosso) -->
+                    <g><circle cx="70" cy="80" r="13" fill="#FF4757" stroke="#fff" stroke-width="3"/><text x="70" y="84" text-anchor="middle">1</text></g>
+                    <g><circle cx="130" cy="72" r="13" fill="#FF4757" stroke="#fff" stroke-width="3"/><text x="130" y="76" text-anchor="middle">2</text></g>
+                    <g><circle cx="185" cy="90" r="13" fill="#FF4757" stroke="#fff" stroke-width="3"/><text x="185" y="94" text-anchor="middle">3</text></g>
+                    <g><circle cx="240" cy="76" r="13" fill="#FF4757" stroke="#fff" stroke-width="3"/><text x="240" y="80" text-anchor="middle">4</text></g>
+                    <g><circle cx="295" cy="95" r="13" fill="#FF4757" stroke="#fff" stroke-width="3"/><text x="295" y="99" text-anchor="middle">5</text></g>
+                    <g><circle cx="350" cy="82" r="13" fill="#FF4757" stroke="#fff" stroke-width="3"/><text x="350" y="86" text-anchor="middle">6</text></g>
+
+                    <!-- Squadra 2 (verde) -->
+                    <g><circle cx="85" cy="195" r="13" fill="#2ED573" stroke="#fff" stroke-width="3"/><text x="85" y="199" text-anchor="middle">1</text></g>
+                    <g><circle cx="145" cy="180" r="13" fill="#2ED573" stroke="#fff" stroke-width="3"/><text x="145" y="184" text-anchor="middle">2</text></g>
+                    <g><circle cx="205" cy="200" r="13" fill="#2ED573" stroke="#fff" stroke-width="3"/><text x="205" y="204" text-anchor="middle">3</text></g>
+                    <g><circle cx="270" cy="182" r="13" fill="#2ED573" stroke="#fff" stroke-width="3"/><text x="270" y="186" text-anchor="middle">4</text></g>
+                    <g><circle cx="335" cy="198" r="13" fill="#2ED573" stroke="#fff" stroke-width="3"/><text x="335" y="202" text-anchor="middle">5</text></g>
+                    <g><circle cx="395" cy="180" r="13" fill="#2ED573" stroke="#fff" stroke-width="3"/><text x="395" y="184" text-anchor="middle">6</text></g>
+
+                    <!-- Squadra 3 (blu) -->
+                    <g><circle cx="395" cy="55" r="13" fill="#3742FA" stroke="#fff" stroke-width="3"/><text x="395" y="59" text-anchor="middle">1</text></g>
+                    <g><circle cx="450" cy="72" r="13" fill="#3742FA" stroke="#fff" stroke-width="3"/><text x="450" y="76" text-anchor="middle">2</text></g>
+                    <g><circle cx="495" cy="55" r="13" fill="#3742FA" stroke="#fff" stroke-width="3"/><text x="495" y="59" text-anchor="middle">3</text></g>
+                    <g><circle cx="540" cy="80" r="13" fill="#3742FA" stroke="#fff" stroke-width="3"/><text x="540" y="84" text-anchor="middle">4</text></g>
+                    <g><circle cx="575" cy="108" r="13" fill="#3742FA" stroke="#fff" stroke-width="3"/><text x="575" y="112" text-anchor="middle">5</text></g>
+                  </g>
+
+                  <!-- attribuzione OSM -->
+                  <g>
+                    <rect x="500" y="225" width="98" height="13" fill="rgba(255,255,255,0.78)"/>
+                    <text x="595" y="235" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="8.5" fill="#475569">© OpenStreetMap</text>
+                  </g>
+                </svg>
+
+                <div class="opshub-map-controls">
+                  <button class="btn-edit"><i class="fas fa-edit"></i> Modifica Ordine</button>
+                  <button class="btn-reset"><i class="fas fa-undo"></i> Reset</button>
+                </div>
+                <div class="opshub-map-legend">
+                  <div class="row"><span class="dot" style="background:#FF4757"></span> Squadra 1</div>
+                  <div class="row"><span class="dot" style="background:#2ED573"></span> Squadra 2</div>
+                  <div class="row"><span class="dot" style="background:#3742FA"></span> Squadra 3</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="opshub-card">
+              <div class="opshub-card-head"><i class="fas fa-edit"></i> Modifica Percorsi (Drag &amp; Drop)</div>
+              <div class="opshub-squadre">
+                <div class="opshub-squadra">
+                  <div class="opshub-squadra-head" style="background:#FF4757">
+                    <i class="fas fa-user-friends"></i> Squadra 1
+                    <span class="badge">15 int.</span>
+                    <i class="fas fa-chevron-down chev"></i>
+                  </div>
+                  <div class="opshub-day-head" style="background:#ff6b78"><i class="fas fa-calendar-day"></i> 28/04/2026 <span class="badge">5</span></div>
+                  <div class="opshub-int">
+                    <div class="top">
+                      <span class="ord-badge" style="background:#FF4757">1</span>
+                      <span class="title">SOST. CONTATORE GAS G4</span>
+                      <span class="data-badge">28/04</span>
+                    </div>
+                    <div class="info"><i class="fas fa-map-marker-alt"></i> Via Manzoni 12</div>
+                    <div class="info"><i class="fas fa-clock"></i> 09:00 - 09:45</div>
+                    <i class="fas fa-grip-vertical grip"></i>
+                  </div>
+                  <div class="opshub-int">
+                    <div class="top">
+                      <span class="ord-badge" style="background:#FF4757">2</span>
+                      <span class="title">SOST. CONTATORE GAS G6</span>
+                      <span class="data-badge">28/04</span>
+                    </div>
+                    <div class="info"><i class="fas fa-map-marker-alt"></i> Via Garibaldi 88</div>
+                    <div class="info"><i class="fas fa-clock"></i> 10:15 - 11:00</div>
+                    <i class="fas fa-grip-vertical grip"></i>
+                  </div>
+                </div>
+
+                <div class="opshub-squadra">
+                  <div class="opshub-squadra-head" style="background:#2ED573">
+                    <i class="fas fa-user-friends"></i> Squadra 2
+                    <span class="badge">16 int.</span>
+                    <i class="fas fa-chevron-down chev"></i>
+                  </div>
+                  <div class="opshub-day-head" style="background:#52d98c"><i class="fas fa-calendar-day"></i> 28/04/2026 <span class="badge">6</span></div>
+                  <div class="opshub-int">
+                    <div class="top">
+                      <span class="ord-badge" style="background:#2ED573">1</span>
+                      <span class="title">SOST. CONTATORE H2O DN15</span>
+                      <span class="data-badge">28/04</span>
+                    </div>
+                    <div class="info"><i class="fas fa-map-marker-alt"></i> Via Verdi 4</div>
+                    <div class="info"><i class="fas fa-clock"></i> 08:30 - 09:10</div>
+                    <i class="fas fa-grip-vertical grip"></i>
+                  </div>
+                  <div class="opshub-int">
+                    <div class="top">
+                      <span class="ord-badge" style="background:#2ED573">2</span>
+                      <span class="title">SOST. CONTATORE H2O DN20</span>
+                      <span class="data-badge">28/04</span>
+                    </div>
+                    <div class="info"><i class="fas fa-map-marker-alt"></i> Via Roma 23</div>
+                    <div class="info"><i class="fas fa-clock"></i> 09:30 - 10:15</div>
+                    <i class="fas fa-grip-vertical grip"></i>
+                  </div>
+                </div>
+
+                <div class="opshub-squadra">
+                  <div class="opshub-squadra-head" style="background:#3742FA">
+                    <i class="fas fa-user-friends"></i> Squadra 3
+                    <span class="badge">12 int.</span>
+                    <i class="fas fa-chevron-down chev"></i>
+                  </div>
+                  <div class="opshub-day-head" style="background:#5e66ff"><i class="fas fa-calendar-day"></i> 28/04/2026 <span class="badge">4</span></div>
+                  <div class="opshub-int">
+                    <div class="top">
+                      <span class="ord-badge" style="background:#3742FA">1</span>
+                      <span class="title">SOST. CONTATORE GAS G4</span>
+                      <span class="data-badge">28/04</span>
+                    </div>
+                    <div class="info"><i class="fas fa-map-marker-alt"></i> Via Mazzini 9</div>
+                    <div class="info"><i class="fas fa-clock"></i> 09:15 - 10:00</div>
+                    <i class="fas fa-grip-vertical grip"></i>
+                  </div>
+                  <div class="opshub-int">
+                    <div class="top">
+                      <span class="ord-badge" style="background:#3742FA">2</span>
+                      <span class="title">SOST. CONTATORE H2O DN15</span>
+                      <span class="data-badge">28/04</span>
+                    </div>
+                    <div class="info"><i class="fas fa-map-marker-alt"></i> Via Dante 17</div>
+                    <div class="info"><i class="fas fa-clock"></i> 10:30 - 11:10</div>
+                    <i class="fas fa-grip-vertical grip"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-public section-public-gray" id="problema">
+  <div class="container">
+    <h2 class="section-title-public">Il problema operativo nella sostituzione contatori</h2>
+    <p class="section-subtitle-public mb-4">
+      Sostituire un contatore e semplice. Coordinare centinaia di sostituzioni al giorno, su piu squadre, partendo da magazzini diversi e tornando con pallet di smontati da rendicontare, no.
+      L'errore non e mai sul singolo intervento: e sulla catena che parte dall'ufficio e finisce sul pallet di reso.
+    </p>
+    <div class="row g-3">
+      <div class="col-lg-8">
+        <div class="card-public">
+          <p style="margin-bottom: 0.9rem;">
+            Il punto di partenza tipico e un elenco di ordini ricevuti dal committente, da ribaltare su squadre e calendario. Senza una vista unica su mappa,
+            il dispatcher costruisce i giri "a sentimento", con tempi morti, sovrapposizioni e ordini che cambiano la mattina stessa.
+            Il tecnico parte con una lista cartacea o un PDF, passa in magazzino, prende contatori che <em>spera</em> siano i giusti, e nessuno aggiorna le giacenze in tempo reale.
+          </p>
+          <p style="margin-bottom: 0.9rem;">
+            In campo le matricole vengono trascritte a mano, le foto restano sul telefono, gli smontati vengono ammassati in furgone e il giorno dopo qualcuno cerca di capire
+            quali vanno rottamati e quali riconsegnati. Le regole di pallettizzazione del committente (per anno, calibro, tipologia) restano negli Excel del responsabile magazzino e ogni errore costa contestazioni.
+          </p>
+          <p class="mb-0">
+            La consuntivazione diventa un collo di bottiglia: per ogni intervento serve incrociare PdR, matricola montata, matricola smontata, listino, calibro e struttura.
+            OpsHub mette insieme <strong>Centrale Operativa</strong>, <strong>app sul campo</strong>, <strong>magazzini</strong> e <strong>pallet smontati</strong> in un unico flusso, dove ogni passaggio scrive il proprio dato senza ricostruzioni a posteriori.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card-public">
+          <h3>Segnali tipici</h3>
+          <ul class="mb-0" style="padding-left: 1.2rem; color: var(--gray-700);">
+            <li>Giri costruiti a mano su Excel o Google Maps.</li>
+            <li>Tecnici che escono dal magazzino senza aggiornare le giacenze.</li>
+            <li>Matricole montate/smontate scritte a penna.</li>
+            <li>Smontati ammassati senza criterio, da smistare a fine settimana.</li>
+            <li>Regole di pallettizzazione del committente solo "in testa" al magazziniere.</li>
+            <li>Consuntivi che richiedono giorni di incroci e contestazioni ricorrenti.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-public" id="flusso">
+  <div class="container">
+    <h2 class="section-title-public">Il flusso end-to-end della sostituzione contatori</h2>
+    <p class="section-subtitle-public mb-4">
+      Quattro step, un unico filo. Ogni step alimenta il successivo, senza ricopiature ne file paralleli.
+    </p>
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-3">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-route me-2 text-primary"></i>1. Centrale Operativa</h3>
+          <p class="mb-0">Import ordini, geocodifica, mappa interventi, ottimizzazione giro per squadra e per data, calendario operatori e riprogrammazioni.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-warehouse me-2 text-primary"></i>2. Magazzino + App</h3>
+          <p class="mb-0">Il tecnico apre l'app nel magazzino di riferimento, scansiona QR/barcode dei contatori e li prende in carico. Giacenze aggiornate in tempo reale.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-screwdriver-wrench me-2 text-primary"></i>3. Sostituzione in campo</h3>
+          <p class="mb-0">Sul PdR/PdL il tecnico registra matricola montata, matricola smontata, lettura, foto ed esito. Tutto attribuibile, anche offline.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-pallet me-2 text-primary"></i>4. Smontati e pallet</h3>
+          <p class="mb-0">Gli smontati rientrano in magazzino, vengono pallettizzati con regole automatiche e il sistema suggerisce se rottamare o riconsegnare.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-public section-public-gray" id="centrale-operativa">
+  <div class="container">
+    <h2 class="section-title-public">Centrale Operativa: il cuore della sostituzione contatori</h2>
+    <p class="section-subtitle-public mb-4">
+      Tutto inizia qui. La Centrale Operativa di OpsHub trasforma una lista di ordini di sostituzione in giri ottimizzati, geolocalizzati e pronti a scendere sui device dei tecnici.
+      Niente piu giri costruiti su Excel, niente piu indirizzi cercati uno per uno: ogni intervento e geocodificato, posizionato sulla mappa e organizzato in sequenza ottimale.
+    </p>
+
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-file-import me-2 text-primary"></i>Import ordini multi-formato</h3>
+          <p class="mb-0">Carichi gli ordini di sostituzione da Excel/CSV con mapping colonne guidato e regole CSV personalizzabili per committente. Ogni ordine entra nel sistema con PdR/PdL, indirizzo, fascia oraria e priorita.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-map-location-dot me-2 text-primary"></i>Geocodifica e mappa interventi</h3>
+          <p class="mb-0">Indirizzi geocodificati automaticamente, con retry assistito e correzione manuale dei punti dubbi. La mappa di geocodifica mostra i casi da rivedere e quella di modifica permette il riposizionamento puntuale.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-route me-2 text-primary"></i>Ottimizzazione giro avanzata</h3>
+          <p class="mb-0">L'algoritmo costruisce il percorso ottimale per ciascuna squadra in base ai parametri configurati: minimizza chilometri e tempi morti, rispetta fasce orarie, calibri e vincoli di accesso. Ricalcolabile in un click.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-grip-lines me-2 text-primary"></i>Modifica giro drag-and-drop</h3>
+          <p class="mb-0">Il dispatcher puo intervenire sull'ordine proposto: sposta tappe, aggiunge appuntamenti, gestisce eccezioni e salva la nuova sequenza. Le polylines e le metriche si aggiornano in tempo reale.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-calendar-days me-2 text-primary"></i>Calendario operatori e riprogrammazioni</h3>
+          <p class="mb-0">Pianificazioni salvabili e ricaricabili, calendario per operatore con slot configurabili, gestione delle richieste di riprogrammazione (accetta/rifiuta) con valutazione di distanza e disponibilita.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-paper-plane me-2 text-primary"></i>Comunicazioni massive</h3>
+          <p class="mb-0">Invio comunicazioni ai contatti su intervento (WhatsApp, email, SMS) con template configurabili, link pubblici per la conferma appuntamento e invii programmati gestiti dalla CO.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-magnifying-glass-chart me-2 text-primary"></i>Analizza esecuzioni</h3>
+          <p class="mb-0">Report che incrocia ordini, esiti e listino di struttura/calibro. Identifica interventi non registrati e fuori fascia, pronto per consuntivazione e contestazioni difendibili.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-chart-line me-2 text-primary"></i>Statistiche e log</h3>
+          <p class="mb-0">Cruscotto operativo con avanzamento per squadra, KPI giornalieri e log di tutte le azioni eseguite (chi, quando, su quale intervento). Audit trail nativo, non un report a posteriori.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-list-check me-2 text-primary"></i>Listino struttura e calibro</h3>
+          <p class="mb-0">Configuri valori e calibri per ogni servizio. Il sistema valorizza automaticamente gli interventi consuntivati, senza spreadsheet di riconciliazione a fine mese.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-public" id="app-magazzino">
+  <div class="container">
+    <h2 class="section-title-public">App in campo e magazzini: presa in carico via QR/barcode</h2>
+    <p class="section-subtitle-public mb-4">
+      Quando il giro scende sull'app del tecnico, parte il pezzo piu critico: il contatore giusto deve uscire dal magazzino giusto, finire al PdR giusto e tornare smontato senza perdere identita.
+      OpsHub usa lo scanner del telefono come unico strumento operativo: niente penna, niente trascrizioni.
+    </p>
+
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-warehouse me-2 text-primary"></i>Multi-magazzino</h3>
+          <p class="mb-0">Ogni magazzino ha la propria giacenza. Il tecnico lavora sul magazzino di riferimento e l'app mostra solo i contatori realmente disponibili li, evitando uscite "fantasma" o doppie assegnazioni.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-qrcode me-2 text-primary"></i>Scanner QR e barcode</h3>
+          <p class="mb-0">Il tecnico inquadra il QR o il codice a barre sul contatore: l'app riconosce la matricola, verifica anti-duplicato e la prende in carico. Nessuna trascrizione manuale, zero errori di battitura.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-user-check me-2 text-primary"></i>Assegnazione tracciata</h3>
+          <p class="mb-0">Ogni presa in carico crea un'assegnazione attribuibile: chi, quale matricola, da quale magazzino, in che data e per quale ordine. Il caposquadra puo riassegnare in mobilita.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-boxes-stacked me-2 text-primary"></i>Giacenze in tempo reale</h3>
+          <p class="mb-0">Ogni movimento (carico, trasferimento, presa in carico, installato, smontato) aggiorna la giacenza del magazzino. Il responsabile vede lo stato vero, non quello "di ieri sera".</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-screwdriver-wrench me-2 text-primary"></i>Sostituzione sul PdR</h3>
+          <p class="mb-0">Sull'intervento il tecnico scansiona la matricola installata e quella smontata, registra lettura, foto, note ed esito. Il PdR/PdL si chiude con tutta la coppia montato/smontato collegata.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-wifi-slash me-2 text-primary"></i>Lavoro offline e sync</h3>
+          <p class="mb-0">In zone senza rete tutto continua a funzionare: scansioni, esiti, foto restano in coda sul dispositivo e vengono sincronizzati appena la connessione torna, senza perdere passaggi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-public section-public-gray" id="smontati-pallet">
+  <div class="container">
+    <h2 class="section-title-public">Smontati, riconsegne e pallettizzazione automatica</h2>
+    <p class="section-subtitle-public mb-4">
+      Lo smontato non e "scarto": e il prossimo problema da gestire. Ogni contatore rimosso ha una destinazione - rottamazione o riconsegna al committente - e regole precise di pallettizzazione (anno, calibro, tipologia).
+      OpsHub trasforma questa operazione, oggi quasi sempre manuale, in un flusso guidato che chiude il cerchio della commessa.
+    </p>
+
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-recycle me-2 text-primary"></i>Rientro smontati con foto</h3>
+          <p class="mb-0">Al rientro in magazzino il tecnico scarica gli smontati con scansione massiva. Stato, foto e annotazioni restano agganciati alla matricola e al PdR di provenienza.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-wand-magic-sparkles me-2 text-primary"></i>Suggerimento rottamare/riconsegnare</h3>
+          <p class="mb-0">In base alle regole configurate (anno di produzione, calibro, condizione, tipologia, contratto col committente) il sistema suggerisce automaticamente se il contatore va rottamato o riconsegnato.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-pallet me-2 text-primary"></i>Pallettizzazione guidata</h3>
+          <p class="mb-0">Le regole di pallettizzazione raggruppano gli smontati per destinazione e omogeneita (es. anno bollatura, calibro, classe). Ogni pallet di reso ha la sua composizione coerente e il suo report.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-shield-halved me-2 text-primary"></i>Verifica anti-anomalia</h3>
+          <p class="mb-0">Il sistema verifica le matricole contro le liste autorizzate dal committente e segnala anomalie: matricole non riconosciute, doppioni, fuori regola. Si blocca prima che il pallet parta sbagliato.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-file-invoice me-2 text-primary"></i>Report pallet pronto</h3>
+          <p class="mb-0">Quando un pallet viene chiuso, il report di pallettizzazione e gia compilato: codice pallet, contenuto, destinazione, riferimenti a interventi e ordini. Pronto per la riconsegna o lo smaltimento.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-fingerprint me-2 text-primary"></i>Tracciabilita end-to-end</h3>
+          <p class="mb-0">Per ogni matricola - montata o smontata - resta lo storico completo: da che pallet veniva, chi l'ha presa in carico, su quale PdR e finita, in che pallet di reso e tornata. <a href="/contatori-tracciabilita/">Approfondisci la tracciabilita</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-public" id="gas-idrici">
+  <div class="container">
+    <h2 class="section-title-public">Sostituzione contatori gas e idrici nello stesso flusso</h2>
+    <p class="section-subtitle-public mb-4">
+      Stesso workflow, due specificita. Cambiano calibri, regole di pallettizzazione e codifiche; non cambia la logica di fondo: ordini in CO, presa in carico in magazzino, sostituzione in campo, smontati pallettizzati.
+    </p>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-fire-flame-simple me-2 text-primary"></i>Sostituzione contatori gas</h3>
+          <ul class="mb-0" style="padding-left: 1.2rem; color: var(--gray-700);">
+            <li>Gestione PdR, matricola montata e smontata, lettura, sigillo e bollatura.</li>
+            <li>Esiti tipici (sostituito, KO accesso, assenza utente, non conforme) agganciati al PdR e ripianificabili dalla CO.</li>
+            <li>Pallet di reso compatibili con le regole dei principali distributori (per anno bollatura, classe, calibro).</li>
+            <li>Comunicazione preventiva al cliente finale con WhatsApp/SMS dalla Centrale Operativa.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card-public" style="height: 100%;">
+          <h3><i class="fas fa-droplet me-2 text-primary"></i>Sostituzione contatori idrici</h3>
+          <ul class="mb-0" style="padding-left: 1.2rem; color: var(--gray-700);">
+            <li>Volumi elevati gestiti con import massivi e ottimizzazione del giro su grandi territori.</li>
+            <li>Multi-magazzino per coprire bacini estesi senza far rincorrere i contatori ai tecnici.</li>
+            <li>Pallettizzazione smontati con regole per calibro e tipologia (DN15, DN20, ecc.).</li>
+            <li>Suggerimento automatico rottamazione vs riconsegna in base alle politiche del gestore idrico.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-public section-public-gray" id="per-chi">
+  <div class="container">
+    <h2 class="section-title-public">Per chi e pensato</h2>
+    <p class="section-subtitle-public mb-4">
+      Questa landing e pensata per chi deve far funzionare il lavoro sul campo nella sostituzione contatori, non per chi cerca un gestionale generico.
+      Se sei un responsabile operativo o logistico, ti interessa una cosa: sapere cosa e successo, e poterlo dimostrare.
+    </p>
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-3"><div class="card-public"><h3>Imprese in subappalto</h3><p>Sostituzioni contatori gas e acqua, volumi elevati, vincoli di audit e SLA.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="card-public"><h3>Logistica e magazzino</h3><p>Pallet, carico/scarico, assegnazioni e riconciliazioni senza ricostruzioni manuali.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="card-public"><h3>Capi squadra e tecnici</h3><p>Scanner in campo, lavoro offline, note e prove operative in un flusso semplice.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="card-public"><h3>Direzione tecnica</h3><p>Dati difendibili verso il committente, consuntivi e letture di commessa basate su evidenze.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-public" id="numeri">
+  <div class="container">
+    <h2 class="section-title-public">Numeri che contano (misurabili sul tuo flusso)</h2>
+    <p class="section-subtitle-public mb-4">
+      OpsHub serve per ridurre tempo perso e rendere il dato utilizzabile. KPI tipici osservati sui flussi di sostituzione contatori, da misurare sul tuo perimetro.
+    </p>
+    <div class="kpi-strip">
+      <div class="kpi-box">
+        <div class="kpi-top"><i class="fas fa-route"></i> Km del giro</div>
+        <div class="kpi-value">-25/40%</div>
+        <div class="kpi-note">Ottimizzazione automatica vs giri costruiti a mano dalla Centrale Operativa.</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-top"><i class="fas fa-qrcode"></i> Errori matricola</div>
+        <div class="kpi-value">Vicini allo zero</div>
+        <div class="kpi-note">Scansione QR/barcode in magazzino e in campo, niente trascrizioni manuali.</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-top"><i class="fas fa-pallet"></i> Pallettizzazione smontati</div>
+        <div class="kpi-value">Da giorni a ore</div>
+        <div class="kpi-note">Regole automatiche di raggruppamento e suggerimento rottamare/riconsegnare.</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-top"><i class="fas fa-stopwatch"></i> Consuntivazione</div>
+        <div class="kpi-value">Tempi -70%</div>
+        <div class="kpi-note">Listino struttura/calibro applicato in automatico, niente Excel di chiusura.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-public section-public-gray" id="casi-uso">
+  <div class="container">
+    <h2 class="section-title-public">Casi d'uso tipici (scenari realistici)</h2>
+    <p class="section-subtitle-public mb-4">
+      Qui non trovi case study inventati. Trovi situazioni reali che oggi gestisci con passaggi manuali: OpsHub serve a rendere il flusso piu lineare e verificabile.
+    </p>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="card-public" style="height: 100%;">
+          <h3>1) Mattina in CO: ordini, mappa e giro</h3>
+          <p class="mb-0">
+            Il dispatcher apre la Centrale Operativa, importa o aggiorna gli ordini del giorno, vede tutto sulla mappa e lancia l'ottimizzazione: in un click ogni squadra ha il suo giro sequenziato e geolocalizzato.
+            Se serve, riposiziona manualmente alcuni ordini e rilancia il calcolo.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card-public" style="height: 100%;">
+          <h3>2) Magazzino: presa in carico contatori</h3>
+          <p class="mb-0">
+            Il tecnico arriva in magazzino, apre l'app, vede i contatori da prendere per il suo giro. Spara il QR/barcode di ciascuno, le giacenze del magazzino si aggiornano in tempo reale e l'assegnazione diventa nominativa.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card-public" style="height: 100%;">
+          <h3>3) Sul PdR: sostituzione e smontato</h3>
+          <p class="mb-0">
+            Sul punto, scansione del montato, scansione dello smontato, lettura, foto, esito. Tutto resta agganciato al PdR. Se non c'e rete, resta in coda; quando torna, sincronizza tutto in automatico.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card-public" style="height: 100%;">
+          <h3>4) Rientro: pallet smontati e suggerimenti</h3>
+          <p class="mb-0">
+            Al rientro in magazzino il tecnico scarica gli smontati. Le regole raggruppano per anno, calibro e tipologia; per ogni contatore arriva il suggerimento "rottama" o "riconsegna" e il pallet di reso si chiude pronto per la spedizione.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card-public" style="height: 100%;">
+          <h3>5) Sera: consuntivazione automatica</h3>
+          <p class="mb-0">
+            Ogni esito viene valorizzato sul listino di struttura e calibro. L'analizza esecuzioni segnala interventi non registrati e fuori fascia, cosi non resta nulla in sospeso quando si chiude la giornata.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card-public" style="height: 100%;">
+          <h3>6) Contestazione: prove pronte</h3>
+          <p class="mb-0">
+            Se il committente contesta un intervento, lo storico per PdR e matricola e gia li: foto, ora, posizione, tecnico, pallet di provenienza e di destinazione. La risposta si scrive in minuti, non in giorni.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-public" id="moduli">
+  <div class="container">
+    <h2 class="section-title-public">Moduli OpsHub coinvolti</h2>
+    <p class="section-subtitle-public mb-4">
+      La pagina e focalizzata sulla sostituzione contatori. Per lo storico e l'audit trail completo, vedi <a href="/contatori-tracciabilita/">/contatori-tracciabilita</a>.
+    </p>
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-3"><div class="card-public" style="height: 100%;"><h3><i class="fas fa-route me-2 text-primary"></i>Centrale Operativa</h3><p class="mb-0">Import ordini, geocodifica, mappa, ottimizzazione giro, calendario operatori, riprogrammazioni, comunicazioni e analizza esecuzioni.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="card-public" style="height: 100%;"><h3><i class="fas fa-mobile-screen me-2 text-primary"></i>Hub2Go (app mobile)</h3><p class="mb-0">Giro tecnico, presa in carico in magazzino con QR/barcode, sostituzione e smontato sul PdR, lavoro offline e sync automatica.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="card-public" style="height: 100%;"><h3><i class="fas fa-warehouse me-2 text-primary"></i>Magazzini &amp; Pallet</h3><p class="mb-0">Multi-magazzino con giacenze in tempo reale, pallet smontati con regole automatiche e suggerimento rottamare/riconsegnare.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="card-public" style="height: 100%;"><h3><i class="fas fa-boxes-packing me-2 text-primary"></i>Materiali (opzionale)</h3><p class="mb-0">Movimenti materiali per commessa con voice picking, utile dove al contatore si accompagnano kit e accessori.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-public section-public-gray" id="faq">
+  <div class="container">
+    <h2 class="section-title-public">FAQ</h2>
+    <p class="section-subtitle-public mb-4">Domande tipiche quando devi scegliere un software sostituzione contatori e difendere il dato verso il committente.</p>
+    <div class="row g-3">
+      <div class="col-md-6"><div class="card-public" style="height: 100%;"><h3>Da dove parte il flusso di sostituzione contatori in OpsHub?</h3><p class="mb-0">Parte dalla Centrale Operativa: importi gli ordini di sostituzione, vengono geocodificati e mostrati su mappa, poi l'algoritmo costruisce il giro ottimizzato per squadra e per data. Da li gli interventi scendono nell'app dei tecnici.</p></div></div>
+      <div class="col-md-6"><div class="card-public" style="height: 100%;"><h3>Come si ottimizza il giro dei tecnici sulla mappa?</h3><p class="mb-0">Indirizzi geocodificati, ordini visualizzati su mappa e calcolo automatico del percorso ottimale per ciascuna squadra in base ai parametri configurati (orari, fasce, vincoli). Puoi rilanciare l'ottimizzazione, modificare manualmente l'ordine e confermare il giro.</p></div></div>
+      <div class="col-md-6"><div class="card-public" style="height: 100%;"><h3>Come avviene la presa in carico dei contatori in magazzino?</h3><p class="mb-0">Il tecnico apre l'app nel magazzino di riferimento, inquadra il QR o il codice a barre del contatore e lo prende in carico. La giacenza si aggiorna in tempo reale, l'assegnazione resta tracciata per matricola, magazzino, data e responsabile.</p></div></div>
+      <div class="col-md-6"><div class="card-public" style="height: 100%;"><h3>Come si gestiscono gli smontati e la riconsegna al committente?</h3><p class="mb-0">Ogni smontato viene registrato in app con foto e note. Le regole di pallettizzazione raggruppano i contatori smontati e suggeriscono se rottamare o riconsegnare. Quando il pallet e chiuso, il report e gia compilato e pronto per la spedizione.</p></div></div>
+      <div class="col-md-6"><div class="card-public" style="height: 100%;"><h3>OpsHub gestisce piu magazzini e piu squadre contemporaneamente?</h3><p class="mb-0">Si. Le giacenze sono per magazzino, le assegnazioni sono per tecnico/squadra e la Centrale Operativa coordina pianificazione e riprogrammazioni. Ogni movimento (carico, trasferimento, presa in carico, installato, smontato, reso) resta tracciato.</p></div></div>
+      <div class="col-md-6"><div class="card-public" style="height: 100%;"><h3>Come funziona la consuntivazione degli interventi?</h3><p class="mb-0">Gli esiti registrati in campo alimentano l'analisi esecuzioni: vengono valorizzati su listino di struttura e calibro, con controlli su interventi non registrati e fuori fascia. Da qui esci con consuntivi difendibili verso il committente.</p></div></div>
+      <div class="col-md-6"><div class="card-public" style="height: 100%;"><h3>OpsHub funziona offline in cantiere?</h3><p class="mb-0">Si. L'app mobile lavora anche senza rete: scansioni QR, esiti, foto e note vengono salvati sul dispositivo e sincronizzati automaticamente quando la connessione torna disponibile.</p></div></div>
+      <div class="col-md-6"><div class="card-public" style="height: 100%;"><h3>OpsHub gestisce sia contatori idrici sia contatori gas?</h3><p class="mb-0">Si. Lo stesso flusso (Centrale Operativa, app, magazzini, pallet smontati) copre sia sostituzione contatori gas sia sostituzione contatori idrici, con PdR/PdL e matricole tracciate end-to-end.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block-public" id="cta">
+  <div class="container">
+    <h2 class="cta-title-public">Vuoi vedere il flusso end-to-end sul tuo caso reale?</h2>
+    <p class="cta-subtitle-public">Porta una lista di ordini di sostituzione (Excel/CSV) e una giornata tipo. Impostiamo una demo che parte dalla Centrale Operativa con mappa e giro ottimizzato, scende sull'app dei tecnici nei magazzini e si chiude sulla pallettizzazione degli smontati.</p>
+    <a href="/contatti/" class="btn-cta-primary-public" data-cta="demo-final">Richiedi una Demo Gratuita</a>
+  </div>
+</section>
+
+  </main>
+
+  ﻿<footer class="footer-public public-footer site-footer">
+
+  <div class="container">
+
+    <div class="footer-grid footer-grid-marketing footer-grid-slim">
+
+      <div class="footer-col footer-col-brand">
+
+        <a href="/" class="footer-brand-link" aria-label="OpsHub — Home">
+          <picture>
+            <source srcset="/static/public/seo/hub2go-logo.webp" type="image/webp">
+            <img src="/static/public/seo/hub2go-logo.png" width="96" height="46" alt="OpsHub" decoding="async" loading="lazy">
+          </picture>
+        </a>
+
+        <p class="footer-tagline">Piattaforma operativa italiana per collegare campo, ufficio tecnico, commesse e squadre sul territorio.</p>
+
+        <p class="footer-tagline footer-tagline--secondary">
+          <a href="https://www.linkedin.com/company/opshubitalia/" target="_blank" rel="noopener noreferrer" aria-label="Segui OpsHub su LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+        </p>
+
+      </div>
+
+      <div class="footer-col">
+
+        <strong class="footer-col-title">Soluzioni</strong>
+
+        <div class="footer-links footer-links-stack">
+
+          <a href="/software-gestione-cantieri/">Gestione cantieri</a>
+
+          <a href="/software-controllo-margini-commessa/">Controllo margini e SAL</a>
+
+          <a href="/software-gestione-subappalti/">Gestione subappalti</a>
+
+          <a href="/tracciabilita-cantiere/">Tracciabilità cantiere</a>
+
+          <a href="/gare-appalto-offerte-tecniche/">Gare e offerte tecniche</a>
+
+        </div>
+
+      </div>
+
+      <div class="footer-col">
+
+        <strong class="footer-col-title">Azienda</strong>
+
+        <div class="footer-links footer-links-stack">
+
+          <a href="/cos-e-opshub/">Cos&apos;è OpsHub</a>
+
+          <a href="/fondatore/">Fondatore</a>
+
+          <a href="/casi-uso-opshub/">Casi d&apos;uso</a>
+
+          <a href="/integrazioni-opshub/">Integrazioni</a>
+
+          <a href="/contatti/">Contatti</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom footer-bottom-bar">
+
+      <p class="footer-copy mb-0">&copy; OpsHub platform</p>
+
+      <nav class="footer-bottom-nav" aria-label="Legale e accesso">
+
+        <a href="/privacy-hub2go/">Privacy</a>
+
+        <a href="/cookie-policy/">Cookie</a>
+
+        <a href="https://bot.ops-on.site/login">Accedi</a>
+
+        <a href="/landing/" class="footer-cta">Demo prodotto</a>
+
+      </nav>
+
+    </div>
+
+  </div>
+
+</footer>
+
+  <style>
+  .site-cookie-wrap {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99990;
+    padding: 0.75rem;
+    display: none;
+    pointer-events: none;
+  }
+  .site-cookie-wrap.is-open { display: block; }
+  .site-cookie-banner {
+    max-width: 980px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #e4e4e7;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 1rem 1.25rem;
+    pointer-events: auto;
+  }
+  .site-cookie-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.45rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .site-cookie-title i { color: #1e3a8a; }
+  .site-cookie-text {
+    margin: 0 0 0.75rem;
+    color: #3f3f46;
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+  .site-cookie-text a { color: #1e3a8a; font-weight: 600; }
+  .site-cookie-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .site-cookie-actions .btn { border-radius: 10px; font-size: 0.88rem; font-weight: 600; }
+  .site-cookie-modal-wrap {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(15, 23, 42, 0.45);
+  }
+  .site-cookie-modal-wrap.is-open { display: flex; }
+  .site-cookie-modal {
+    width: min(100%, 520px);
+    max-height: min(90vh, 640px);
+    overflow: auto;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #e4e4e7;
+    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.22);
+  }
+  .site-cookie-modal-header,
+  .site-cookie-modal-body,
+  .site-cookie-modal-footer {
+    padding: 1rem 1.15rem;
+  }
+  .site-cookie-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border-bottom: 1px solid #e4e4e7;
+  }
+  .site-cookie-modal-title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .site-cookie-modal-close {
+    border: none;
+    background: transparent;
+    color: #64748b;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.15rem 0.35rem;
+  }
+  .site-cookie-modal-close:hover { color: #0f172a; }
+  .site-cookie-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    border-top: 1px solid #e4e4e7;
+  }
+  @media (max-width: 768px) {
+    .site-cookie-banner { padding: 0.9rem; }
+    .site-cookie-actions { gap: 0.45rem; }
+    .site-cookie-actions .btn { flex: 1 1 auto; min-width: 0; }
+  }
+</style>
+
+<div id="siteCookieBanner" class="site-cookie-wrap" aria-live="polite" aria-label="Preferenze cookie">
+  <div class="site-cookie-banner">
+    <div class="site-cookie-title">
+      <i class="fas fa-cookie-bite" aria-hidden="true"></i>
+      <span>Utilizziamo i cookie</span>
+    </div>
+    <p class="site-cookie-text">
+      Usiamo cookie tecnici e, solo con il tuo consenso, strumenti di analisi e marketing.
+      Puoi accettare tutti i cookie, rifiutare quelli non necessari o personalizzare le preferenze.
+      <a href="/cookie-policy">Maggiori informazioni</a>.
+    </p>
+    <div class="site-cookie-actions">
+      <button id="siteCookieAccept" type="button" class="btn btn-primary">Accetta tutti</button>
+      <button id="siteCookieReject" type="button" class="btn btn-outline-secondary">Rifiuta non necessari</button>
+      <button id="siteCookieSettings" type="button" class="btn btn-link">Personalizza</button>
+    </div>
+  </div>
+</div>
+
+<div id="siteCookieSettingsModal" class="site-cookie-modal-wrap" role="dialog" aria-modal="true" aria-labelledby="siteCookieSettingsTitle" aria-hidden="true">
+  <div class="site-cookie-modal">
+    <div class="site-cookie-modal-header">
+      <h2 class="site-cookie-modal-title" id="siteCookieSettingsTitle">Personalizza</h2>
+      <button type="button" class="site-cookie-modal-close" id="siteCookieModalClose" aria-label="Chiudi">&times;</button>
+    </div>
+    <div class="site-cookie-modal-body">
+      <div class="mb-3">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="siteCookieEssential" checked disabled>
+          <label class="form-check-label" for="siteCookieEssential">
+            <strong>Cookie necessari</strong>
+            <small class="d-block text-muted">Sempre attivi — necessari per il funzionamento del sito</small>
+          </label>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="siteCookieAnalytics">
+          <label class="form-check-label" for="siteCookieAnalytics">
+            <strong>Analisi e misurazione</strong>
+            <small class="d-block text-muted">Permettono di comprendere, in forma statistica, come viene utilizzato il sito.</small>
+          </label>
+        </div>
+      </div>
+      <div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="siteCookieMarketing">
+          <label class="form-check-label" for="siteCookieMarketing">
+            <strong>Marketing e pubblicità</strong>
+            <small class="d-block text-muted">Permettono di misurare le campagne pubblicitarie e creare audience per annunci pertinenti. Include LinkedIn Insight Tag.</small>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="site-cookie-modal-footer">
+      <button type="button" class="btn btn-secondary" id="siteCookieModalCancel">Annulla</button>
+      <button type="button" class="btn btn-primary" id="siteCookieSaveSettings">Salva preferenze</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var consentApi = window.OpsHubSiteConsent;
+    if (!consentApi) return;
+
+    function bannerEl() { return document.getElementById('siteCookieBanner'); }
+    function modalEl() { return document.getElementById('siteCookieSettingsModal'); }
+
+    function showBannerIfNeeded() {
+      var consent = consentApi.getCookie(consentApi.COOKIE_CONSENT);
+      var banner = bannerEl();
+      if (!banner) return;
+      if (!consent) banner.classList.add('is-open');
+    }
+
+    function hideBanner() {
+      var banner = bannerEl();
+      if (!banner) return;
+      banner.classList.remove('is-open');
+    }
+
+    function applyAndHide(analyticsEnabled, marketingEnabled) {
+      consentApi.applyConsent({ analytics: analyticsEnabled, marketing: marketingEnabled });
+      hideBanner();
+    }
+
+    function loadModalPreferences() {
+      var analyticsInput = document.getElementById('siteCookieAnalytics');
+      var marketingInput = document.getElementById('siteCookieMarketing');
+      if (analyticsInput) analyticsInput.checked = consentApi.getCookie(consentApi.COOKIE_ANALYTICS) === 'true';
+      if (marketingInput) marketingInput.checked = consentApi.getCookie(consentApi.COOKIE_MARKETING) === 'true';
+    }
+
+    function openSettingsModal() {
+      var modal = modalEl();
+      if (!modal) return;
+      loadModalPreferences();
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSettingsModal() {
+      var modal = modalEl();
+      if (!modal) return;
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    var acceptBtn = document.getElementById('siteCookieAccept');
+    var rejectBtn = document.getElementById('siteCookieReject');
+    var settingsBtn = document.getElementById('siteCookieSettings');
+    var saveBtn = document.getElementById('siteCookieSaveSettings');
+    var closeBtn = document.getElementById('siteCookieModalClose');
+    var cancelBtn = document.getElementById('siteCookieModalCancel');
+
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', function () {
+        applyAndHide(true, true);
+      });
+    }
+    if (rejectBtn) {
+      rejectBtn.addEventListener('click', function () {
+        applyAndHide(false, false);
+      });
+    }
+    if (settingsBtn) {
+      settingsBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openSettingsModal();
+      });
+    }
+    if (saveBtn) {
+      saveBtn.addEventListener('click', function () {
+        var analytics = !!document.getElementById('siteCookieAnalytics')?.checked;
+        var marketing = !!document.getElementById('siteCookieMarketing')?.checked;
+        applyAndHide(analytics, marketing);
+        closeSettingsModal();
+      });
+    }
+    if (closeBtn) closeBtn.addEventListener('click', closeSettingsModal);
+    if (cancelBtn) cancelBtn.addEventListener('click', closeSettingsModal);
+
+    if (modalEl()) {
+      modalEl().addEventListener('click', function (e) {
+        if (e.target === modalEl()) closeSettingsModal();
+      });
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modalEl() && modalEl().classList.contains('is-open')) {
+        closeSettingsModal();
+      }
+    });
+
+    window.openSiteCookieSettings = openSettingsModal;
+
+    consentApi.syncConsentFromCookies();
+    setTimeout(showBannerIfNeeded, 700);
+  })();
+</script>
+  <script>
+    document.getElementById('navToggle') && document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navbarPublic').classList.toggle('is-open');
+    });
+        (function () {
+      var moduliDropdown = document.querySelector('.nav-moduli-dropdown');
+      var moduliToggle = document.getElementById('navModuliToggle');
+      if (!moduliDropdown || !moduliToggle) return;
+      moduliToggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var isOpen = moduliDropdown.classList.toggle('is-open');
+        moduliToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      document.addEventListener('click', function (e) {
+        if (!moduliDropdown.contains(e.target)) {
+          moduliDropdown.classList.remove('is-open');
+          moduliToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          moduliDropdown.classList.remove('is-open');
+          moduliToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
+  
+  
+
+<script type="text/javascript" data-linkedin-insight="bootstrap">
+(function () {
+  var PARTNER_ID = "10536761";
+  var COOKIE_MARKETING = 'cookie_marketing';
+
+  function getCookie(name) {
+    var value = '; ' + document.cookie;
+    var parts = value.split('; ' + name + '=');
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  }
+
+  function hasMarketingConsent() {
+    return getCookie(COOKIE_MARKETING) === 'true';
+  }
+
+  function loadLinkedInInsightTag() {
+    if (window.__linkedinInsightTagLoaded) return;
+    if (document.querySelector('script[src*="snap.licdn.com"]')) {
+      window.__linkedinInsightTagLoaded = true;
+      return;
+    }
+
+    var host = (location.hostname || '').toLowerCase();
+    if (host !== 'opshub.it' && host !== 'www.opshub.it') return;
+
+    window.__linkedinInsightTagLoaded = true;
+    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+    if (window._linkedin_data_partner_ids.indexOf(PARTNER_ID) === -1) {
+      window._linkedin_partner_id = PARTNER_ID;
+      window._linkedin_data_partner_ids.push(PARTNER_ID);
+    }
+
+    (function (l) {
+      if (!l) {
+        window.lintrk = function (a, b) {
+          window.lintrk.q.push([a, b]);
+        };
+        window.lintrk.q = [];
+      }
+      var s = document.getElementsByTagName('script')[0];
+      var b = document.createElement('script');
+      b.type = 'text/javascript';
+      b.async = true;
+      b.src = 'https://snap.licdn.com/li.lms-analytics/insight.min.js';
+      b.setAttribute('data-linkedin-insight', 'loader');
+      b.onerror = function () {};
+      s.parentNode.insertBefore(b, s);
+    })(window.lintrk);
+  }
+
+  function maybeLoadLinkedInInsightTag() {
+    if (hasMarketingConsent()) loadLinkedInInsightTag();
+  }
+
+  function onConsentUpdated(item) {
+    if (item && item.event === 'consent_updated' && item.marketing === 'granted') {
+      loadLinkedInInsightTag();
+    }
+  }
+
+  window.dataLayer = window.dataLayer || [];
+  for (var i = 0; i < window.dataLayer.length; i++) {
+    onConsentUpdated(window.dataLayer[i]);
+  }
+
+  var originalPush = window.dataLayer.push;
+  window.dataLayer.push = function () {
+    var ret = originalPush.apply(window.dataLayer, arguments);
+    for (var j = 0; j < arguments.length; j++) {
+      onConsentUpdated(arguments[j]);
+    }
+    return ret;
+  };
+
+  maybeLoadLinkedInInsightTag();
+})();
+</script>
+
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2c902836a4cea5c',t:'MTc4Njk3MzE3OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

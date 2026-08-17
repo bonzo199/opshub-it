@@ -1,0 +1,12 @@
+/* TEAM */
+Founder: Christian Arragoni
+Company: OpsHub
+Website: https://opshub.it
+Profile: https://opshub.it/fondatore
+Contact: info@opshub.it
+
+/* SOCIAL */
+LinkedIn: https://www.linkedin.com/in/christian-arragoni-16b73b211/
+Facebook: https://www.facebook.com/share/1BCBTtoAYH/
+
+Updated: 2026-08-17

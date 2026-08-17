@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="it" class="opshub-ui-scale--off">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0062E6">
+  <title>Missione 16:40 — OpsHub</title>
+  <meta name="description" content="Riesci a chiudere la commessa prima delle 17:00? Un'esperienza interattiva sulla frammentazione operativa.">
+  <meta name="robots" content="index,follow">
+  
+  
+  <link rel="canonical" href="https://opshub.it/missione-1640/">
+  <meta property="og:title" content="Missione 16:40 — OpsHub">
+  <meta property="og:description" content="Riesci a chiudere la commessa prima delle 17:00?">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://opshub.it/missione-1640/">
+  <meta property="og:image" content="https://opshub.it/static/public/seo/hub2go-logo.png">
+  <link rel="icon" href="/static/public/seo/hub2go-logo.png" type="image/png" sizes="32x32">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/missione-1640.css?v=20260711-03">
+  
+<script>
+(function () {
+  var h = (location.hostname || '').toLowerCase();
+  if (h === 'opshub.it' || h === 'www.opshub.it') return;
+
+  var noop = function () {};
+  function blockThirdPartyAnalytics() {
+    try {
+      if (typeof window.clarity === 'function' && window.clarity !== noop) {
+        window.clarity('stop');
+      }
+    } catch (e) {}
+    window.clarity = noop;
+
+    document.querySelectorAll(
+      'script[src*="clarity.ms"], script[src*="googletagmanager.com"], script[src*="snap.licdn.com"]'
+    ).forEach(function (el) {
+      el.parentNode && el.parentNode.removeChild(el);
+    });
+    document.querySelectorAll('img[src*="px.ads.linkedin.com"]').forEach(function (el) {
+      el.parentNode && el.parentNode.removeChild(el);
+    });
+    document.querySelectorAll('iframe[src*="googletagmanager.com"]').forEach(function (el) {
+      el.parentNode && el.parentNode.removeChild(el);
+    });
+  }
+
+  blockThirdPartyAnalytics();
+  if (document.documentElement) {
+    new MutationObserver(blockThirdPartyAnalytics).observe(document.documentElement, {
+      childList: true,
+      subtree: true
+    });
+  }
+})();
+</script>
+  <script src="/static/js/opshub_site_consent.js"></script>
+<script>
+  (function () {
+    window.dataLayer = window.dataLayer || [];
+    if (typeof window.gtag !== 'function') {
+      window.gtag = function(){ window.dataLayer.push(arguments); };
+    }
+
+    function normalizeState(value) {
+      if (value === 'granted' || value === true || value === 'true' || value === 1 || value === '1') return 'granted';
+      return 'denied';
+    }
+
+    function toStatus(value) {
+      return normalizeState(value) === 'granted' ? 'granted' : 'denied';
+    }
+
+    if (!window.__siteConsentDefaultApplied) {
+      window.gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+
+      window.__siteConsentDefaultApplied = true;
+    }
+
+    window.updateSiteConsent = function (options) {
+      var opts = options || {};
+      var analytics = normalizeState(opts.analytics);
+      var marketing = normalizeState(opts.marketing);
+
+      window.gtag('consent', 'update', {
+        'analytics_storage': analytics,
+        'ad_storage': marketing,
+        'ad_user_data': marketing,
+        'ad_personalization': marketing
+      });
+
+      window.dataLayer.push({
+        event: 'consent_updated',
+        analytics: toStatus(analytics),
+        marketing: toStatus(marketing)
+      });
+    };
+
+    function syncConsentFromCookies() {
+      if (!window.OpsHubSiteConsent) return;
+      var state = window.OpsHubSiteConsent.readConsentFromCookies();
+      if (!state) return;
+      window.updateSiteConsent({
+        analytics: state.analytics ? 'granted' : 'denied',
+        marketing: state.marketing ? 'granted' : 'denied'
+      });
+    }
+
+    window.syncSiteConsentFromCookies = syncConsentFromCookies;
+    syncConsentFromCookies();
+  })();
+</script>
+  
+<script type="text/javascript">
+(function () {
+  var h = (location.hostname || '').toLowerCase();
+  if (h !== 'opshub.it' && h !== 'www.opshub.it') return;
+  function inject() {
+    (function(c, l, a, r, i, t, y) {
+      c[a] = c[a] || function() { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "w1ufji0wfh");
+  }
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(inject, { timeout: 3500 });
+  } else if (document.readyState === 'complete') {
+    setTimeout(inject, 1);
+  } else {
+    window.addEventListener('load', function () { setTimeout(inject, 1); }, { once: true });
+  }
+})();
+</script>
+  
+<script>
+(function (w, d, s, l, i) {
+  var h = (location.hostname || '').toLowerCase();
+  if (h !== 'opshub.it' && h !== 'www.opshub.it') return;
+  w[l] = w[l] || [];
+  function inject() {
+    w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+    var j = d.createElement(s);
+    var f = d.getElementsByTagName(s)[0];
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i;
+    f.parentNode.insertBefore(j, f);
+  }
+  if (d.readyState === 'complete') inject();
+  else w.addEventListener('load', inject, { once: true });
+})(window, document, 'script', 'dataLayer', 'GTM-5N67ZLR5');
+</script>
+</head>
+<body class="m1640-body">
+  <a href="#m1640-app" class="m1640-skip-link">Salta all'esperienza</a>
+
+  <div id="m1640-app">
+    <header class="m1640-topbar" hidden aria-label="Barra superiore OpsHub">
+      <div class="m1640-topbar__left">
+        <a href="/" class="m1640-topbar__brand" title="OpsHub">
+          <picture>
+            <source srcset="/static/public/seo/hub2go-logo.webp" type="image/webp">
+            <img src="/static/public/seo/hub2go-logo.png" alt="OpsHub" width="96" height="28" loading="eager">
+          </picture>
+        </a>
+        <span class="m1640-topbar__sep" aria-hidden="true"></span>
+        <span class="m1640-topbar__mission">MISSIONE 16:40</span>
+      </div>
+      <div class="m1640-topbar__actions">
+        <button type="button" class="m1640-topbar__pill m1640-topbar__zone">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Zona Nord <i class="fa-solid fa-chevron-down m1640-topbar__chev" aria-hidden="true"></i>
+        </button>
+        <span class="m1640-topbar__pill m1640-topbar__status">
+          <i class="fa-solid fa-signal m1640-topbar__signal" aria-hidden="true"></i>
+          <span class="m1640-status-dot" aria-hidden="true"></span> Sistema operativo
+        </span>
+        <button type="button" class="m1640-icon-btn" data-m1640-sound aria-pressed="false" aria-label="Attiva effetti sonori (disattivati)">
+          <i class="fa-solid fa-volume-high" aria-hidden="true"></i>
+        </button>
+      </div>
+    </header>
+
+    <section id="m1640-intro" class="m1640-intro m1640-screen m1640-screen--active" aria-label="Introduzione">
+      <div class="m1640-intro__bg" aria-hidden="true"></div>
+      <a href="/" class="m1640-intro__logo">
+        <img src="/static/public/seo/hub2go-logo.png" alt="OpsHub" width="96" height="28">
+      </a>
+      <div class="m1640-intro__content">
+        <div class="m1640-intro-step" data-intro-step="0">
+          <div class="m1640-intro__clock-wrap">
+            <svg class="m1640-intro__clock-ring" viewBox="0 0 160 160" aria-hidden="true">
+              <circle cx="80" cy="80" r="68" fill="none" stroke="#e8eef8" stroke-width="10"/>
+              <circle cx="80" cy="80" r="68" fill="none" stroke="#0062E6" stroke-width="10" stroke-linecap="round" stroke-dasharray="280 150"/>
+            </svg>
+            <p class="m1640-intro__clock" aria-live="polite">16:40</p>
+          </div>
+          <p class="m1640-intro__ambient">Centrale operativa · fine giornata</p>
+        </div>
+        <div class="m1640-intro-step" data-intro-step="1">
+          <div class="m1640-intro__notifs" aria-hidden="true">
+            <div class="m1640-intro-notif"><i class="fa-solid fa-bell" aria-hidden="true"></i> Notifica — Commessa #2847 completata</div>
+            <div class="m1640-intro-notif"><i class="fa-solid fa-phone" aria-hidden="true"></i> Chiamata persa — Direzione</div>
+            <div class="m1640-intro-notif"><i class="fa-solid fa-envelope" aria-hidden="true"></i> &laquo;Report entro le 17:00&raquo;</div>
+          </div>
+        </div>
+        <div class="m1640-intro-step" data-intro-step="2">
+          <p class="m1640-intro__quote">Il lavoro è terminato.</p>
+          <p class="m1640-intro__quote-sub">Ma la tua azienda sa davvero cosa è successo?</p>
+        </div>
+        <div class="m1640-intro-step" data-intro-step="3">
+          <p class="m1640-intro__mission">Ricostruisci la commessa e chiudila prima delle 17:00.</p>
+          <button type="button" class="m1640-btn m1640-btn--primary m1640-btn--glow" data-intro-start>
+            ACCETTA LA MISSIONE
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="m1640-game" class="m1640-game m1640-screen" hidden aria-label="Centrale operativa">
+      <div class="m1640-layout">
+        <aside class="m1640-mission-panel" aria-label="Stato missione">
+          <div class="m1640-panel-card m1640-clock-card">
+            <div class="m1640-clock-gauge">
+              <svg viewBox="0 0 140 140" aria-hidden="true">
+                <circle cx="70" cy="70" r="58" fill="none" stroke="#eef3fa" stroke-width="8"/>
+                <circle cx="70" cy="70" r="58" fill="none" stroke="#0062E6" stroke-width="8" stroke-linecap="round" stroke-dasharray="364.42" data-m1640-clock-ring class="m1640-clock-ring__fg"/>
+              </svg>
+              <time class="m1640-hud__clock" data-m1640-clock datetime="16:40">16:40</time>
+            </div>
+            <span class="m1640-hud__deadline">Obiettivo · 17:00</span>
+          </div>
+
+          <div class="m1640-panel-card m1640-progress-card">
+            <p class="m1640-progress-card__title">Ricostruzione della giornata</p>
+            <div class="m1640-steps" data-m1640-step-track aria-hidden="true">
+              <div class="m1640-steps__item m1640-steps__item--current"><span>1</span></div>
+              <div class="m1640-steps__line"></div>
+              <div class="m1640-steps__item"><span>2</span></div>
+              <div class="m1640-steps__line"></div>
+              <div class="m1640-steps__item"><span>3</span></div>
+              <div class="m1640-steps__line"></div>
+              <div class="m1640-steps__item"><span>4</span></div>
+              <div class="m1640-steps__line"></div>
+              <div class="m1640-steps__item"><span>5</span></div>
+            </div>
+            <div class="m1640-progress-card__meta">
+              <span class="m1640-situation-label" data-m1640-situation-label>Situazione 1 di 5</span>
+              <span class="m1640-progress-pct" data-m1640-progress-pct>20%</span>
+            </div>
+            <div class="m1640-hud__progress-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Avanzamento ricostruzione">
+              <div class="m1640-hud__progress" data-m1640-progress></div>
+            </div>
+          </div>
+
+          <div class="m1640-panel-card m1640-time-card">
+            <div class="m1640-time-card__row">
+              <div class="m1640-time-card__copy">
+                <span class="m1640-time-card__label">Tempo residuo</span>
+                <strong class="m1640-time-card__value" data-m1640-remaining>20 MINUTI</strong>
+                <p class="m1640-time-card__hint">La precisione aumenta. Ogni decisione conta.</p>
+              </div>
+              <svg class="m1640-ekg" viewBox="0 0 80 40" aria-hidden="true">
+                <polyline points="0,28 12,28 18,18 24,32 32,12 40,26 48,20 56,30 64,16 72,24 80,22" fill="none" stroke="#f59a3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="m1640-panel-card m1640-area-card">
+            <div class="m1640-area-card__map" aria-hidden="true">
+              <svg viewBox="0 0 240 120" class="m1640-map-svg">
+                <rect width="240" height="120" rx="10" fill="#f3f7fd"/>
+                <path d="M30 85 Q80 35 130 55 T210 45" fill="none" stroke="#0062E6" stroke-width="2.5" stroke-dasharray="6 4"/>
+                <circle cx="130" cy="55" r="7" fill="#0062E6" stroke="#fff" stroke-width="2"/>
+                <circle cx="210" cy="45" r="5" fill="#e9564a" stroke="#fff" stroke-width="2"/>
+                <rect x="40" y="70" width="18" height="12" rx="2" fill="#dce7f5"/>
+                <rect x="160" y="60" width="22" height="14" rx="2" fill="#dce7f5"/>
+              </svg>
+            </div>
+            <p class="m1640-area-card__zone">Area operativa · Zona Nord</p>
+            <p class="m1640-area-card__status"><span class="m1640-status-dot" aria-hidden="true"></span> Copertura operativa attiva</p>
+          </div>
+        </aside>
+
+        <div class="m1640-center-col">
+          <div class="m1640-metrics-bar" role="region" aria-label="Indicatori operativi">
+            <div class="m1640-metric">
+              <span class="m1640-metric__icon-wrap"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
+              <span class="m1640-metric__label">Affidabilità</span>
+              <span class="m1640-metric__row">
+                <span class="m1640-metric__value" data-m1640-reliability data-value>12%</span>
+                <span class="m1640-metric__delta m1640-metric__delta--up" data-m1640-reliability-delta hidden></span>
+              </span>
+            </div>
+            <div class="m1640-metric">
+              <span class="m1640-metric__icon-wrap"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i></span>
+              <span class="m1640-metric__label">Interruzioni</span>
+              <span class="m1640-metric__value" data-m1640-people data-value>0</span>
+            </div>
+            <div class="m1640-metric">
+              <span class="m1640-metric__icon-wrap"><i class="fa-solid fa-euro-sign" aria-hidden="true"></i></span>
+              <span class="m1640-metric__label">Costo stimato</span>
+              <span class="m1640-metric__row">
+                <span class="m1640-metric__value" data-m1640-cost data-value>€ 3.800</span>
+                <span class="m1640-metric__delta m1640-metric__delta--down" data-m1640-cost-delta hidden></span>
+              </span>
+            </div>
+            <div class="m1640-metric">
+              <span class="m1640-metric__icon-wrap"><i class="fa-solid fa-crosshairs" aria-hidden="true"></i></span>
+              <span class="m1640-metric__label">Controllo</span>
+              <span class="m1640-metric__value" data-m1640-control data-value>15%</span>
+            </div>
+            <div class="m1640-metric">
+              <span class="m1640-metric__icon-wrap"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></span>
+              <span class="m1640-metric__label">Anomalie</span>
+              <span class="m1640-metric__row">
+                <span class="m1640-metric__value" data-m1640-anomalies data-value>5</span>
+                <span class="m1640-metric__delta m1640-metric__delta--warn" data-m1640-anomalies-delta hidden></span>
+              </span>
+            </div>
+            <div class="m1640-metric">
+              <span class="m1640-metric__icon-wrap"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i></span>
+              <span class="m1640-metric__label">Rischio amm.</span>
+              <span class="m1640-metric__value m1640-metric__value--ok" data-m1640-admin-risk data-value>Basso</span>
+            </div>
+          </div>
+
+          <div class="m1640-main__event" data-m1640-event-area aria-live="polite"></div>
+        </div>
+
+        <aside class="m1640-main__side" aria-label="Notifiche e strumenti">
+          <div class="m1640-panel-card m1640-notif-card">
+            <div class="m1640-notif-card__head">
+              <p class="m1640-panel-title"><i class="fa-regular fa-bell" aria-hidden="true"></i> Notifiche</p>
+              <button type="button" class="m1640-link-btn" data-m1640-notif-all>Vedi tutte</button>
+            </div>
+            <div class="m1640-notifications" data-m1640-notifications aria-live="polite"></div>
+          </div>
+          <div class="m1640-panel-card m1640-tools-card">
+            <p class="m1640-panel-title">Strumenti consultati</p>
+            <div class="m1640-tools" data-m1640-tools></div>
+            <button type="button" class="m1640-link-btn" data-m1640-tools-history>Mostra cronologia</button>
+          </div>
+          <div class="m1640-panel-card m1640-intel-card">
+            <div class="m1640-intel-card__icon"><i class="fa-solid fa-brain" aria-hidden="true"></i></div>
+            <div>
+              <p class="m1640-intel-card__title">OpsHub Intelligence</p>
+              <p class="m1640-intel-card__sub">Analisi operativa in tempo reale</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="m1640-game-footer" aria-label="Call to action">
+        <div class="m1640-game-footer__inner">
+          <div class="m1640-game-footer__copy">
+            <span class="m1640-game-footer__label"><i class="fa-solid fa-trophy" aria-hidden="true"></i> PORTACI UNA GIORNATA COMPLICATA</span>
+            <p class="m1640-game-footer__desc">In 20 minuti ricostruiamo insieme un tuo processo reale e individuiamo dove si disperdono tempo, informazioni e controllo.</p>
+          </div>
+          <a href="#m1640-cta" class="m1640-btn m1640-btn--footer" data-m1640-footer-cta>SCOPRI DI PIÙ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </footer>
+    </section>
+
+    <section id="m1640-report" class="m1640-screen" hidden aria-label="Report finale"></section>
+    <section id="m1640-opshub" class="m1640-screen" hidden aria-label="Modalità OpsHub"></section>
+    <section id="m1640-cta" class="m1640-screen" hidden aria-label="Richiesta contatto"></section>
+
+    <div id="m1640-surprise" hidden></div>
+    <div class="m1640-feedback" data-m1640-feedback role="status" aria-live="polite"></div>
+  </div>
+
+  <script>
+(function () {
+  var h = (location.hostname || '').toLowerCase();
+  if (h !== 'opshub.it' && h !== 'www.opshub.it') return;
+  var ns = document.createElement('noscript');
+  ns.innerHTML = '<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5N67ZLR5" height="0" width="0" style="display:none;visibility:hidden"></iframe>';
+  (document.body || document.documentElement).appendChild(ns);
+})();
+</script>
+  <script type="module" src="/static/js/missione-1640/main.js?v=20260711-03"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2c9021cbd9dea4c',t:'MTc4Njk3MzE2Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

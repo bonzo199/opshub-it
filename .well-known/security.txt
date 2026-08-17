@@ -1,0 +1,3 @@
+Contact: mailto:info@opshub.it
+Preferred-Languages: it, en
+Canonical: https://opshub.it/.well-known/security.txt

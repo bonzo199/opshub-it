@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/static/css/opshub-ui-scale.css?v=20260615-01">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OpsHub Privacy Policy: information on personal data processing for the OpsHub web platform and HUB2GO mobile app.">
+  <title>Privacy Policy OpsHub and HUB2GO | English</title>
+  <link rel="canonical" href="https://opshub.it/privacy-hub2go/en/">
+  <script src="/static/js/opshub_site_consent.js"></script>
+<script>
+  (function () {
+    window.dataLayer = window.dataLayer || [];
+    if (typeof window.gtag !== 'function') {
+      window.gtag = function(){ window.dataLayer.push(arguments); };
+    }
+
+    function normalizeState(value) {
+      if (value === 'granted' || value === true || value === 'true' || value === 1 || value === '1') return 'granted';
+      return 'denied';
+    }
+
+    function toStatus(value) {
+      return normalizeState(value) === 'granted' ? 'granted' : 'denied';
+    }
+
+    if (!window.__siteConsentDefaultApplied) {
+      window.gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+
+      window.__siteConsentDefaultApplied = true;
+    }
+
+    window.updateSiteConsent = function (options) {
+      var opts = options || {};
+      var analytics = normalizeState(opts.analytics);
+      var marketing = normalizeState(opts.marketing);
+
+      window.gtag('consent', 'update', {
+        'analytics_storage': analytics,
+        'ad_storage': marketing,
+        'ad_user_data': marketing,
+        'ad_personalization': marketing
+      });
+
+      window.dataLayer.push({
+        event: 'consent_updated',
+        analytics: toStatus(analytics),
+        marketing: toStatus(marketing)
+      });
+    };
+
+    function syncConsentFromCookies() {
+      if (!window.OpsHubSiteConsent) return;
+      var state = window.OpsHubSiteConsent.readConsentFromCookies();
+      if (!state) return;
+      window.updateSiteConsent({
+        analytics: state.analytics ? 'granted' : 'denied',
+        marketing: state.marketing ? 'granted' : 'denied'
+      });
+    }
+
+    window.syncSiteConsentFromCookies = syncConsentFromCookies;
+    syncConsentFromCookies();
+  })();
+</script>
+  
+<script type="text/javascript">
+(function () {
+  var h = (location.hostname || '').toLowerCase();
+  if (h !== 'opshub.it' && h !== 'www.opshub.it') return;
+  function inject() {
+    (function(c, l, a, r, i, t, y) {
+      c[a] = c[a] || function() { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "w1ufji0wfh");
+  }
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(inject, { timeout: 3500 });
+  } else if (document.readyState === 'complete') {
+    setTimeout(inject, 1);
+  } else {
+    window.addEventListener('load', function () { setTimeout(inject, 1); }, { once: true });
+  }
+})();
+</script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #3b82f6;
+      --dark: #0f172a;
+      --gray-100: #f8fafc;
+      --gray-500: #64748b;
+      --gray-700: #334155;
+    }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--dark);
+      line-height: 1.7;
+      background: var(--gray-100);
+    }
+    
+    .lang-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      background: white;
+      border-radius: 30px;
+      padding: 4px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+    .lang-toggle a {
+      padding: 8px 16px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .lang-toggle a.active {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+    }
+    .lang-toggle a:not(.active) {
+      color: var(--gray-700);
+    }
+    .lang-toggle a:not(.active):hover {
+      background: var(--gray-100);
+    }
+    
+    .header-privacy {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: white;
+      padding: 3rem 0;
+      text-align: center;
+    }
+    .header-privacy img {
+      height: 50px;
+      margin-bottom: 1rem;
+    }
+    .header-privacy h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .header-privacy p {
+      opacity: 0.9;
+      margin: 0;
+    }
+    
+    .privacy-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+    
+    .privacy-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    
+    .privacy-section {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .privacy-section:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    
+    .privacy-section h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .privacy-section h2 i {
+      width: 35px;
+      height: 35px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.9rem;
+    }
+    
+    .privacy-section p, .privacy-section li {
+      color: var(--gray-700);
+      font-size: 0.95rem;
+    }
+    
+    .privacy-section ul {
+      padding-left: 1.25rem;
+      margin: 0.75rem 0;
+    }
+    .privacy-section li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .last-update {
+      text-align: center;
+      color: var(--gray-500);
+      font-size: 0.85rem;
+      margin-top: 2rem;
+    }
+    
+    .footer-privacy {
+      text-align: center;
+      padding: 2rem;
+      color: var(--gray-500);
+      font-size: 0.875rem;
+    }
+    .footer-privacy a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .footer-privacy a:hover {
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 767px) {
+      .header-privacy { padding: 2rem 1rem; }
+      .header-privacy h1 { font-size: 1.5rem; }
+      .privacy-card { padding: 1.5rem; }
+      .privacy-section h2 { font-size: 1.1rem; }
+      .lang-toggle { top: 10px; right: 10px; }
+      .lang-toggle a { padding: 6px 12px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Language Toggle -->
+<div class="lang-toggle">
+  <a href="/privacy-hub2go/">🇮🇹 IT</a>
+  <a href="/privacy-hub2go/en/" class="active">🇬🇧 EN</a>
+</div>
+
+<header class="header-privacy">
+  <a href="/" aria-label="Go to OpsHub homepage">
+    <img src="/static/public/seo/hub2go-logo.png" alt="OpsHub" width="180" height="86" decoding="async">
+  </a>
+  <h1>Privacy Policy OpsHub and HUB2GO</h1>
+  <p>Information on the processing of personal data</p>
+</header>
+
+<main class="privacy-content">
+  <div class="privacy-card">
+    
+    <section class="privacy-section">
+      <h2><i class="fas fa-building"></i> Data Controller</h2>
+      <p>
+        <strong>Callgas S.r.l.s.</strong><br>
+        Registered office: Via Nerone, 8a - 00012 Guidonia (RM), Italy<br>
+        VAT Number: IT15564641007<br>
+        Email: <span class="opshub-email-plain">info&#64;callgas.it</span><br>
+        Certified Email (PEC): callgas@legalmail.it
+      </p>
+      <p>
+        The Data Controller is responsible for the collection and processing of personal data of users of the <strong>OpsHub</strong> platform and the <strong>HUB2GO</strong> mobile application.
+      </p>
+    </section>
+    
+    <section class="privacy-section">
+      <h2><i class="fas fa-database"></i> Personal Data Processed</h2>
+      <p>The HUB2GO application collects and processes the following categories of personal data:</p>
+      <ul>
+        <li><strong>Identification data:</strong> First name, last name, company user ID, username, company email</li>
+        <li><strong>Authentication data:</strong> Password (stored in encrypted form with bcrypt hash), session tokens</li>
+        <li><strong>Geolocation data:</strong> GPS coordinates at the time of clock-in/clock-out, exclusively for the purpose of verifying presence at the workplace</li>
+        <li><strong>Work activity data:</strong> Time tracking, leave/permission/sick leave requests, material and meter assignments, pallet movements</li>
+        <li><strong>Company vehicle data:</strong> Fuel refill records, mileage, receipt photos</li>
+        <li><strong>Technical data:</strong> Push notification tokens (Expo Push Token), device information for proper app functionality</li>
+        <li><strong>Images:</strong> Photos of fuel refill receipts</li>
+      </ul>
+    </section>
+    
+    <section class="privacy-section">
+      <h2><i class="fas fa-bullseye"></i> Purposes of Processing</h2>
+      <p>Personal data is processed for the following purposes:</p>
+      <ul>
+        <li><strong>Attendance management:</strong> Recording clock-in and clock-out times with geographic location verification</li>
+        <li><strong>HR management:</strong> Processing requests for vacation, leave, sick days, and other absences</li>
+        <li><strong>Operational management:</strong> Tracking assignments of materials, meters, and pallets to technicians</li>
+        <li><strong>Fleet management:</strong> Monitoring refueling, consumption, and mileage of company vehicles</li>
+        <li><strong>Operational communications:</strong> Sending push notifications related to work activities (approvals, reminders, notices)</li>
+        <li><strong>Security:</strong> User authentication and protection of access to company data</li>
+      </ul>
+      <p>
+        <strong>Legal basis:</strong> Processing is necessary for the performance of the employment contract (Art. 6.1.b GDPR) and for the pursuit of the legitimate interest of the employer in the efficient management of business operations (Art. 6.1.f GDPR).
+      </p>
+    </section>
+    
+    <section class="privacy-section">
+      <h2><i class="fas fa-clock"></i> Data Retention</h2>
+      <p>Personal data is retained for the following periods:</p>
+      <ul>
+        <li><strong>Time tracking data:</strong> 5 years from recording, as required by labor regulations</li>
+        <li><strong>Leave requests:</strong> 5 years from the request</li>
+        <li><strong>Refueling data:</strong> 10 years for tax and accounting obligations</li>
+        <li><strong>Material and pallet movements:</strong> 5 years from recording</li>
+        <li><strong>Authentication data:</strong> For the duration of the employment relationship, deleted within 30 days of termination</li>
+        <li><strong>System logs:</strong> 12 months</li>
+      </ul>
+      <p>At the end of the retention periods, data is deleted or irreversibly anonymized.</p>
+    </section>
+    
+    <section class="privacy-section">
+      <h2><i class="fas fa-share-nodes"></i> Data Sharing and Transfer</h2>
+      <p>Personal data may be shared with:</p>
+      <ul>
+        <li><strong>Technical service providers:</strong>
+          <ul>
+            <li>Expo (Expo.dev) - for sending push notifications</li>
+            <li>Apple Inc. - for App Store distribution and push services (APNs)</li>
+            <li>Google LLC - for Google Play Store distribution and Firebase services (if used)</li>
+            <li>Cloudflare Inc. - for web traffic protection and distribution</li>
+          </ul>
+        </li>
+        <li><strong>Employer company:</strong> Data is accessible to authorized administrators of the client company (tenant) for personnel management purposes</li>
+      </ul>
+      <p>
+        <strong>Extra-EU transfers:</strong> Some technical providers (Apple, Google, Cloudflare, Expo) may transfer data to the United States. Such transfers are made on the basis of Standard Contractual Clauses approved by the European Commission or the EU-US Data Privacy Framework.
+      </p>
+      <p>Data is not sold to third parties or used for marketing purposes.</p>
+    </section>
+    
+    <section class="privacy-section">
+      <h2><i class="fas fa-shield-halved"></i> Data Security</h2>
+      <p>We adopt appropriate technical and organizational measures to protect personal data:</p>
+      <ul>
+        <li>Password encryption with bcrypt algorithm</li>
+        <li>Secure connections via HTTPS/TLS protocol</li>
+        <li>Authentication via JWT tokens with expiration</li>
+        <li>Data access limited to authorized personnel</li>
+        <li>Regular database backups</li>
+        <li>Monitoring of access and suspicious activities</li>
+      </ul>
+    </section>
+    
+    <section class="privacy-section">
+      <h2><i class="fas fa-user-shield"></i> Data Subject Rights</h2>
+      <p>In accordance with Regulation (EU) 2016/679 (GDPR), the user has the right to:</p>
+      <ul>
+        <li><strong>Access:</strong> Obtain confirmation of processing and a copy of their data</li>
+        <li><strong>Rectification:</strong> Correct inaccurate or incomplete data</li>
+        <li><strong>Erasure:</strong> Request deletion of data (within the limits of legal obligations)</li>
+        <li><strong>Restriction:</strong> Restrict processing in certain cases</li>
+        <li><strong>Portability:</strong> Receive their data in a structured format</li>
+        <li><strong>Objection:</strong> Object to processing for legitimate reasons</li>
+      </ul>
+      <p>
+        To exercise these rights, contact: <span class="opshub-email-plain">info&#64;callgas.it</span>
+      </p>
+      <p>
+        The user also has the right to lodge a complaint with the Italian Data Protection Authority (official website: www.garanteprivacy.it).
+      </p>
+    </section>
+    
+    <section class="privacy-section">
+      <h2><i class="fas fa-mobile-alt"></i> Application Permissions</h2>
+      <p>The HUB2GO app requires the following device permissions:</p>
+      <ul>
+        <li><strong>Location (GPS):</strong> To record location at the time of clock-in/out. Location access occurs only at the time of clocking and not in the background.</li>
+        <li><strong>Camera:</strong> To take photos of refueling receipts and for QR code/barcode scanning</li>
+        <li><strong>Push notifications:</strong> To receive operational communications from the company</li>
+        <li><strong>Internet access:</strong> For data synchronization with the server</li>
+      </ul>
+      <p>All permissions can be revoked from device settings, but some app features may not be available.</p>
+    </section>
+    
+    <section class="privacy-section">
+      <h2><i class="fas fa-envelope"></i> Contact</h2>
+      <p>For any questions regarding this Privacy Policy or the processing of personal data:</p>
+      <p>
+        <strong>Email:</strong> <span class="opshub-email-plain">info&#64;callgas.it</span><br>
+        <strong>Support email:</strong> <span class="opshub-email-plain">info&#64;callgas.it</span><br>
+        <strong>Website:</strong> <a href="https://opshub.it/" rel="noopener noreferrer">OpsHub website (opshub.it)</a>
+      </p>
+    </section>
+    
+    <p class="last-update">
+      <i class="fas fa-calendar-alt me-1"></i>
+      Last updated: November 26, 2025
+    </p>
+    
+  </div>
+</main>
+
+<footer class="footer-privacy">
+  <p>
+    &copy; 2025 OpsHub S.r.l. – All rights reserved<br>
+    <a href="/">Back to Home</a> · <a href="https://bot.ops-on.site/login">Login</a>
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+  .site-cookie-wrap {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99990;
+    padding: 0.75rem;
+    display: none;
+    pointer-events: none;
+  }
+  .site-cookie-wrap.is-open { display: block; }
+  .site-cookie-banner {
+    max-width: 980px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #e4e4e7;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 1rem 1.25rem;
+    pointer-events: auto;
+  }
+  .site-cookie-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.45rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .site-cookie-title i { color: #1e3a8a; }
+  .site-cookie-text {
+    margin: 0 0 0.75rem;
+    color: #3f3f46;
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+  .site-cookie-text a { color: #1e3a8a; font-weight: 600; }
+  .site-cookie-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .site-cookie-actions .btn { border-radius: 10px; font-size: 0.88rem; font-weight: 600; }
+  .site-cookie-modal-wrap {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(15, 23, 42, 0.45);
+  }
+  .site-cookie-modal-wrap.is-open { display: flex; }
+  .site-cookie-modal {
+    width: min(100%, 520px);
+    max-height: min(90vh, 640px);
+    overflow: auto;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #e4e4e7;
+    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.22);
+  }
+  .site-cookie-modal-header,
+  .site-cookie-modal-body,
+  .site-cookie-modal-footer {
+    padding: 1rem 1.15rem;
+  }
+  .site-cookie-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border-bottom: 1px solid #e4e4e7;
+  }
+  .site-cookie-modal-title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .site-cookie-modal-close {
+    border: none;
+    background: transparent;
+    color: #64748b;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.15rem 0.35rem;
+  }
+  .site-cookie-modal-close:hover { color: #0f172a; }
+  .site-cookie-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    border-top: 1px solid #e4e4e7;
+  }
+  @media (max-width: 768px) {
+    .site-cookie-banner { padding: 0.9rem; }
+    .site-cookie-actions { gap: 0.45rem; }
+    .site-cookie-actions .btn { flex: 1 1 auto; min-width: 0; }
+  }
+</style>
+
+<div id="siteCookieBanner" class="site-cookie-wrap" aria-live="polite" aria-label="Preferenze cookie">
+  <div class="site-cookie-banner">
+    <div class="site-cookie-title">
+      <i class="fas fa-cookie-bite" aria-hidden="true"></i>
+      <span>Utilizziamo i cookie</span>
+    </div>
+    <p class="site-cookie-text">
+      Usiamo cookie tecnici e, solo con il tuo consenso, strumenti di analisi e marketing.
+      Puoi accettare tutti i cookie, rifiutare quelli non necessari o personalizzare le preferenze.
+      <a href="/cookie-policy">Maggiori informazioni</a>.
+    </p>
+    <div class="site-cookie-actions">
+      <button id="siteCookieAccept" type="button" class="btn btn-primary">Accetta tutti</button>
+      <button id="siteCookieReject" type="button" class="btn btn-outline-secondary">Rifiuta non necessari</button>
+      <button id="siteCookieSettings" type="button" class="btn btn-link">Personalizza</button>
+    </div>
+  </div>
+</div>
+
+<div id="siteCookieSettingsModal" class="site-cookie-modal-wrap" role="dialog" aria-modal="true" aria-labelledby="siteCookieSettingsTitle" aria-hidden="true">
+  <div class="site-cookie-modal">
+    <div class="site-cookie-modal-header">
+      <h2 class="site-cookie-modal-title" id="siteCookieSettingsTitle">Personalizza</h2>
+      <button type="button" class="site-cookie-modal-close" id="siteCookieModalClose" aria-label="Chiudi">&times;</button>
+    </div>
+    <div class="site-cookie-modal-body">
+      <div class="mb-3">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="siteCookieEssential" checked disabled>
+          <label class="form-check-label" for="siteCookieEssential">
+            <strong>Cookie necessari</strong>
+            <small class="d-block text-muted">Sempre attivi — necessari per il funzionamento del sito</small>
+          </label>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="siteCookieAnalytics">
+          <label class="form-check-label" for="siteCookieAnalytics">
+            <strong>Analisi e misurazione</strong>
+            <small class="d-block text-muted">Permettono di comprendere, in forma statistica, come viene utilizzato il sito.</small>
+          </label>
+        </div>
+      </div>
+      <div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="siteCookieMarketing">
+          <label class="form-check-label" for="siteCookieMarketing">
+            <strong>Marketing e pubblicità</strong>
+            <small class="d-block text-muted">Permettono di misurare le campagne pubblicitarie e creare audience per annunci pertinenti. Include LinkedIn Insight Tag.</small>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="site-cookie-modal-footer">
+      <button type="button" class="btn btn-secondary" id="siteCookieModalCancel">Annulla</button>
+      <button type="button" class="btn btn-primary" id="siteCookieSaveSettings">Salva preferenze</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var consentApi = window.OpsHubSiteConsent;
+    if (!consentApi) return;
+
+    function bannerEl() { return document.getElementById('siteCookieBanner'); }
+    function modalEl() { return document.getElementById('siteCookieSettingsModal'); }
+
+    function showBannerIfNeeded() {
+      var consent = consentApi.getCookie(consentApi.COOKIE_CONSENT);
+      var banner = bannerEl();
+      if (!banner) return;
+      if (!consent) banner.classList.add('is-open');
+    }
+
+    function hideBanner() {
+      var banner = bannerEl();
+      if (!banner) return;
+      banner.classList.remove('is-open');
+    }
+
+    function applyAndHide(analyticsEnabled, marketingEnabled) {
+      consentApi.applyConsent({ analytics: analyticsEnabled, marketing: marketingEnabled });
+      hideBanner();
+    }
+
+    function loadModalPreferences() {
+      var analyticsInput = document.getElementById('siteCookieAnalytics');
+      var marketingInput = document.getElementById('siteCookieMarketing');
+      if (analyticsInput) analyticsInput.checked = consentApi.getCookie(consentApi.COOKIE_ANALYTICS) === 'true';
+      if (marketingInput) marketingInput.checked = consentApi.getCookie(consentApi.COOKIE_MARKETING) === 'true';
+    }
+
+    function openSettingsModal() {
+      var modal = modalEl();
+      if (!modal) return;
+      loadModalPreferences();
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSettingsModal() {
+      var modal = modalEl();
+      if (!modal) return;
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    var acceptBtn = document.getElementById('siteCookieAccept');
+    var rejectBtn = document.getElementById('siteCookieReject');
+    var settingsBtn = document.getElementById('siteCookieSettings');
+    var saveBtn = document.getElementById('siteCookieSaveSettings');
+    var closeBtn = document.getElementById('siteCookieModalClose');
+    var cancelBtn = document.getElementById('siteCookieModalCancel');
+
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', function () {
+        applyAndHide(true, true);
+      });
+    }
+    if (rejectBtn) {
+      rejectBtn.addEventListener('click', function () {
+        applyAndHide(false, false);
+      });
+    }
+    if (settingsBtn) {
+      settingsBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openSettingsModal();
+      });
+    }
+    if (saveBtn) {
+      saveBtn.addEventListener('click', function () {
+        var analytics = !!document.getElementById('siteCookieAnalytics')?.checked;
+        var marketing = !!document.getElementById('siteCookieMarketing')?.checked;
+        applyAndHide(analytics, marketing);
+        closeSettingsModal();
+      });
+    }
+    if (closeBtn) closeBtn.addEventListener('click', closeSettingsModal);
+    if (cancelBtn) cancelBtn.addEventListener('click', closeSettingsModal);
+
+    if (modalEl()) {
+      modalEl().addEventListener('click', function (e) {
+        if (e.target === modalEl()) closeSettingsModal();
+      });
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modalEl() && modalEl().classList.contains('is-open')) {
+        closeSettingsModal();
+      }
+    });
+
+    window.openSiteCookieSettings = openSettingsModal;
+
+    consentApi.syncConsentFromCookies();
+    setTimeout(showBannerIfNeeded, 700);
+  })();
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2c902f97ee4ea73',t:'MTc4Njk3MzE5OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
+

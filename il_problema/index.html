@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <link rel="stylesheet" href="/static/css/opshub-ui-scale.css?v=20260615-01">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1e3a8a">
+  <title>OpsHub – Dal lavoro sul campo ai numeri che reggono audit, SLA e margini</title>
+  <meta name="description" content="OpsHub trasforma attività, contatori, evidenze operative e contabilità in un flusso unico. Per Operations, Direzione Tecnica e PM nel mondo utilities e squadre sul territorio.">
+  <link rel="canonical" href="https://opshub.it/il_problema/">
+  
+<script type="text/javascript">
+(function () {
+  var h = (location.hostname || '').toLowerCase();
+  if (h !== 'opshub.it' && h !== 'www.opshub.it') return;
+  (function(c, l, a, r, i, t, y) {
+    c[a] = c[a] || function() { (c[a].q = c[a].q || []).push(arguments); };
+    t = l.createElement(r);
+    t.async = 1;
+    t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0];
+    y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "w1ufji0wfh");
+})();
+</script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #3b82f6;
+      --accent: #60a5fa;
+      --success: #10b981;
+      --dark: #0f172a;
+      --gray-50: #fafafa;
+      --gray-100: #f4f4f5;
+      --gray-200: #e4e4e7;
+      --gray-500: #71717a;
+      --gray-700: #3f3f46;
+      --white: #ffffff;
+      --max-w-text: 720px;
+      --max-w-content: 1100px;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--dark); line-height: 1.6; overflow-x: hidden; }
+    section[id] { scroll-margin-top: 90px; }
+
+    .navbar-landing {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      padding: 0.75rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar-brand-landing { display: flex; align-items: center; text-decoration: none; }
+    .navbar-brand-landing img { height: 46px; }
+    .nav-link-landing { color: rgba(255,255,255,0.9); font-weight: 600; padding: 0.4rem 0.8rem; text-decoration: none; font-size: 0.95rem; white-space: nowrap; }
+    .nav-link-landing:hover { color: white; }
+    .btn-nav-cta { background: white; color: var(--primary); padding: 0.5rem 1.25rem; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.9rem; }
+    .btn-nav-cta:hover { color: var(--primary); transform: translateY(-1px); }
+
+    /* Sticky CTA – mostra dopo scroll, non copre form */
+    .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; background: var(--primary); color: white; padding: 0.65rem 1rem; z-index: 999; box-shadow: 0 -4px 20px rgba(0,0,0,0.15); display: none; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+    .sticky-cta.is-visible { display: flex; }
+    .sticky-cta .btn-sticky { background: #fbbf24; color: #0f172a; padding: 0.5rem 1.25rem; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.9rem; }
+    .sticky-cta .btn-sticky:hover { background: #facc15; color: #0f172a; }
+    .sticky-cta .sticky-cta-long { display: inline; }
+    .sticky-cta .sticky-cta-short { display: none; }
+    @media (max-width: 576px) {
+      .sticky-cta .sticky-cta-long { display: none; }
+      .sticky-cta .sticky-cta-short { display: inline; }
+      .sticky-cta { padding: 0.6rem 0.75rem; }
+    }
+
+    .btn-cta-primary {
+      display: inline-flex; align-items: center; justify-content: center; padding: 0.85rem 1.75rem; font-size: 1rem; font-weight: 700;
+      border-radius: 8px; border: none; text-decoration: none; cursor: pointer;
+      background: #fbbf24; color: #0f172a;
+      box-shadow: 0 4px 14px rgba(251, 191, 36, 0.4); transition: transform .1s ease, box-shadow .1s ease;
+    }
+    .btn-cta-primary:hover { background: #facc15; color: #0f172a; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(251, 191, 36, 0.5); }
+
+    /* ========== HERO ========== */
+    .hero-section {
+      min-height: 75vh;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 55%, #4f46e5 100%);
+      display: flex;
+      align-items: center;
+      padding: 7rem 0 4rem;
+    }
+    .hero-eyebrow { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.9); margin-bottom: 0.75rem; }
+    .hero-title { font-size: clamp(1.85rem, 4vw, 2.75rem); font-weight: 800; color: white; line-height: 1.2; margin-bottom: 1rem; max-width: 14em; }
+    .hero-subtitle { font-size: 1.05rem; color: rgba(255,255,255,0.92); max-width: 32em; margin-bottom: 1.5rem; line-height: 1.55; }
+    .hero-cta-group { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .hero-cta-group .btn-outline-light { border-radius: 8px; font-weight: 600; padding: 0.75rem 1.25rem; }
+    .trust-strip { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; margin-top: 1.5rem; }
+    .trust-strip span { font-size: 0.8rem; color: rgba(255,255,255,0.85); display: inline-flex; align-items: center; gap: 0.35rem; }
+    .trust-strip span i { opacity: 0.8; }
+
+    .section { padding: 4rem 0; }
+    .section-gray { background: var(--gray-100); }
+    .section-alt { background: var(--gray-50); }
+    .section-title { font-size: clamp(1.5rem, 2.8vw, 2rem); font-weight: 800; color: var(--dark); margin-bottom: 0.75rem; }
+    .section-subtitle { font-size: 1rem; color: var(--gray-700); max-width: var(--max-w-text); line-height: 1.55; }
+
+    .card-modern {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 1.5rem;
+      height: 100%;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .card-modern:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.06); border-color: var(--primary-light); }
+    .card-modern .card-num { width: 40px; height: 40px; border-radius: 10px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin-bottom: 0.75rem; }
+    .card-modern h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--dark); }
+    .card-modern p { font-size: 0.9rem; color: var(--gray-700); margin: 0; line-height: 1.5; }
+    .card-modern .card-foot { font-size: 0.8rem; color: var(--primary-light); margin-top: 0.6rem; padding-top: 0.5rem; border-top: 1px solid var(--gray-200); }
+
+    .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: var(--max-w-content); }
+    @media (max-width: 768px) { .pain-grid { grid-template-columns: 1fr; } }
+    .pain-col h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .pain-col ul { margin: 0; padding-left: 1.2rem; font-size: 0.95rem; color: var(--gray-700); line-height: 1.6; }
+    .pain-col ul li { margin-bottom: 0.35rem; }
+    .pain-col.oggi h4 { color: #b91c1c; }
+    .pain-col.con-opshub h4 { color: var(--success); }
+
+    .modulo-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1.25rem; background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; margin-bottom: 0.75rem; transition: border-color 0.2s, box-shadow 0.2s; }
+    .modulo-item:hover { border-color: var(--primary-light); box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+    .modulo-item .icon { width: 44px; height: 44px; min-width: 44px; border-radius: 10px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+    .modulo-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .modulo-item p { font-size: 0.9rem; color: var(--gray-700); margin: 0; line-height: 1.5; }
+
+    .utility-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .utility-badges span { display: inline-block; padding: 0.45rem 0.9rem; background: var(--white); border: 1px solid var(--gray-200); border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: var(--gray-700); }
+    .utility-badges span:hover { border-color: var(--primary); color: var(--primary); }
+
+    .objection-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1.25rem; height: 100%; }
+    .objection-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--dark); }
+    .objection-card p { font-size: 0.88rem; color: var(--gray-700); margin: 0; line-height: 1.5; }
+    .objection-card i { color: var(--success); margin-right: 0.35rem; }
+
+    .cta-section { padding: 4rem 0; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); text-align: center; }
+    .cta-title { font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 800; color: white; margin-bottom: 0.5rem; }
+    .cta-subtitle { font-size: 1rem; color: rgba(255,255,255,0.9); margin-bottom: 1.75rem; max-width: 36em; margin-left: auto; margin-right: auto; line-height: 1.5; }
+    .contact-card { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 2rem; backdrop-filter: blur(8px); max-width: 560px; margin: 0 auto; }
+    .form-label { font-weight: 700; color: white; font-size: 0.9rem; }
+    .form-control, .form-select, .cta-section textarea.form-control { border-radius: 8px; border: 1px solid rgba(255,255,255,0.35); background: rgba(255,255,255,0.2); color: #fff; padding: 0.7rem 0.9rem; font-size: 0.95rem; }
+    .form-control::placeholder, .cta-section textarea.form-control::placeholder { color: rgba(255,255,255,0.75); }
+    .form-control:focus, .form-select:focus { border-color: rgba(255,255,255,0.6); box-shadow: 0 0 0 3px rgba(255,255,255,0.2); background: rgba(255,255,255,0.25); color: #fff; outline: none; }
+    .cta-section .form-select option { background: #1e3a8a; color: white; }
+    .btn-cta { background: #fbbf24; color: #0f172a; padding: 1rem 1.5rem; border-radius: 8px; font-weight: 700; font-size: 1rem; border: none; width: 100%; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; transition: transform .1s, box-shadow .1s; }
+    .btn-cta:hover { background: #facc15; color: #0f172a; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(251,191,36,0.4); }
+    .form-microcopy { font-size: 0.85rem; color: rgba(255,255,255,0.85); margin-bottom: 0.75rem; }
+    .fineprint { color: rgba(255,255,255,0.75); font-size: 0.85rem; margin-top: 1rem; }
+    .fineprint a { color: white; font-weight: 600; }
+
+    .footer-section { background: var(--primary); color: rgba(255,255,255,0.8); padding: 2rem 0; }
+    .footer-section a { color: white; text-decoration: none; font-size: 0.9rem; }
+    .footer-section a:hover { text-decoration: underline; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 1rem; margin-top: 1rem; text-align: center; font-size: 0.85rem; }
+
+    .cookie-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+    .cookie-banner { background: white; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.2); max-width: 440px; width: 100%; padding: 2rem; }
+    .cookie-banner-header { text-align: center; margin-bottom: 0.75rem; }
+    .cookie-banner-header strong { font-size: 1.15rem; color: var(--dark); }
+    .cookie-banner-text { color: var(--gray-700); font-size: 0.9rem; margin-bottom: 1rem; text-align: center; }
+    .cookie-banner-actions { display: flex; justify-content: center; }
+
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.4s ease, transform 0.4s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .hero-mock-shell { min-height: 440px; position: relative; display: flex; align-items: flex-end; }
+    .hero-mock-shell .desktop-mock { width: 100%; max-width: 420px; position: relative; z-index: 1; }
+    .hero-mock-shell .monitor-wrapper { display: flex; flex-direction: column; align-items: center; }
+    .hero-mock-shell .monitor-frame { background: linear-gradient(180deg, #cbd5e1 0%, #94a3b8 100%); border: 3px solid #64748b; border-bottom: none; border-radius: 14px 14px 0 0; padding: 12px 12px 20px; box-shadow: 0 25px 60px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.4), 0 0 0 1px rgba(0,0,0,0.06); }
+    .hero-mock-shell .monitor-screen { background: #f5f7ff; border-radius: 6px; overflow: hidden; border: 2px solid #475569; box-shadow: inset 0 0 20px rgba(0,0,0,0.08); }
+    .hero-mock-shell .monitor-stand { width: 48px; height: 18px; background: linear-gradient(180deg, #94a3b8 0%, #64748b 100%); border: 2px solid #64748b; border-top: none; border-radius: 0 0 6px 6px; }
+    .hero-mock-shell .monitor-base { width: 200px; height: 14px; background: linear-gradient(180deg, #64748b 0%, #475569 100%); border: 2px solid #475569; border-radius: 0 0 8px 8px; margin-top: -2px; box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+    .hero-screen-content { background: #fff; border-radius: 8px; border: 1px solid #e2e8f0; margin: 10px; padding: 10px; box-shadow: 0 8px 20px rgba(30,58,138,0.08); }
+    .hero-screen-content .card-header-mini { font-size: 0.65rem; letter-spacing: 0.05em; color: #475569; font-weight: 700; }
+    .hero-screen-content .status-pill { display: inline-flex; align-items: center; padding: 0.2rem 0.5rem; border-radius: 999px; font-weight: 700; font-size: 0.62rem; background: #e7f5ee; color: #0f766e; }
+    .hero-screen-content .kpi-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 8px 0; }
+    .hero-screen-content .kpi-card { border-radius: 10px; padding: 0.45rem 0.5rem; border: 1px solid #e2e8f0; font-size: 0.62rem; }
+    .hero-screen-content .kpi-card .kpi-val { font-size: 0.86rem; font-weight: 800; color: #1e3a8a; }
+    .hero-screen-content .kpi-card.success { background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); }
+    .hero-screen-content .kpi-card.warning { background: linear-gradient(135deg, #fffbeb 0%, #fed7aa 100%); }
+    .hero-screen-content .kpi-card.info { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); }
+    .hero-screen-content .mini-table { width: 100%; font-size: 0.62rem; border-collapse: collapse; }
+    .hero-screen-content .mini-table th { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: white; padding: 0.3rem 0.35rem; font-weight: 700; }
+    .hero-screen-content .mini-table td { padding: 0.28rem 0.35rem; border-bottom: 1px solid #e2e8f0; color: #334155; }
+    .hero-screen-content .mini-alert { margin-top: 8px; background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 0 6px 6px 0; padding: 0.32rem 0.45rem; font-size: 0.62rem; color: #92400e; }
+    .hero-mock-shell .phone-app-mock { width: 200px; margin-left: -32px; margin-top: 56px; position: relative; z-index: 2; align-self: flex-end; }
+    .hero-mock-shell .phone-frame { background: #1e293b; border-radius: 28px; padding: 8px; border: 3px solid #334155; box-shadow: 0 25px 60px rgba(0,0,0,0.35); max-width: none; }
+    .hero-mock-shell .phone-screen { background: #fff; border-radius: 20px; overflow: hidden; min-height: 340px; }
+    .hero-mock-shell .app-header-mini { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; }
+    .hero-mock-shell .app-header-mini .logo { font-weight: 800; font-size: 1rem; letter-spacing: 0.02em; }
+    .hero-mock-shell .app-header-mini .state { background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 8px; font-size: 0.7rem; font-weight: 700; }
+    .hero-mock-shell .app-menu { padding: 12px; }
+    .hero-mock-shell .app-menu-item { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .hero-mock-shell .app-menu-item .icon { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .hero-mock-shell .app-menu-item .title { font-size: 0.75rem; font-weight: 700; color: #0f172a; }
+    @media (max-width: 991px) {
+      .hero-mock-shell { min-height: auto; margin-top: 1.5rem; justify-content: center; }
+      .hero-mock-shell .phone-app-mock { display: none; }
+    }
+    .moduli-mock { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1.25rem; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+    .moduli-mock .mock-kpi-row { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .moduli-mock .mock-kpi-box { flex: 1; padding: 0.6rem; border-radius: 8px; background: var(--gray-100); text-align: center; }
+    .moduli-mock .mock-kpi-box .val { font-size: 1.1rem; font-weight: 800; color: var(--primary); }
+    .moduli-mock .mock-kpi-box .lbl { font-size: 0.7rem; color: var(--gray-500); }
+    .moduli-mock .mock-table { font-size: 0.75rem; }
+    .moduli-mock .mock-table th, .moduli-mock .mock-table td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--gray-200); }
+    .moduli-mock .mock-table th { color: var(--gray-500); font-weight: 600; }
+    @media (max-width: 767px) { .hero-section { min-height: auto; padding: 6rem 0 3rem; } .section { padding: 3rem 0; } }
+  </style>
+</head>
+<body>
+
+<nav class="navbar-landing">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <a href="/" class="navbar-brand-landing" aria-label="Vai alla homepage OpsHub">
+        <img src="/static/public/seo/hub2go-logo.png" alt="OpsHub" width="96" height="46" decoding="async">
+      </a>
+      <div class="d-flex align-items-center gap-1">
+        <a href="/" class="nav-link-landing d-none d-md-inline">Home</a>
+        <a href="#flusso" class="nav-link-landing d-none d-md-inline">Come funziona</a>
+        <a href="/#faq-home" class="nav-link-landing d-none d-md-inline">FAQ</a>
+        <a href="/contatti/" class="nav-link-landing d-none d-md-inline">Contatti</a>
+        <a href="#contact" class="btn-nav-cta">Richiedi demo</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <p class="hero-eyebrow">Per Operations, Direzione Tecnica e PM nel mondo utilities</p>
+        <h1 class="hero-title">Dal lavoro sul campo ai numeri che reggono audit, SLA e margini</h1>
+        <p class="hero-subtitle">OpsHub trasforma attività, contatori, evidenze operative e contabilità in un flusso unico, verificabile e governabile. Così smetti di rincorrere chat, foto e file Excel e inizi a decidere con dati che tengono.</p>
+        <div class="hero-cta-group">
+          <a href="/dashboard/demo" class="btn-cta-primary">Provalo gratis</a>
+          <a href="#contact" class="btn btn-outline-light">Richiedi una demo mirata</a>
+          <a href="#flusso" class="btn btn-outline-light">Scopri il flusso operativo</a>
+        </div>
+        <div class="trust-strip">
+          <span><i class="fas fa-check-circle"></i> Timbrature GPS</span>
+          <span><i class="fas fa-check-circle"></i> Foto e checklist datate</span>
+          <span><i class="fas fa-check-circle"></i> Offline operativo</span>
+          <span><i class="fas fa-check-circle"></i> CSV esecuzioni</span>
+          <span><i class="fas fa-check-circle"></i> Contabilità e margini</span>
+          <span><i class="fas fa-check-circle"></i> Dati pronti per audit</span>
+        </div>
+      </div>
+      <div class="col-lg-5 d-none d-lg-block fade-in">
+        <div class="hero-mock-shell">
+          <div class="desktop-mock">
+            <div class="monitor-wrapper">
+              <div class="monitor-frame">
+                <div class="monitor-screen">
+                  <div class="hero-screen-content">
+                    <div class="card-header-mini d-flex justify-content-between align-items-center mb-1">
+                      <span class="text-uppercase">Controllo operativo</span>
+                      <span class="status-pill">Live</span>
+                    </div>
+                    <div class="kpi-row">
+                      <div class="kpi-card success"><div>Esiti positivi</div><div class="kpi-val">94%</div></div>
+                      <div class="kpi-card info"><div>Produzione</div><div class="kpi-val">€ 12.4k</div></div>
+                      <div class="kpi-card warning"><div>Fuori soglia</div><div class="kpi-val">4</div></div>
+                      <div class="kpi-card info"><div>Contatori tracc.</div><div class="kpi-val">127</div></div>
+                    </div>
+                    <table class="mini-table">
+                      <thead><tr><th>Tecnico</th><th class="text-end">Interv.</th><th class="text-end">€</th></tr></thead>
+                      <tbody>
+                        <tr><td>Rossi M.</td><td class="text-end">24</td><td class="text-end">1.840</td></tr>
+                        <tr><td>Bianchi L.</td><td class="text-end">22</td><td class="text-end">1.620</td></tr>
+                      </tbody>
+                    </table>
+                    <div class="mini-alert"><strong>2 evidenze mancanti</strong> • 1 CSV da verificare</div>
+                  </div>
+                </div>
+              </div>
+              <div class="monitor-stand"></div>
+              <div class="monitor-base"></div>
+            </div>
+          </div>
+          <div class="phone-app-mock">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="app-header-mini">
+                  <span class="logo">HUB2GO</span>
+                  <span class="state">Online</span>
+                </div>
+                <div class="app-menu">
+                  <div class="app-menu-item">
+                    <div class="icon"><i class="fas fa-chart-line"></i></div>
+                    <span class="title">CONTROLLO OPERATIVO</span>
+                  </div>
+                  <div class="app-menu-item">
+                    <div class="icon"><i class="fas fa-user-clock"></i></div>
+                    <span class="title">TIMBRATURE</span>
+                  </div>
+                  <div class="app-menu-item">
+                    <div class="icon"><i class="fas fa-truck"></i></div>
+                    <span class="title">MEZZI</span>
+                  </div>
+                  <div class="app-menu-item">
+                    <div class="icon"><i class="fas fa-boxes-stacked"></i></div>
+                    <span class="title">MATERIALI</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN SECTION -->
+<section class="section section-gray" id="problema">
+  <div class="container">
+    <h2 class="section-title">Il problema non è il campo. È tutto quello che si perde tra il campo e i numeri.</h2>
+    <p class="section-subtitle mb-4">Ogni giorno succede la stessa cosa: i dati arrivano tardi, le prove sono sparse, i consuntivi si ricostruiscono a posteriori e quando il cliente contesta o la direzione chiede numeri, manca una base unica e affidabile. Non è un problema di persone. È un problema di flusso operativo.</p>
+    <div class="pain-grid">
+      <div class="pain-col oggi">
+        <h4>Oggi</h4>
+        <ul>
+          <li>foto e prove da rincorrere</li>
+          <li>dati in chat, Excel, email e memoria dei tecnici</li>
+          <li>contatori e movimentazioni non sempre allineati</li>
+          <li>contabilità aggiornata in ritardo</li>
+          <li>margini leggibili troppo tardi</li>
+          <li>contestazioni difficili da chiudere</li>
+        </ul>
+      </div>
+      <div class="pain-col con-opshub">
+        <h4>Con OpsHub</h4>
+        <ul>
+          <li>attività datate e attribuite</li>
+          <li>evidenze raccolte sul campo</li>
+          <li>dati collegati a tecnico, mezzo, commessa e servizio</li>
+          <li>CSV e operatività valorizzati economicamente</li>
+          <li>KPI e scostamenti visibili quasi in tempo reale</li>
+          <li>meno doppio lavoro, meno rumore</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COME FUNZIONA -->
+<section class="section" id="flusso">
+  <div class="container">
+    <h2 class="section-title">Un unico flusso operativo, dal campo al controllo economico</h2>
+    <p class="section-subtitle mb-4">Tre passaggi per trasformare attività disperse in controllo operativo.</p>
+    <div class="row g-4">
+      <div class="col-md-4 fade-in">
+        <div class="card-modern">
+          <div class="card-num">1</div>
+          <h4>Raccogli</h4>
+          <p>Timbrature GPS, foto, checklist, barcode, note, letture, movimentazioni, CSV esecuzioni.</p>
+        </div>
+      </div>
+      <div class="col-md-4 fade-in">
+        <div class="card-modern">
+          <div class="card-num">2</div>
+          <h4>Colleghi</h4>
+          <p>Ogni dato viene ricondotto a tecnico, commessa, PdR, matricola, servizio, calibro, mezzo o contratto.</p>
+        </div>
+      </div>
+      <div class="col-md-4 fade-in">
+        <div class="card-modern">
+          <div class="card-num">3</div>
+          <h4>Governi</h4>
+          <p>Ottieni prove verificabili, KPI operativi, produzione economica, consuntivi, allocazioni e margini.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICI PER RUOLO -->
+<section class="section section-gray" id="ruoli">
+  <div class="container">
+    <h2 class="section-title">Valore diverso per ogni responsabilità</h2>
+    <div class="row g-4">
+      <div class="col-md-4 fade-in">
+        <div class="card-modern">
+          <h4>Operations</h4>
+          <p>Sai cosa è stato fatto, da chi, dove e con quali evidenze, senza inseguire persone, foto e allegati.</p>
+          <p class="card-foot">Riduci rincorse e buchi informativi.</p>
+        </div>
+      </div>
+      <div class="col-md-4 fade-in">
+        <div class="card-modern">
+          <h4>Direzione Tecnica</h4>
+          <p>Difendi SLA, audit, contestazioni e qualità esecutiva con dati attribuibili, storicizzati e verificabili.</p>
+          <p class="card-foot">Più difendibilità verso cliente e audit.</p>
+        </div>
+      </div>
+      <div class="col-md-4 fade-in">
+        <div class="card-modern">
+          <h4>PM e controllo commessa</h4>
+          <p>Trasformi esecuzioni, materiali, tempi e costi in numeri leggibili prima della chiusura mese.</p>
+          <p class="card-foot">Più visibilità su scostamenti e marginalità.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULI CORE -->
+<section class="section" id="moduli">
+  <div class="container">
+    <h2 class="section-title">I moduli che incidono davvero sul controllo operativo</h2>
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="modulo-item fade-in">
+          <div class="icon"><i class="fas fa-boxes-stacked"></i></div>
+          <div>
+            <h4>Contatori e tracciabilità</h4>
+            <p>Pallet, contatori, carico/scarico, movimentazioni, storico e valorizzazione economica collegata al lavoro svolto.</p>
+          </div>
+        </div>
+        <div class="modulo-item fade-in">
+          <div class="icon"><i class="fas fa-file-csv"></i></div>
+          <div>
+            <h4>Analisi esecuzioni</h4>
+            <p>Import CSV, KPI, esiti, interventi non registrati, produzione economica per tecnico, servizio e calibro.</p>
+          </div>
+        </div>
+        <div class="modulo-item fade-in">
+          <div class="icon"><i class="fas fa-camera"></i></div>
+          <div>
+            <h4>Evidenze operative</h4>
+            <p>Timbrature GPS, foto, note e checklist datate: il lavoro svolto lascia prove utilizzabili.</p>
+          </div>
+        </div>
+        <div class="modulo-item fade-in">
+          <div class="icon"><i class="fas fa-calculator"></i></div>
+          <div>
+            <h4>Contabilità e margini</h4>
+            <p>Registro, listini, contabilità industriale, allocazioni, fornitori, produzione e marginalità.</p>
+          </div>
+        </div>
+        <div class="modulo-item fade-in">
+          <div class="icon"><i class="fas fa-chart-line"></i></div>
+          <div>
+            <h4>Report e integrazioni</h4>
+            <p>Export configurabili, SharePoint, report extraction da portali esterni, dati pronti dove servono.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 d-none d-lg-block fade-in">
+        <div class="moduli-mock">
+          <div class="mock-kpi-row">
+            <div class="mock-kpi-box"><div class="val">94%</div><div class="lbl">Esiti positivi</div></div>
+            <div class="mock-kpi-box"><div class="val">€ 8.2k</div><div class="lbl">Prod. periodo</div></div>
+            <div class="mock-kpi-box"><div class="val">12</div><div class="lbl">Non registr.</div></div>
+          </div>
+          <table class="mock-table w-100">
+            <thead><tr><th>Esecutore</th><th class="text-end">Interv.</th><th class="text-end">€</th></tr></thead>
+            <tbody>
+              <tr><td>Rossi M.</td><td class="text-end">24</td><td class="text-end">1.840</td></tr>
+              <tr><td>Bianchi L.</td><td class="text-end">22</td><td class="text-end">1.620</td></tr>
+              <tr><td>Verdi G.</td><td class="text-end">18</td><td class="text-end">1.380</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UTILITIES SECTION -->
+<section class="section section-gray" id="utilities">
+  <div class="container">
+    <h2 class="section-title">Pensato per aziende utilities e operation sul territorio</h2>
+    <p class="section-subtitle mb-4">OpsHub è particolarmente adatto a chi gestisce letture, sostituzioni, verifiche, appuntamenti, contatori, mezzi e consuntivi con dati distribuiti tra squadre, portali e ufficio.</p>
+    <div class="utility-badges">
+      <span>squadre sul territorio</span>
+      <span>aree senza rete</span>
+      <span>PdR e matricole</span>
+      <span>CSV da portali esterni</span>
+      <span>contatori e pallet</span>
+      <span>evidenze per cliente e audit</span>
+      <span>valorizzazione per servizio / calibro</span>
+      <span>contabilità operativa collegata al campo</span>
+    </div>
+  </div>
+</section>
+
+<!-- OBIEZIONI -->
+<section class="section" id="obiezioni">
+  <div class="container">
+    <h2 class="section-title">Le obiezioni tipiche prima di partire</h2>
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-4 fade-in">
+        <div class="objection-card">
+          <h4><i class="fas fa-check-circle"></i> Funziona offline</h4>
+          <p>I dati vengono raccolti anche dove il segnale manca e si sincronizzano quando la rete torna disponibile.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in">
+        <div class="objection-card">
+          <h4><i class="fas fa-check-circle"></i> Niente doppio inserimento</h4>
+          <p>L'obiettivo non è aggiungere lavoro amministrativo, ma ridurre ricostruzioni e passaggi manuali.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in">
+        <div class="objection-card">
+          <h4><i class="fas fa-check-circle"></i> Roll-out progressivo</h4>
+          <p>Si può partire da presenze, mezzi o evidenze operative e poi estendere il flusso.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in">
+        <div class="objection-card">
+          <h4><i class="fas fa-check-circle"></i> Privacy e trasparenza</h4>
+          <p>La tracciabilità serve a produrre evidenze operative e storici verificabili, non a fare controllo invasivo.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in">
+        <div class="objection-card">
+          <h4><i class="fas fa-check-circle"></i> Evidenze automatiche</h4>
+          <p>Foto, timbrature, checklist e movimenti diventano patrimonio operativo, non promemoria da rincorrere.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL SECTION -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <h2 class="cta-title">Pronto a smettere di rincorrere dati e iniziare a governarli?</h2>
+    <p class="cta-subtitle">Ti mostriamo il flusso sul tuo caso: squadre, contatori, esecuzioni, evidenze, contabilità e margini. Niente demo generica. Solo operatività reale.</p>
+    <p class="mb-3"><a href="/dashboard/demo" class="btn-cta-primary" style="display: inline-flex; width: auto;">Provalo gratis – Accedi alla dashboard demo</a></p>
+    <p class="form-microcopy mb-3">Accedi subito al tenant demo senza registrazione. Dati di esempio, nessun impegno.</p>
+    <div class="contact-card" id="contact-form">
+      <form id="leadForm">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Nome</label>
+            <input type="text" class="form-control" id="leadName" name="name" autocomplete="name" placeholder="Mario Rossi" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Azienda</label>
+            <input type="text" class="form-control" id="leadCompany" name="company" autocomplete="organization" placeholder="Nome azienda" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" id="leadEmail" name="email" autocomplete="email" placeholder="nome@azienda.it" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Telefono</label>
+            <input type="tel" class="form-control" id="leadPhone" name="phone" autocomplete="tel" placeholder="+39 ...">
+          </div>
+          <div class="col-12">
+            <label class="form-label">Area prioritaria</label>
+            <select class="form-select" id="leadNeed" name="need" required>
+              <option value="">Seleziona...</option>
+              <option value="Presenze e timbrature">Presenze e timbrature</option>
+              <option value="Mezzi e rifornimenti">Mezzi e rifornimenti</option>
+              <option value="Contatori e tracciabilità">Contatori e tracciabilità</option>
+              <option value="Analisi esecuzioni">Analisi esecuzioni</option>
+              <option value="Contabilità e margini">Contabilità e margini</option>
+              <option value="Suite completa">Suite completa</option>
+            </select>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Note</label>
+            <textarea class="form-control" id="leadNote" name="note" rows="3" placeholder="Es. numero squadre, portali usati, attività da tracciare, priorità"></textarea>
+          </div>
+          <div class="col-12">
+            <p class="form-microcopy">Demo di 20 minuti sul tuo caso operativo.</p>
+            <button type="submit" class="btn-cta">Richiedi demo mirata</button>
+            <p class="fineprint">Oppure usa <a href="/contatti/">/contatti</a> o scrivi a <span class="opshub-email-plain">info&#64;opshub.it</span></p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div id="sticky-cta" class="sticky-cta">
+  <span class="sticky-cta-long">Vuoi vedere il flusso sul tuo caso?</span>
+  <span class="sticky-cta-short">Vuoi vedere il flusso?</span>
+  <a href="/dashboard/demo" class="btn-sticky">Provalo gratis</a>
+  <a href="#contact" class="btn-sticky" style="background: rgba(255,255,255,0.25); color: white;">Richiedi demo</a>
+</div>
+
+<div id="leadSuccessOverlay" class="cookie-overlay" style="display: none;">
+  <div class="cookie-banner">
+    <div class="cookie-banner-header"><i class="fas fa-circle-check" style="color: var(--success);"></i><strong>Richiesta inviata</strong></div>
+    <div class="cookie-banner-text">Grazie. Ti risponderemo al più presto all'indirizzo indicato.</div>
+    <div class="cookie-banner-actions"><button type="button" class="btn btn-primary" onclick="hideLeadSuccessOverlay()">Ok, chiudi</button></div>
+  </div>
+</div>
+
+<footer class="footer-section">
+  <div class="container text-center">
+    <p class="mb-0">
+      <a href="/">Home</a> · <a href="/#faq-home">FAQ</a> · <a href="/moduli/">Hub moduli</a> · <a href="/contatti/">Contatti</a> · <a href="/privacy-hub2go/">Privacy</a> · <a href="/cookie-policy/">Cookie</a>
+    </p>
+    <div class="footer-bottom"><p class="mb-0">&copy; OpsHub – HUB2GO</p></div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/opshub-dialogs.js?v=20260731-modal-stack-v2"></script>
+<script>
+  (function() {
+    var links = document.querySelectorAll('a[href^="#"]');
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener('click', function(e) {
+        var href = this.getAttribute('href');
+        if (href === '#') return;
+        var target = document.querySelector(href);
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+    var stickyCta = document.getElementById('sticky-cta');
+    var contactSection = document.getElementById('contact');
+    if (stickyCta && contactSection) {
+      function updateStickyCta() {
+        var contactRect = contactSection.getBoundingClientRect();
+        var scrolledEnough = window.scrollY > 350;
+        var contactNotVisible = contactRect.top > window.innerHeight * 0.3;
+        stickyCta.classList.toggle('is-visible', scrolledEnough && contactNotVisible);
+      }
+      var obsContact = new IntersectionObserver(function() { updateStickyCta(); }, { threshold: 0 });
+      obsContact.observe(contactSection);
+      window.addEventListener('scroll', function() { updateStickyCta(); }, { passive: true });
+      updateStickyCta();
+    }
+
+    window.showLeadSuccessOverlay = function() {
+      var o = document.getElementById('leadSuccessOverlay');
+      if (o) o.style.display = 'flex';
+    };
+    window.hideLeadSuccessOverlay = function() {
+      var o = document.getElementById('leadSuccessOverlay');
+      if (o) o.style.display = 'none';
+    };
+
+    document.getElementById('leadForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var form = this;
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var originalHtml = submitBtn.innerHTML;
+      var payload = {
+        name: document.getElementById('leadName').value,
+        company: document.getElementById('leadCompany').value,
+        email: document.getElementById('leadEmail').value,
+        phone: document.getElementById('leadPhone').value,
+        need: document.getElementById('leadNeed').value,
+        note: document.getElementById('leadNote').value
+      };
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Invio...';
+      try {
+        var response = await fetch('https://bot.ops-on.site/landing/contatti_submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        var data = await response.json().catch(function() { return {}; });
+        if (response.ok && data.ok) {
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'conversion', { 'send_to': 'AW-16983279737/j43hCPHl4LQaEPmQoaI_' });
+            gtag('event', 'conversion', { 'send_to': 'AW-17780688064/QJPeCKeGuc0bEMCJv55C' });
+          }
+          form.reset();
+          showLeadSuccessOverlay();
+        } else {
+          var msg = (data && data.error) ? data.error : "Problema con l'invio. Riprova o scrivi a info@opshub.it.";
+          alert(msg);
+        }
+      } catch (err) {
+        console.warn('Errore invio contatto', err);
+        alert("Errore di rete. Riprova o scrivi a info@opshub.it.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalHtml;
+      }
+    });
+  })();
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2c902fc7824ea6a',t:'MTc4Njk3MzE5OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

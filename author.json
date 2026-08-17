@@ -1,0 +1,55 @@
+{
+  "@context": "https://schema.org",
+  "type": "Person",
+  "name": "Christian Arragoni",
+  "jobTitle": "Founder & Product Architect",
+  "description": "Autore e revisore dei contenuti operativi OpsHub. Christian Arragoni è il fondatore di OpsHub, piattaforma SaaS per aziende operative, cantieri, manutenzioni, utilities e field service.",
+  "url": "https://opshub.it/fondatore",
+  "worksFor": {
+    "name": "OpsHub",
+    "url": "https://opshub.it"
+  },
+  "knowsAbout": [
+    "Operations",
+    "Field Service",
+    "Construction",
+    "Utilities",
+    "Maintenance",
+    "Cantieri",
+    "Pianificazione operativa",
+    "Controllo costi",
+    "Digitalizzazione processi",
+    "Workflow automation",
+    "SaaS",
+    "ERP integration"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/christian-arragoni-16b73b211/",
+    "https://www.facebook.com/share/1BCBTtoAYH/"
+  ],
+  "profilePage": "https://opshub.it/fondatore",
+  "officialChannels": [
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/christian-arragoni-16b73b211/",
+      "description": "Approfondimenti, casi reali, aggiornamenti su OpsHub e gestione operativa."
+    },
+    {
+      "name": "OpsHub",
+      "url": "https://opshub.it/cos-e-opshub",
+      "description": "Funzionalità della piattaforma: attività operative, documenti, costi e commesse."
+    },
+    {
+      "name": "Email",
+      "email": "info@opshub.it",
+      "description": "Richieste dirette, partnership, dimostrazioni e confronti operativi."
+    },
+    {
+      "name": "Facebook",
+      "url": "https://www.facebook.com/share/1BCBTtoAYH/",
+      "description": "Novità e aggiornamenti sul progetto OpsHub."
+    }
+  ],
+  "lastUpdated": "2026-08-17",
+  "email": "info@opshub.it"
+}

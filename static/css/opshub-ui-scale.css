@@ -1,0 +1,107 @@
+/**
+ * Scala UI OpsHub predefinita (~80% zoom browser).
+ * Caricato globalmente via partial + after_request Flask.
+ * Opt-out: <html class="opshub-ui-scale--off"> (stampa/PDF).
+ */
+:root {
+  --opshub-ui-scale: 0.8;
+}
+
+@media screen {
+  html:not(.opshub-ui-scale--off) {
+    zoom: var(--opshub-ui-scale);
+  }
+}
+
+/* Firefox e motori senza zoom */
+@supports not (zoom: 1) {
+  @media screen {
+    html:not(.opshub-ui-scale--off) body {
+      transform: scale(var(--opshub-ui-scale));
+      transform-origin: top left;
+      width: calc(100% / var(--opshub-ui-scale));
+      min-height: calc(100vh / var(--opshub-ui-scale));
+    }
+  }
+}
+
+/* Stampa / PDF: scala nativa */
+@media print {
+  html:not(.opshub-ui-scale--off) {
+    zoom: 1 !important;
+  }
+
+  @supports not (zoom: 1) {
+    html:not(.opshub-ui-scale--off) body {
+      transform: none !important;
+      width: auto !important;
+      min-height: 0 !important;
+    }
+  }
+}
+
+/* Sidebar fissa ereditata da base.html: compensa zoom così copre tutta l'altezza visibile */
+@media screen {
+  html:not(.opshub-ui-scale--off) .sidebar-menu {
+    height: calc(100vh / var(--opshub-ui-scale));
+    min-height: calc(100vh / var(--opshub-ui-scale));
+  }
+}
+
+@supports not (zoom: 1) {
+  @media screen {
+    html:not(.opshub-ui-scale--off) .sidebar-menu {
+      height: calc(100vh / var(--opshub-ui-scale));
+      min-height: calc(100vh / var(--opshub-ui-scale));
+    }
+  }
+}
+
+/* Overlay Bootstrap: compensa zoom/transform così coprono tutto il viewport visibile */
+@media screen {
+  html:not(.opshub-ui-scale--off) .modal-backdrop.show,
+  html:not(.opshub-ui-scale--off) .mf-global-scrim.is-visible {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    zoom: calc(1 / var(--opshub-ui-scale));
+    transform-origin: top left;
+    width: calc(100vw / var(--opshub-ui-scale)) !important;
+    height: calc(100vh / var(--opshub-ui-scale)) !important;
+    min-width: calc(100vw / var(--opshub-ui-scale)) !important;
+    min-height: calc(100vh / var(--opshub-ui-scale)) !important;
+  }
+}
+
+@supports not (zoom: 1) {
+  @media screen {
+    html:not(.opshub-ui-scale--off) .modal-backdrop.show,
+    html:not(.opshub-ui-scale--off) .mf-global-scrim.is-visible {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      transform: scale(calc(1 / var(--opshub-ui-scale)));
+      transform-origin: top left;
+      width: calc(100vw / var(--opshub-ui-scale)) !important;
+      height: calc(100vh / var(--opshub-ui-scale)) !important;
+      min-width: calc(100vw / var(--opshub-ui-scale)) !important;
+      min-height: calc(100vh / var(--opshub-ui-scale)) !important;
+    }
+  }
+}
+
+html.opshub-ui-scale--off {
+  zoom: 1 !important;
+}
+
+@supports not (zoom: 1) {
+  html.opshub-ui-scale--off body {
+    transform: none !important;
+    width: auto !important;
+    min-height: 0 !important;
+  }
+}

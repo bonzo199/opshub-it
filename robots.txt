@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+Allow: /static/public/
+Allow: /fondatore
+Allow: /about-founder-ai
+Allow: /founder.md
+Allow: /founder.json
+Allow: /author.json
+Allow: /humans.txt
+
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /uploads/
+Disallow: /admin/
+Disallow: /static/private/
+Disallow: /login
+Disallow: /logout
+Disallow: /demo
+Disallow: /mobile-app-demo
+Disallow: /onboarding/
+Disallow: /landing/contatti_submit
+Disallow: /landing/timbrature_trial_submit
+
+Sitemap: https://opshub.it/sitemap.xml

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <link rel="stylesheet" href="/static/css/opshub-ui-scale.css?v=20260615-01">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Informativa sul trattamento dei dati raccolti tramite i moduli LinkedIn Lead Gen utilizzati per richiedere informazioni e demo di OpsHub.">
+  <title>Informativa Privacy Lead Generation | OpsHub</title>
+  <link rel="canonical" href="https://opshub.it/privacy-lead-generation/">
+  <script src="/static/js/opshub_site_consent.js"></script>
+<script>
+  (function () {
+    window.dataLayer = window.dataLayer || [];
+    if (typeof window.gtag !== 'function') {
+      window.gtag = function(){ window.dataLayer.push(arguments); };
+    }
+
+    function normalizeState(value) {
+      if (value === 'granted' || value === true || value === 'true' || value === 1 || value === '1') return 'granted';
+      return 'denied';
+    }
+
+    function toStatus(value) {
+      return normalizeState(value) === 'granted' ? 'granted' : 'denied';
+    }
+
+    if (!window.__siteConsentDefaultApplied) {
+      window.gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+
+      window.__siteConsentDefaultApplied = true;
+    }
+
+    window.updateSiteConsent = function (options) {
+      var opts = options || {};
+      var analytics = normalizeState(opts.analytics);
+      var marketing = normalizeState(opts.marketing);
+
+      window.gtag('consent', 'update', {
+        'analytics_storage': analytics,
+        'ad_storage': marketing,
+        'ad_user_data': marketing,
+        'ad_personalization': marketing
+      });
+
+      window.dataLayer.push({
+        event: 'consent_updated',
+        analytics: toStatus(analytics),
+        marketing: toStatus(marketing)
+      });
+    };
+
+    function syncConsentFromCookies() {
+      if (!window.OpsHubSiteConsent) return;
+      var state = window.OpsHubSiteConsent.readConsentFromCookies();
+      if (!state) return;
+      window.updateSiteConsent({
+        analytics: state.analytics ? 'granted' : 'denied',
+        marketing: state.marketing ? 'granted' : 'denied'
+      });
+    }
+
+    window.syncSiteConsentFromCookies = syncConsentFromCookies;
+    syncConsentFromCookies();
+  })();
+</script>
+  
+<script type="text/javascript">
+(function () {
+  var h = (location.hostname || '').toLowerCase();
+  if (h !== 'opshub.it' && h !== 'www.opshub.it') return;
+  function inject() {
+    (function(c, l, a, r, i, t, y) {
+      c[a] = c[a] || function() { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "w1ufji0wfh");
+  }
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(inject, { timeout: 3500 });
+  } else if (document.readyState === 'complete') {
+    setTimeout(inject, 1);
+  } else {
+    window.addEventListener('load', function () { setTimeout(inject, 1); }, { once: true });
+  }
+})();
+</script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #3b82f6;
+      --dark: #0f172a;
+      --gray-100: #f8fafc;
+      --gray-500: #64748b;
+      --gray-700: #334155;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--dark);
+      line-height: 1.7;
+      background: var(--gray-100);
+    }
+
+    .header-privacy {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: white;
+      padding: 3rem 0;
+      text-align: center;
+    }
+    .header-privacy img {
+      height: 50px;
+      margin-bottom: 1rem;
+    }
+    .header-privacy h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .header-privacy p {
+      opacity: 0.9;
+      margin: 0;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .privacy-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .privacy-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .privacy-section {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .privacy-section:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .privacy-section h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .privacy-section h2 i {
+      width: 35px;
+      height: 35px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .privacy-section p, .privacy-section li {
+      color: var(--gray-700);
+      font-size: 0.95rem;
+    }
+
+    .privacy-section ul {
+      padding-left: 1.25rem;
+      margin: 0.75rem 0;
+    }
+    .privacy-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .purpose-block {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary-light);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    .purpose-block strong {
+      color: var(--primary);
+    }
+
+    .last-update {
+      text-align: center;
+      color: var(--gray-500);
+      font-size: 0.85rem;
+      margin-top: 2rem;
+    }
+
+    .footer-privacy {
+      text-align: center;
+      padding: 2rem;
+      color: var(--gray-500);
+      font-size: 0.875rem;
+    }
+    .footer-privacy a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .footer-privacy a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 767px) {
+      .header-privacy { padding: 2rem 1rem; }
+      .header-privacy h1 { font-size: 1.4rem; }
+      .privacy-card { padding: 1.5rem; }
+      .privacy-section h2 { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header-privacy">
+  <a href="/" aria-label="Vai alla homepage OpsHub">
+    <img src="/static/public/seo/hub2go-logo.png" alt="OpsHub" width="180" height="86" decoding="async">
+  </a>
+  <h1>Informativa privacy per richieste di informazioni e demo</h1>
+  <p>Informativa ai sensi dell&rsquo;art. 13 del Regolamento (UE) 2016/679 relativa ai dati raccolti tramite moduli LinkedIn Lead Gen e altri moduli di contatto dedicati a OpsHub.</p>
+</header>
+
+<main class="privacy-content">
+  <div class="privacy-card">
+
+    <p class="last-update mb-4">
+      <i class="fas fa-calendar-alt me-1"></i>
+      Ultimo aggiornamento: 5 Luglio 2026
+    </p>
+
+    <section class="privacy-section" id="titolare">
+      <h2><i class="fas fa-building"></i> 1. Titolare del trattamento</h2>
+      <p>Il titolare del trattamento &egrave; <strong>Callgas S.r.l.s.</strong></p>
+      <p>
+        Sede legale: Via Nerone, 8a - 00012 Guidonia (RM), Italia<br>
+        P.IVA: 15564641007<br>
+        Email: <span class="opshub-email-plain">info&#64;callgas.it</span><br>
+        PEC: callgas@legalmail.it
+      </p>
+    </section>
+
+    <section class="privacy-section" id="origine">
+      <h2><i class="fas fa-inbox"></i> 2. Origine dei dati</h2>
+      <p>
+        I dati personali sono raccolti direttamente dall&rsquo;interessato attraverso i moduli LinkedIn Lead Gen,
+        i moduli presenti sul sito OpsHub o altri canali utilizzati per richiedere informazioni, un contatto commerciale
+        o una dimostrazione della piattaforma.
+      </p>
+      <p>
+        Nel caso dei moduli LinkedIn, alcuni campi possono essere precompilati utilizzando le informazioni associate
+        al profilo LinkedIn dell&rsquo;utente. Prima dell&rsquo;invio, l&rsquo;utente pu&ograve; verificare i dati mostrati nel modulo.
+      </p>
+    </section>
+
+    <section class="privacy-section" id="categorie">
+      <h2><i class="fas fa-database"></i> 3. Categorie di dati trattati</h2>
+      <p>In base al modulo utilizzato, possono essere trattate le seguenti categorie di dati:</p>
+      <ul>
+        <li>nome e cognome;</li>
+        <li>indirizzo email, preferibilmente professionale;</li>
+        <li>azienda di appartenenza;</li>
+        <li>ruolo o qualifica professionale, quando richiesti;</li>
+        <li>numero di telefono, soltanto quando richiesto o fornito volontariamente;</li>
+        <li>risposte alle eventuali domande di qualificazione;</li>
+        <li>contenuto delle richieste inviate;</li>
+        <li>dati relativi alla campagna, all&rsquo;annuncio e al modulo di provenienza;</li>
+        <li>data, ora e origine della richiesta;</li>
+        <li>informazioni tecniche e di sicurezza strettamente necessarie alla gestione del servizio.</li>
+      </ul>
+      <p>
+        Non vengono richieste categorie particolari di dati personali. Ti invitiamo a non inserire tali informazioni
+        nei campi liberi del modulo.
+      </p>
+    </section>
+
+    <section class="privacy-section" id="finalita">
+      <h2><i class="fas fa-bullseye"></i> 4. Finalit&agrave; e basi giuridiche</h2>
+
+      <div class="purpose-block">
+        <p><strong>Finalit&agrave; A</strong><br>
+          Gestire la richiesta di informazioni, ricontattare l&rsquo;interessato, comprendere le esigenze operative
+          e organizzare una dimostrazione di OpsHub.<br>
+          <strong>Base giuridica:</strong> esecuzione di misure precontrattuali adottate su richiesta dell&rsquo;interessato,
+          ai sensi dell&rsquo;art. 6, paragrafo 1, lettera b), GDPR.
+        </p>
+      </div>
+
+      <div class="purpose-block">
+        <p><strong>Finalit&agrave; B</strong><br>
+          Gestire comunicazioni, appuntamenti, attivit&agrave; di follow-up direttamente collegate alla richiesta ricevuta.<br>
+          <strong>Base giuridica:</strong> esecuzione di misure precontrattuali richieste dall&rsquo;interessato.
+        </p>
+      </div>
+
+      <div class="purpose-block">
+        <p><strong>Finalit&agrave; C</strong><br>
+          Garantire sicurezza, prevenzione degli abusi, tracciabilit&agrave; tecnica e tutela dei diritti del titolare.<br>
+          <strong>Base giuridica:</strong> legittimo interesse del titolare, ai sensi dell&rsquo;art. 6, paragrafo 1, lettera f), GDPR.
+        </p>
+      </div>
+
+      <div class="purpose-block">
+        <p><strong>Finalit&agrave; D</strong><br>
+          Inviare newsletter, aggiornamenti periodici o comunicazioni promozionali non direttamente collegate alla richiesta iniziale.<br>
+          <strong>Base giuridica:</strong> consenso specifico e facoltativo dell&rsquo;interessato, quando raccolto.
+        </p>
+      </div>
+
+      <p>
+        <strong>La richiesta di informazioni o demo non comporta automaticamente l&rsquo;iscrizione a newsletter
+        o comunicazioni promozionali periodiche.</strong>
+      </p>
+    </section>
+
+    <section class="privacy-section" id="conferimento">
+      <h2><i class="fas fa-clipboard-check"></i> 5. Natura del conferimento</h2>
+      <p>
+        Il conferimento dei dati contrassegnati come obbligatori nel modulo &egrave; necessario per inviare e gestire la richiesta.
+        Il mancato conferimento impedisce al titolare di ricontattare l&rsquo;interessato o organizzare la demo richiesta.
+      </p>
+      <p>
+        Gli eventuali dati facoltativi consentono di comprendere meglio le esigenze dell&rsquo;azienda e personalizzare
+        il successivo contatto.
+      </p>
+    </section>
+
+    <section class="privacy-section" id="modalita">
+      <h2><i class="fas fa-shield-halved"></i> 6. Modalit&agrave; del trattamento</h2>
+      <p>
+        I dati sono trattati con strumenti informatici e, quando necessario, con modalit&agrave; organizzative manuali.
+        Il titolare adotta misure tecniche e organizzative adeguate per proteggere i dati da accessi non autorizzati,
+        perdita, alterazione, divulgazione o utilizzo illecito.
+      </p>
+    </section>
+
+    <section class="privacy-section" id="destinatari">
+      <h2><i class="fas fa-people-arrows"></i> 7. Destinatari dei dati</h2>
+      <p>I dati possono essere trattati da:</p>
+      <ul>
+        <li>personale e collaboratori autorizzati di Callgas S.r.l.s.;</li>
+        <li>fornitori dei servizi di hosting, posta elettronica, CRM, assistenza tecnica e gestione dei contatti;</li>
+        <li>LinkedIn e gli altri fornitori coinvolti nella raccolta e trasmissione del modulo, secondo i rispettivi ruoli e informative privacy;</li>
+        <li>consulenti professionali, quando necessario;</li>
+        <li>autorit&agrave; pubbliche nei casi previsti dalla legge.</li>
+      </ul>
+      <p>
+        I fornitori possono essere nominati responsabili del trattamento quando previsto dalla normativa.
+      </p>
+    </section>
+
+    <section class="privacy-section" id="trasferimenti">
+      <h2><i class="fas fa-globe-europe"></i> 8. Trasferimento dei dati fuori dallo Spazio Economico Europeo</h2>
+      <p>
+        L&rsquo;utilizzo di piattaforme e fornitori tecnologici internazionali pu&ograve; comportare il trattamento
+        di dati personali in Paesi esterni allo Spazio Economico Europeo.
+      </p>
+      <p>
+        Quando applicabile, tali trasferimenti sono effettuati sulla base di una decisione di adeguatezza,
+        delle clausole contrattuali standard approvate dalla Commissione europea o di altre garanzie previste dal GDPR.
+      </p>
+    </section>
+
+    <section class="privacy-section" id="conservazione">
+      <h2><i class="fas fa-clock"></i> 9. Periodo di conservazione</h2>
+      
+      <p>
+        I dati relativi a richieste che non danno luogo a un rapporto contrattuale sono conservati per il tempo necessario
+        a gestire il contatto e, in ogni caso, per un periodo massimo di <strong>12 mesi</strong> dall&rsquo;ultima interazione significativa.
+      </p>
+      <p>
+        Se viene avviato un rapporto contrattuale o precontrattuale strutturato, i dati possono essere conservati
+        per i periodi necessari alla gestione del rapporto e all&rsquo;adempimento degli obblighi di legge.
+      </p>
+      <p>
+        I dati trattati sulla base del consenso per comunicazioni promozionali sono conservati fino alla revoca del consenso
+        o fino a quando la finalit&agrave; resta pertinente, nel rispetto dei criteri definiti dal titolare.
+      </p>
+    </section>
+
+    <section class="privacy-section" id="diritti">
+      <h2><i class="fas fa-user-shield"></i> 10. Diritti dell&rsquo;interessato</h2>
+      <p>L&rsquo;interessato pu&ograve; richiedere, nei casi previsti dal GDPR:</p>
+      <ul>
+        <li>accesso ai dati;</li>
+        <li>rettifica;</li>
+        <li>cancellazione;</li>
+        <li>limitazione del trattamento;</li>
+        <li>portabilit&agrave; dei dati;</li>
+        <li>opposizione al trattamento;</li>
+        <li>revoca del consenso, senza pregiudicare i trattamenti effettuati prima della revoca.</li>
+      </ul>
+      <p>
+        Le richieste devono essere inviate all&rsquo;indirizzo <span class="opshub-email-plain">info&#64;callgas.it</span>.
+      </p>
+    </section>
+
+    <section class="privacy-section" id="reclamo">
+      <h2><i class="fas fa-scale-balanced"></i> 11. Reclamo al Garante</h2>
+      <p>
+        L&rsquo;interessato ha inoltre il diritto di proporre reclamo al Garante per la protezione dei dati personali,
+        qualora ritenga che il trattamento dei propri dati violi la normativa applicabile.
+      </p>
+      <p>
+        Sito istituzionale: www.garanteprivacy.it
+      </p>
+    </section>
+
+    <section class="privacy-section" id="linkedin">
+      <h2><i class="fab fa-linkedin"></i> 12. Dati trattati da LinkedIn</h2>
+      <p>
+        La raccolta iniziale pu&ograve; avvenire attraverso strumenti messi a disposizione da LinkedIn. Il trattamento effettuato
+        direttamente da LinkedIn &egrave; disciplinato dalle condizioni e dall&rsquo;informativa privacy della piattaforma.
+      </p>
+      <p>
+        Callgas S.r.l.s. tratta i dati ricevuti tramite il modulo per le finalit&agrave; descritte nella presente informativa,
+        secondo i rispettivi ruoli privacy.
+      </p>
+    </section>
+
+    <section class="privacy-section" id="modifiche">
+      <h2><i class="fas fa-file-pen"></i> 13. Modifiche all&rsquo;informativa</h2>
+      <p>
+        La presente informativa pu&ograve; essere aggiornata per adeguarla a modifiche normative, organizzative o tecniche.
+        La versione aggiornata sar&agrave; pubblicata su questa pagina indicando la relativa data di aggiornamento.
+      </p>
+    </section>
+
+    <p class="last-update">
+      <i class="fas fa-calendar-alt me-1"></i>
+      Ultimo aggiornamento: 5 Luglio 2026
+    </p>
+
+  </div>
+</main>
+
+<footer class="footer-privacy">
+  <p>
+    &copy; 2026 Callgas S.r.l.s.<br>
+    <a href="/landing/">Torna alla Home</a> &middot;
+    <a href="/privacy-hub2go/">Privacy Policy</a> &middot;
+    <a href="/cookie-policy/">Cookie Policy</a>
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+  .site-cookie-wrap {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99990;
+    padding: 0.75rem;
+    display: none;
+    pointer-events: none;
+  }
+  .site-cookie-wrap.is-open { display: block; }
+  .site-cookie-banner {
+    max-width: 980px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #e4e4e7;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 1rem 1.25rem;
+    pointer-events: auto;
+  }
+  .site-cookie-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.45rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .site-cookie-title i { color: #1e3a8a; }
+  .site-cookie-text {
+    margin: 0 0 0.75rem;
+    color: #3f3f46;
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+  .site-cookie-text a { color: #1e3a8a; font-weight: 600; }
+  .site-cookie-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .site-cookie-actions .btn { border-radius: 10px; font-size: 0.88rem; font-weight: 600; }
+  .site-cookie-modal-wrap {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(15, 23, 42, 0.45);
+  }
+  .site-cookie-modal-wrap.is-open { display: flex; }
+  .site-cookie-modal {
+    width: min(100%, 520px);
+    max-height: min(90vh, 640px);
+    overflow: auto;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #e4e4e7;
+    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.22);
+  }
+  .site-cookie-modal-header,
+  .site-cookie-modal-body,
+  .site-cookie-modal-footer {
+    padding: 1rem 1.15rem;
+  }
+  .site-cookie-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border-bottom: 1px solid #e4e4e7;
+  }
+  .site-cookie-modal-title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .site-cookie-modal-close {
+    border: none;
+    background: transparent;
+    color: #64748b;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.15rem 0.35rem;
+  }
+  .site-cookie-modal-close:hover { color: #0f172a; }
+  .site-cookie-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    border-top: 1px solid #e4e4e7;
+  }
+  @media (max-width: 768px) {
+    .site-cookie-banner { padding: 0.9rem; }
+    .site-cookie-actions { gap: 0.45rem; }
+    .site-cookie-actions .btn { flex: 1 1 auto; min-width: 0; }
+  }
+</style>
+
+<div id="siteCookieBanner" class="site-cookie-wrap" aria-live="polite" aria-label="Preferenze cookie">
+  <div class="site-cookie-banner">
+    <div class="site-cookie-title">
+      <i class="fas fa-cookie-bite" aria-hidden="true"></i>
+      <span>Utilizziamo i cookie</span>
+    </div>
+    <p class="site-cookie-text">
+      Usiamo cookie tecnici e, solo con il tuo consenso, strumenti di analisi e marketing.
+      Puoi accettare tutti i cookie, rifiutare quelli non necessari o personalizzare le preferenze.
+      <a href="/cookie-policy">Maggiori informazioni</a>.
+    </p>
+    <div class="site-cookie-actions">
+      <button id="siteCookieAccept" type="button" class="btn btn-primary">Accetta tutti</button>
+      <button id="siteCookieReject" type="button" class="btn btn-outline-secondary">Rifiuta non necessari</button>
+      <button id="siteCookieSettings" type="button" class="btn btn-link">Personalizza</button>
+    </div>
+  </div>
+</div>
+
+<div id="siteCookieSettingsModal" class="site-cookie-modal-wrap" role="dialog" aria-modal="true" aria-labelledby="siteCookieSettingsTitle" aria-hidden="true">
+  <div class="site-cookie-modal">
+    <div class="site-cookie-modal-header">
+      <h2 class="site-cookie-modal-title" id="siteCookieSettingsTitle">Personalizza</h2>
+      <button type="button" class="site-cookie-modal-close" id="siteCookieModalClose" aria-label="Chiudi">&times;</button>
+    </div>
+    <div class="site-cookie-modal-body">
+      <div class="mb-3">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="siteCookieEssential" checked disabled>
+          <label class="form-check-label" for="siteCookieEssential">
+            <strong>Cookie necessari</strong>
+            <small class="d-block text-muted">Sempre attivi — necessari per il funzionamento del sito</small>
+          </label>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="siteCookieAnalytics">
+          <label class="form-check-label" for="siteCookieAnalytics">
+            <strong>Analisi e misurazione</strong>
+            <small class="d-block text-muted">Permettono di comprendere, in forma statistica, come viene utilizzato il sito.</small>
+          </label>
+        </div>
+      </div>
+      <div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="siteCookieMarketing">
+          <label class="form-check-label" for="siteCookieMarketing">
+            <strong>Marketing e pubblicità</strong>
+            <small class="d-block text-muted">Permettono di misurare le campagne pubblicitarie e creare audience per annunci pertinenti. Include LinkedIn Insight Tag.</small>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="site-cookie-modal-footer">
+      <button type="button" class="btn btn-secondary" id="siteCookieModalCancel">Annulla</button>
+      <button type="button" class="btn btn-primary" id="siteCookieSaveSettings">Salva preferenze</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var consentApi = window.OpsHubSiteConsent;
+    if (!consentApi) return;
+
+    function bannerEl() { return document.getElementById('siteCookieBanner'); }
+    function modalEl() { return document.getElementById('siteCookieSettingsModal'); }
+
+    function showBannerIfNeeded() {
+      var consent = consentApi.getCookie(consentApi.COOKIE_CONSENT);
+      var banner = bannerEl();
+      if (!banner) return;
+      if (!consent) banner.classList.add('is-open');
+    }
+
+    function hideBanner() {
+      var banner = bannerEl();
+      if (!banner) return;
+      banner.classList.remove('is-open');
+    }
+
+    function applyAndHide(analyticsEnabled, marketingEnabled) {
+      consentApi.applyConsent({ analytics: analyticsEnabled, marketing: marketingEnabled });
+      hideBanner();
+    }
+
+    function loadModalPreferences() {
+      var analyticsInput = document.getElementById('siteCookieAnalytics');
+      var marketingInput = document.getElementById('siteCookieMarketing');
+      if (analyticsInput) analyticsInput.checked = consentApi.getCookie(consentApi.COOKIE_ANALYTICS) === 'true';
+      if (marketingInput) marketingInput.checked = consentApi.getCookie(consentApi.COOKIE_MARKETING) === 'true';
+    }
+
+    function openSettingsModal() {
+      var modal = modalEl();
+      if (!modal) return;
+      loadModalPreferences();
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSettingsModal() {
+      var modal = modalEl();
+      if (!modal) return;
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    var acceptBtn = document.getElementById('siteCookieAccept');
+    var rejectBtn = document.getElementById('siteCookieReject');
+    var settingsBtn = document.getElementById('siteCookieSettings');
+    var saveBtn = document.getElementById('siteCookieSaveSettings');
+    var closeBtn = document.getElementById('siteCookieModalClose');
+    var cancelBtn = document.getElementById('siteCookieModalCancel');
+
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', function () {
+        applyAndHide(true, true);
+      });
+    }
+    if (rejectBtn) {
+      rejectBtn.addEventListener('click', function () {
+        applyAndHide(false, false);
+      });
+    }
+    if (settingsBtn) {
+      settingsBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openSettingsModal();
+      });
+    }
+    if (saveBtn) {
+      saveBtn.addEventListener('click', function () {
+        var analytics = !!document.getElementById('siteCookieAnalytics')?.checked;
+        var marketing = !!document.getElementById('siteCookieMarketing')?.checked;
+        applyAndHide(analytics, marketing);
+        closeSettingsModal();
+      });
+    }
+    if (closeBtn) closeBtn.addEventListener('click', closeSettingsModal);
+    if (cancelBtn) cancelBtn.addEventListener('click', closeSettingsModal);
+
+    if (modalEl()) {
+      modalEl().addEventListener('click', function (e) {
+        if (e.target === modalEl()) closeSettingsModal();
+      });
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modalEl() && modalEl().classList.contains('is-open')) {
+        closeSettingsModal();
+      }
+    });
+
+    window.openSiteCookieSettings = openSettingsModal;
+
+    consentApi.syncConsentFromCookies();
+    setTimeout(showBannerIfNeeded, 700);
+  })();
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2c90304180fea61',t:'MTc4Njk3MzIwMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

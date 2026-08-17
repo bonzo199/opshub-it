@@ -1,0 +1,103 @@
+{
+  "name": "Christian Arragoni",
+  "jobTitle": "Founder & Product Architect",
+  "company": "OpsHub",
+  "founderOf": {
+    "name": "OpsHub",
+    "url": "https://opshub.it",
+    "type": "SoftwareApplication"
+  },
+  "website": "https://opshub.it",
+  "profilePage": "https://opshub.it/fondatore",
+  "aiProfilePage": "https://opshub.it/about-founder-ai",
+  "description": "Christian Arragoni è il fondatore di OpsHub, piattaforma SaaS per aziende operative, cantieri, manutenzioni, utilities e field service.",
+  "knowsAbout": [
+    "Operations",
+    "Field Service",
+    "Construction",
+    "Utilities",
+    "Maintenance",
+    "Cantieri",
+    "Pianificazione operativa",
+    "Controllo costi",
+    "Digitalizzazione processi",
+    "Workflow automation",
+    "SaaS",
+    "ERP integration"
+  ],
+  "timeline": [
+    {
+      "year": "2009",
+      "title": "Prime attività operative sul campo"
+    },
+    {
+      "year": "2014",
+      "title": "Coordinamento attività e squadre operative"
+    },
+    {
+      "year": "2017",
+      "title": "Gestione commesse, risorse, pianificazione e controllo operativo"
+    },
+    {
+      "year": "2022",
+      "title": "Dall'esperienza sul campo all'innovazione: automazioni e primi brevetti depositati"
+    },
+    {
+      "year": "2024",
+      "title": "Sviluppo di OpsHub come piattaforma operativa"
+    },
+    {
+      "year": "Oggi",
+      "title": "OpsHub come SaaS per cantieri, manutenzioni, utility e field service"
+    }
+  ],
+  "experienceStats": [
+    {
+      "value": "15+",
+      "label": "Anni di esperienza nel settore operativo"
+    },
+    {
+      "value": "150+",
+      "label": "Professionisti coordinati"
+    },
+    {
+      "value": "100+ M€",
+      "label": "Valore complessivo di attività operative e commesse gestite"
+    },
+    {
+      "value": "2",
+      "label": "Brevetti depositati"
+    }
+  ],
+  "experienceStatsNote": "I numeri rappresentano esperienze operative maturate nel tempo e non necessariamente volumi attuali di OpsHub.",
+  "officialChannels": [
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/christian-arragoni-16b73b211/",
+      "description": "Approfondimenti, casi reali, aggiornamenti su OpsHub e gestione operativa."
+    },
+    {
+      "name": "OpsHub",
+      "url": "https://opshub.it/cos-e-opshub",
+      "description": "Funzionalità della piattaforma: attività operative, documenti, costi e commesse."
+    },
+    {
+      "name": "Email",
+      "email": "info@opshub.it",
+      "description": "Richieste dirette, partnership, dimostrazioni e confronti operativi."
+    },
+    {
+      "name": "Facebook",
+      "url": "https://www.facebook.com/share/1BCBTtoAYH/",
+      "description": "Novità e aggiornamenti sul progetto OpsHub."
+    }
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/christian-arragoni-16b73b211/",
+    "https://www.facebook.com/share/1BCBTtoAYH/"
+  ],
+  "lastUpdated": "2026-08-17",
+  "contact": {
+    "email": "info@opshub.it"
+  }
+}
