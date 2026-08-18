@@ -303,11 +303,15 @@
     .navbar-public .cta-yellow,
     .site-header .cta-yellow,
     .nav-link-public.btn-provalo-gratis {
+      display: inline-flex;
+      align-items: center;
       background: var(--opshub-yellow);
       color: var(--opshub-navy);
       border-radius: 12px;
       font-weight: 800;
       padding: 0.45rem 0.9rem;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .header-cta:hover,
     .navbar-public .cta-yellow:hover,
@@ -322,6 +326,12 @@
     .btn-nav-cta-public:hover { color: var(--primary); }
     .navbar-toggler-public { background: rgba(255,255,255,0.2); border: none; color: white; padding: 0.5rem 0.75rem; border-radius: 8px; }
     .navbar-collapse-public { display: flex; align-items: center; gap: 0.25rem; flex-wrap: wrap; }
+    .nav-link-public.btn-provalo-gratis {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
     .nav-dropdown-public { position: relative; }
     .nav-dropdown-toggle {
       display: inline-flex;
@@ -1584,7 +1594,7 @@
 
 
 
-        <a href="/contatti/" class="nav-link-public btn-provalo-gratis cta-yellow" data-cta="demo">Prenota una demo con noi</a>
+        <a href="/contatti/" class="nav-link-public btn-provalo-gratis cta-yellow" data-cta="demo">Prenota una demo</a>
 
 
 
@@ -1622,6 +1632,7 @@
         <p class="mb-4" style="font-size: 1.05rem; color: rgba(255,255,255,0.92); max-width: 36em; line-height: 1.55;">Dal lavoro sul campo ai numeri che contano: controllo operativo, evidenze e marginalità in un unico flusso.</p>
         <div class="d-flex flex-wrap gap-3">
           <a href="/contatti/" class="btn-cta-primary-public" data-cta="demo">Prenota una demo con noi</a>
+          <a href="/cos-e-opshub/" class="btn-outline-primary-public" data-cta="cos-e-opshub">Cos'è OpsHub</a>
         </div>
       </div>
       <div class="col-lg-5">
@@ -1705,18 +1716,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="section-public section-public-alt" id="percorsi-operativi" aria-labelledby="percorsi-operativi-title">
-  <div class="container">
-    <h2 id="percorsi-operativi-title" class="section-title-public">Dove approfondire</h2>
-    <p class="section-subtitle-public mb-4">Soluzioni operative, cantieri e controllo processi: passi diretti per chi valuta OpsHub per squadre, cantieri o rete territoriale.</p>
-    <div class="row g-3">
-      <div class="col-md-6 col-lg-4"><div class="card-public h-100"><h3 class="h6 text-uppercase mb-2" style="color:#475569;">Cantieri e presenze</h3><p class="mb-2"><a href="/software-gestione-cantieri/">Software gestione cantieri</a>, <a href="/badge_digitale/">badge digitale</a> e <a href="/cartellino-digitale-cantiere/">cartellino digitale</a>.</p></div></div>
-      <div class="col-md-6 col-lg-4"><div class="card-public h-100"><h3 class="h6 text-uppercase mb-2" style="color:#475569;">Operations e controllo</h3><p class="mb-2"><a href="/operations/">Operations software</a> e <a href="/moduli/">panoramica moduli OpsHub</a>.</p></div></div>
-      <div class="col-md-6 col-lg-4"><div class="card-public h-100"><h3 class="h6 text-uppercase mb-2" style="color:#475569;">Interventi e commesse</h3><p class="mb-0"><a href="/software-gestione-interventi-tecnici/">Interventi tecnici sul campo</a> e <a href="/contabilita-industriale-commesse/">contabilità industriale commesse</a>.</p></div></div>
     </div>
   </div>
 </section>
@@ -1817,7 +1816,7 @@
         <div class="card-public">
           <div class="d-inline-flex align-items-center justify-content-center rounded-3 mb-3" style="width: 44px; height: 44px; background: var(--primary); color: white; font-weight: 800;">2</div>
           <h3 class="h5 mb-0">Collega</h3>
-          <p>Ogni dato a persone, mezzi, commesse, contratti, PdR, matricole e servizi.</p>
+          <p>Ogni dato a persone, mezzi, commesse, contratti, cantieri, matricole e servizi.</p>
           <div class="come-funziona-mock">
             <div class="cf-label">Gestione cantieri</div>
             <div class="cf-mock-shell">
@@ -2093,6 +2092,18 @@
       <div class="col-md-6">
         <div class="card-public"><h3 class="h5 mb-0">Si integra con CSV, portali e SharePoint?</h3><p>Sì, OpsHub gestisce import/export CSV e flussi di integrazione, incluso il collegamento documentale SharePoint dove richiesto.</p></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-public section-public-alt" id="percorsi-operativi" aria-labelledby="percorsi-operativi-title">
+  <div class="container">
+    <h2 id="percorsi-operativi-title" class="section-title-public">Dove approfondire</h2>
+    <p class="section-subtitle-public mb-4">Soluzioni operative, cantieri e controllo processi: passi diretti per chi valuta OpsHub per squadre, cantieri o rete territoriale.</p>
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-4"><div class="card-public h-100"><h3 class="h6 text-uppercase mb-2" style="color:#475569;">Cantieri e presenze</h3><p class="mb-2"><a href="/software-gestione-cantieri/">Software gestione cantieri</a>, <a href="/badge_digitale/">badge digitale</a> e <a href="/cartellino-digitale-cantiere/">cartellino digitale</a>.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="card-public h-100"><h3 class="h6 text-uppercase mb-2" style="color:#475569;">Operations e controllo</h3><p class="mb-2"><a href="/operations/">Operations software</a> e <a href="/moduli/">panoramica moduli OpsHub</a>.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="card-public h-100"><h3 class="h6 text-uppercase mb-2" style="color:#475569;">Interventi e commesse</h3><p class="mb-0"><a href="/software-gestione-interventi-tecnici/">Interventi tecnici sul campo</a> e <a href="/contabilita-industriale-commesse/">contabilità industriale commesse</a>.</p></div></div>
     </div>
   </div>
 </section>

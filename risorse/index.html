@@ -306,11 +306,15 @@
     .navbar-public .cta-yellow,
     .site-header .cta-yellow,
     .nav-link-public.btn-provalo-gratis {
+      display: inline-flex;
+      align-items: center;
       background: var(--opshub-yellow);
       color: var(--opshub-navy);
       border-radius: 12px;
       font-weight: 800;
       padding: 0.45rem 0.9rem;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .header-cta:hover,
     .navbar-public .cta-yellow:hover,
@@ -325,6 +329,12 @@
     .btn-nav-cta-public:hover { color: var(--primary); }
     .navbar-toggler-public { background: rgba(255,255,255,0.2); border: none; color: white; padding: 0.5rem 0.75rem; border-radius: 8px; }
     .navbar-collapse-public { display: flex; align-items: center; gap: 0.25rem; flex-wrap: wrap; }
+    .nav-link-public.btn-provalo-gratis {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
     .nav-dropdown-public { position: relative; }
     .nav-dropdown-toggle {
       display: inline-flex;
@@ -2921,17 +2931,21 @@
 
 
 
-  /* Solo hub /risorse: copy sinistra + mockup destra (come adozione modulare) */
+  /* Hub /risorse: testo e mockup centrati */
 
   .blog-page .am-hero.blog-hero-hub .am-hero-grid {
 
-    grid-template-columns: 42% 58%;
+    grid-template-columns: 1fr;
 
-    gap: 36px;
+    gap: 2.4rem;
 
-    align-items: center;
+    justify-items: center;
 
-    text-align: left;
+    text-align: center;
+
+    max-width: 920px;
+
+    margin-inline: auto;
 
   }
 
@@ -2943,11 +2957,19 @@
 
     z-index: 2;
 
-    max-width: 520px;
+    display: flex;
 
-    justify-self: start;
+    flex-direction: column;
 
-    text-align: left;
+    align-items: center;
+
+    max-width: 640px;
+
+    width: 100%;
+
+    justify-self: center;
+
+    text-align: center;
 
     padding-top: 8px;
 
@@ -2959,13 +2981,13 @@
 
     z-index: 1;
 
-    justify-self: end;
+    justify-self: center;
 
-    margin-left: auto;
+    margin-inline: auto;
 
-    margin-right: 0;
+    /* Compensa il telefono (right: -70px) così dashboard + pannello restano nel centro. */
 
-    transform: translateX(8px);
+    transform: translateX(-35px);
 
     max-width: 665px;
 
@@ -2977,9 +2999,9 @@
 
   .blog-page .am-hero.blog-hero-hub h1 {
 
-    max-width: 12ch;
+    max-width: none;
 
-    margin-inline: 0;
+    margin-inline: auto;
 
     font-size: clamp(2.6rem, 4.2vw, 4.2rem);
 
@@ -2989,7 +3011,25 @@
 
   .blog-page .am-hero.blog-hero-hub .am-hero-lead {
 
-    margin-inline: 0;
+    margin-inline: auto;
+
+  }
+
+
+
+  .blog-page .am-hero.blog-hero-hub .am-hero-ctas {
+
+    justify-content: center;
+
+  }
+
+
+
+  .blog-page .am-hero.blog-hero-hub .am-hero-ctas .btn-cta-primary-public {
+
+    flex: 0 1 auto;
+
+    width: auto;
 
   }
 
@@ -2997,9 +3037,9 @@
 
   .blog-page .am-hero.blog-hero-hub .am-micro-benefits {
 
-    justify-content: start;
+    justify-content: center;
 
-    margin-inline: 0;
+    margin-inline: auto;
 
   }
 
@@ -4250,7 +4290,7 @@
 
       margin-inline: auto;
 
-      transform: none;
+      transform: translateX(-13px);
 
       padding-right: 60px;
 
@@ -4650,7 +4690,7 @@
 
 
 
-        <a href="/contatti/" class="nav-link-public btn-provalo-gratis cta-yellow" data-cta="demo">Prenota una demo con noi</a>
+        <a href="/contatti/" class="nav-link-public btn-provalo-gratis cta-yellow" data-cta="demo">Prenota una demo</a>
 
 
 

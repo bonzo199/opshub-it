@@ -271,12 +271,17 @@
       color: white;
     }
     .btn-nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
       background: white;
       color: var(--primary);
       padding: 0.6rem 1.5rem;
       border-radius: 50px;
       font-weight: 700;
       text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
       transition: transform 0.2s, box-shadow 0.2s;
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
@@ -1612,7 +1617,7 @@
       <div class="d-flex align-items-center gap-2">
         <a href="https://bot.ops-on.site/login" class="nav-link-landing d-none d-md-block">Accedi</a>
         <a href="/contatti/" class="btn-nav-cta d-none d-sm-inline-flex" data-cta="demo" onclick="if(typeof gtag !== 'undefined') { gtag('event', 'conversion', {'send_to': 'AW-16983279737/j43hCPHl4LQaEPmQoaI_'}); }">
-          <i class="fas fa-calendar-check"></i> Prenota una demo con noi
+          <i class="fas fa-calendar-check"></i> Prenota una demo
         </a>
         <button class="mobile-menu-btn d-lg-none" onclick="toggleMobileMenu()">
           <i class="fas fa-bars"></i>
@@ -1643,7 +1648,7 @@
     <a href="/" onclick="toggleMobileMenu()">Home</a>
   </div>
   <div class="mobile-menu-cta">
-    <a href="/contatti/" class="btn-mobile-primary" data-cta="demo" onclick="toggleMobileMenu(); if(typeof gtag !== 'undefined') { gtag('event', 'conversion', {'send_to': 'AW-16983279737/j43hCPHl4LQaEPmQoaI_'}); }">Prenota una demo con noi</a>
+    <a href="/contatti/" class="btn-mobile-primary" data-cta="demo" onclick="toggleMobileMenu(); if(typeof gtag !== 'undefined') { gtag('event', 'conversion', {'send_to': 'AW-16983279737/j43hCPHl4LQaEPmQoaI_'}); }">Prenota una demo</a>
     <a href="https://bot.ops-on.site/login" class="btn-mobile-secondary">Accedi</a>
   </div>
 </div>
