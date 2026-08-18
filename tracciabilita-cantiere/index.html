@@ -485,9 +485,29 @@
       }
     }
 
-    .section-public { padding: 4rem 0; }
-    .section-public-gray { background: var(--gray-100); }
-    .section-public-alt { background: var(--gray-50); }
+    .section-public {
+      padding: 4rem 0;
+      position: relative;
+      background: #fff;
+    }
+    .section-public-gray {
+      background:
+        radial-gradient(80% 120% at 0% -10%, rgba(37, 99, 235, 0.16), transparent 52%),
+        radial-gradient(70% 90% at 100% 110%, rgba(79, 70, 229, 0.12), transparent 48%),
+        linear-gradient(180deg, #eaf0ff 0%, #f4f7ff 58%, #eef2ff 100%);
+    }
+    .section-public-alt {
+      background:
+        radial-gradient(65% 90% at 100% -20%, rgba(251, 191, 36, 0.14), transparent 46%),
+        linear-gradient(180deg, #f6f8ff 0%, #ffffff 100%);
+    }
+    .section-public-gray .card-public,
+    .section-public-alt .card-public {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(37, 99, 235, 0.14);
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+      backdrop-filter: blur(10px);
+    }
     .section-title-public { font-size: clamp(1.5rem, 2.8vw, 2rem); font-weight: 800; color: var(--dark); margin-bottom: 0.75rem; }
     .section-subtitle-public { font-size: 1rem; color: var(--gray-700); max-width: var(--max-w-text); line-height: 1.55; }
 
