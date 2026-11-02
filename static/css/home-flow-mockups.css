@@ -1,0 +1,58 @@
+/* Homepage only: full supplied mockups, without cropping or added decoration. */
+#come-funziona .row > div {
+  display: flex;
+  min-width: 0;
+}
+#come-funziona .card-public {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+#come-funziona .card-public > p {
+  margin-bottom: 1rem;
+}
+#come-funziona .come-funziona-mock {
+  margin-top: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+#come-funziona .cf-label {
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+}
+#come-funziona .cf-picture {
+  display: block;
+  width: 100%;
+  margin-inline: auto;
+  aspect-ratio: 1122 / 1402;
+}
+#come-funziona .cf-picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1122 / 1402;
+  object-fit: contain;
+}
+@media (max-width: 767.98px) {
+  #come-funziona .card-public {
+    padding: 1.25rem;
+  }
+  /* Respect the existing site scale while keeping mobile body copy readable. */
+  #come-funziona .card-public > h3 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  #come-funziona .card-public > p {
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+  #come-funziona .cf-label {
+    font-size: 0.875rem;
+  }
+  #come-funziona .row {
+    --bs-gutter-y: 1.75rem;
+  }
+}
