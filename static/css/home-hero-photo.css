@@ -1,0 +1,33 @@
+:root { --home-ui-scale: var(--opshub-ui-scale, 1); }
+html.opshub-ui-scale--off { --home-ui-scale: 1; }
+/* Home only. The shared coordinate space keeps the sticky navbar and photo joined. */
+body:has(.home-hero-scene) .navbar-public,
+body .home-hero-scene::before {
+  background-image: linear-gradient(135deg, #1e40af 0%, #2563eb 55%, #4f46e5 100%);
+  background-size: calc(100vw / var(--home-ui-scale)) calc(100vh / var(--home-ui-scale));
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+body:has(.home-hero-scene) .navbar-public { position:sticky; top:0; border-bottom:0; box-shadow:none; }
+body:has(.home-hero-scene) .main-public { padding-top:0; }
+body .home-hero-scene { position:relative; isolation:isolate; overflow:hidden; margin:0; border:0; padding:4rem 0; min-height:640px; display:flex; align-items:center; background:#1e40af; }
+.home-hero-photo { position:absolute; inset:0; z-index:-3; display:block; }
+.home-hero-photo img { display:block; width:100%; height:100%; object-fit:cover; object-position:center center; }
+body .home-hero-scene::before { content:""; position:absolute; inset:0 0 auto; height:180px; z-index:-1; pointer-events:none; -webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.85) 18%,rgba(0,0,0,.45) 52%,transparent 100%); mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.85) 18%,rgba(0,0,0,.45) 52%,transparent 100%); }
+body .home-hero-scene::after { content:""; position:absolute; inset:0; z-index:-2; pointer-events:none; background:linear-gradient(90deg,rgba(30,64,175,.86) 0%,rgba(30,64,175,.84) 43%,rgba(30,64,175,.35) 56%,transparent 70%); }
+.home-hero-inner { position:relative; z-index:1; }
+.home-hero-copy { width:52%; max-width:640px; color:#fff; }
+@media(min-width:1600px){ body .home-hero-scene { min-height:720px; } }
+@media(max-width:991px){
+ body .home-hero-scene { display:block; min-height:0; padding:2.5rem 0 clamp(320px,62vw,520px); background:linear-gradient(135deg,#1e40af 0%,#2563eb 55%,#4f46e5 100%); background-size:calc(100vw / var(--home-ui-scale)) calc(100vh / var(--home-ui-scale)); background-attachment:fixed; }
+ .home-hero-copy { width:100%; max-width:680px; }
+ .home-hero-photo { top:auto; height:clamp(360px,70vw,560px); -webkit-mask-image:linear-gradient(180deg,transparent,#000 30%); mask-image:linear-gradient(180deg,transparent,#000 30%); }
+ .home-hero-photo img { object-position:100% center; }
+ body .home-hero-scene::after { display:none; }
+}
+@media(max-width:575px){
+ body .home-hero-scene { padding-top:2rem; padding-bottom:300px; }
+ .home-hero-photo { height:330px; }
+ .home-hero-copy .d-flex { gap:.8rem!important; }
+ .home-hero-copy .btn-cta-primary-public,.home-hero-copy .btn-outline-primary-public { text-align:center; }
+}

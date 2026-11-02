@@ -1301,6 +1301,7 @@
 @media (max-width: 767px) { .cf-kpi-row { grid-template-columns: 1fr; } }
 
   </style>
+<link rel="stylesheet" href="/static/css/home-hero-photo.css?v=20261102-1">
 </head>
 <body>
   <script>
@@ -1654,10 +1655,13 @@
   <main class="main-public">
     
 <!-- A. HERO ISTITUZIONALE -->
-<section class="section-public public-hero" style="padding: 6rem 0 4rem; margin-top: -76px; padding-top: 7rem;">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-7">
+<section class="section-public public-hero home-hero-scene">
+  <picture class="home-hero-photo" aria-hidden="true">
+    <source media="(max-width: 991px)" srcset="/static/public/seo/opshub-home-cantiere-mobile.webp">
+    <img src="/static/public/seo/opshub-home-cantiere-desktop.webp" width="1774" height="887" alt="" fetchpriority="high" decoding="async">
+  </picture>
+  <div class="container home-hero-inner">
+      <div class="home-hero-copy">
         <p class="text-uppercase fw-bold mb-2" style="font-size: 0.8rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.9);">La vera innovazione è silenziosa</p>
         <p class="mb-2" style="font-size: 1.02rem; color: rgba(255,255,255,0.93); max-width: 36em; line-height: 1.45;">Tiene insieme persone, asset, processi e numeri senza chiedere attenzione</p>
         <h1 class="mb-3" style="font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: clamp(1.85rem, 4vw, 2.5rem); font-weight: 800; color: white; line-height: 1.2;">OpsHub — Piattaforma per imprese operative: gestione interventi, coordinamento squadre e controllo dei processi aziendali</h1>
@@ -1667,88 +1671,6 @@
           <a href="/cos-e-opshub/" class="btn-outline-primary-public" data-cta="cos-e-opshub">Cos'è OpsHub</a>
         </div>
       </div>
-      <div class="col-lg-5">
-        <div class="home-hero-visual position-relative">
-          <div class="desktop-mock">
-            <div class="monitor-wrapper">
-              <div class="monitor-frame">
-                <div class="monitor-screen">
-                  <div class="flowboard-mock">
-                    <div class="hero">
-                    <p class="mock-title" role="presentation">Contabilità industriale</p>
-                    <span class="sub">Cruscotto economico · Mar 2026</span>
-                  </div>
-                  <div class="utile-grid">
-                    <div class="metric fatt"><div class="cap">Fatturato</div><div class="val">€ 124.580</div></div>
-                    <div class="metric cost"><div class="cap">Costi</div><div class="val">€ 98.220</div></div>
-                    <div class="metric util"><div class="cap">Utile</div><div class="val">€ 26.360</div></div>
-                    </div>
-                    <div class="kpi">
-                    <div class="card"><div class="label">Totale</div><div class="value">98.2k</div></div>
-                    <div class="card"><div class="label">Personale</div><div class="value">42.1k</div></div>
-                    <div class="card"><div class="label">Mezzi</div><div class="value">18.5k</div></div>
-                    <div class="card"><div class="label">Fornitori</div><div class="value">24.0k</div></div>
-                    <div class="card"><div class="label">Cantieri</div><div class="value">12</div></div>
-                    <div class="card"><div class="label">Ore</div><div class="value">1.840</div></div>
-                    </div>
-                    <div class="flux-area">
-                    <canvas id="heroFluxCanvas" class="flux" width="800" height="200" aria-hidden="true"></canvas>
-                    <div class="flux-lane-labels">
-                      <div class="flux-col left">
-                        <span>Personale</span>
-                        <span>Mezzi</span>
-                        <span>Materiali</span>
-                      </div>
-                      <div class="flux-col center">
-                        <span>Lavoro A</span>
-                        <span>Lavoro B</span>
-                        <span>Lavoro C</span>
-                      </div>
-                      <div class="flux-col right">
-                        <span>Cliente 1</span>
-                        <span>Cliente 2</span>
-                        <span>Cliente 3</span>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="monitor-stand"></div>
-              <div class="monitor-base"></div>
-            </div>
-          </div>
-          <div class="phone-app-mock">
-            <div class="phone-frame">
-              <div class="phone-screen">
-                <div class="app-header">
-                  <span class="logo">HUB2GO</span>
-                  <button type="button" class="btn-logout">Logout</button>
-                </div>
-                <div class="app-menu">
-                  <div class="app-menu-item">
-                    <div class="icon"><i class="fas fa-user-clock"></i></div>
-                    <span class="title">GESTIONE TIMBRATURE</span>
-                  </div>
-                  <div class="app-menu-item">
-                    <div class="icon"><i class="fas fa-truck"></i></div>
-                    <span class="title">GESTIONE MEZZI</span>
-                  </div>
-                  <div class="app-menu-item">
-                    <div class="icon"><i class="fas fa-boxes-stacked"></i></div>
-                    <span class="title">GESTIONE MATERIALI</span>
-                  </div>
-                  <div class="app-menu-item">
-                    <div class="icon"><i class="fas fa-calendar-plus"></i></div>
-                    <span class="title">RICHIEDI ASSENZA</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
