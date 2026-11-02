@@ -1,0 +1,24 @@
+/* Dashboard illustration on /landing/ only: preserve the complete image. */
+body[data-landing-photo] .landing-dashboard-preview {
+  margin: 0;
+  padding: clamp(6px, 1vw, 12px);
+  border-radius: 28px;
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 55%, #4f46e5 100%);
+  box-shadow: 0 20px 55px rgba(30, 64, 175, .16);
+}
+body[data-landing-photo] .landing-dashboard-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+@media (max-width: 991px) {
+  body[data-landing-photo] .landing-dashboard-preview {
+    max-width: 720px;
+    margin: 2rem auto 0;
+  }
+}
+/* The former placeholder section was hidden on phones; show the new preview. */
+@media (max-width: 767px) {
+  body[data-landing-photo] #benefits.section-hidden-mobile { display: block !important; }
+}
