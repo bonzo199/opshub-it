@@ -25,8 +25,14 @@ body[data-landing-photo] .landing-photo-scene {
   border: 0;
   background: #1e40af;
 }
-.landing-hero-photo { position: absolute; inset: 0; z-index: -3; display: block; }
-.landing-hero-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+/* A wider view of the scene, blended into the existing blue at the left edge. */
+.landing-hero-photo {
+  position: absolute; inset: auto 0 0 auto; z-index: -3; display: block;
+  width: 85%; aspect-ratio: 2; max-height: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 24%);
+  mask-image: linear-gradient(90deg, transparent, #000 24%);
+}
+.landing-hero-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; -webkit-mask-image: linear-gradient(180deg, transparent, #000 16%); mask-image: linear-gradient(180deg, transparent, #000 16%); }
 body[data-landing-photo] .landing-photo-scene::before {
   content: "";
   position: absolute;
@@ -52,20 +58,20 @@ body[data-landing-photo] .landing-photo-scene::after {
   body[data-landing-photo] .landing-photo-scene {
     display: block;
     min-height: 0;
-    padding: 2.5rem 0 clamp(320px, 62vw, 520px);
+    padding: 2.5rem 0 clamp(250px, 54vw, 440px);
     background: linear-gradient(135deg, #1e40af 0%, #2563eb 55%, #4f46e5 100%);
     background-size: calc(100vw / var(--landing-photo-scale)) calc(100vh / var(--landing-photo-scale));
     background-attachment: fixed;
   }
   .landing-photo-copy { width: 100%; max-width: 680px; margin-inline: auto; }
   .landing-photo-copy .hero-subtitle { max-width: none; }
-  .landing-hero-photo { top: auto; height: clamp(360px, 70vw, 560px); -webkit-mask-image: linear-gradient(180deg, transparent, #000 30%); mask-image: linear-gradient(180deg, transparent, #000 30%); }
-  .landing-hero-photo img { object-position: 100% center; }
+  .landing-hero-photo { top: auto; width: 100%; aspect-ratio: auto; height: clamp(290px, 62vw, 480px); -webkit-mask-image: linear-gradient(180deg, transparent, #000 30%); mask-image: linear-gradient(180deg, transparent, #000 30%); }
+  .landing-hero-photo img { object-position: 100% center; -webkit-mask-image: none; mask-image: none; }
   body[data-landing-photo] .landing-photo-scene::after { display: none; }
 }
 @media (max-width: 575px) {
-  body[data-landing-photo] .landing-photo-scene { padding-top: 2rem; padding-bottom: 300px; }
-  .landing-hero-photo { height: 330px; }
+  body[data-landing-photo] .landing-photo-scene { padding-top: 2rem; padding-bottom: 245px; }
+  .landing-hero-photo { height: 270px; }
   .landing-photo-copy .hero-points { justify-content: center; }
 }
 
