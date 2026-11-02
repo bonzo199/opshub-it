@@ -1584,8 +1584,9 @@
       }
     }
   </style>
+<link rel="stylesheet" href="/static/css/landing-photo-hero.css?v=20261102-1">
 </head>
-<body>
+<body data-landing-photo="true">
 <script>
 (function () {
   var h = (location.hostname || '').toLowerCase();
@@ -1619,7 +1620,7 @@
         <a href="/contatti/" class="btn-nav-cta d-none d-sm-inline-flex" data-cta="demo" onclick="if(typeof gtag !== 'undefined') { gtag('event', 'conversion', {'send_to': 'AW-16983279737/j43hCPHl4LQaEPmQoaI_'}); }">
           <i class="fas fa-calendar-check"></i> Prenota una demo
         </a>
-        <button class="mobile-menu-btn d-lg-none" onclick="toggleMobileMenu()">
+        <button class="mobile-menu-btn d-lg-none" aria-label="Apri menu" onclick="toggleMobileMenu()">
           <i class="fas fa-bars"></i>
         </button>
       </div>
@@ -1634,12 +1635,14 @@
     <div class="d-flex align-items-center gap-2">
       <img src="/static/public/seo/hub2go-logo.png" alt="OpsHub" style="height: 44px;" onerror="this.style.display='none'">
     </div>
-    <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+    <button class="mobile-menu-close" aria-label="Chiudi menu" onclick="toggleMobileMenu()">
       <i class="fas fa-times"></i>
     </button>
   </div>
   <div class="mobile-menu-links">
     <a href="#features" onclick="toggleMobileMenu()">Funzionalità</a>
+    <a href="#how" onclick="toggleMobileMenu()">Come funziona</a>
+    <a href="#faq" onclick="toggleMobileMenu()">FAQ</a>
     <a href="https://play.google.com/store/apps/details?id=com.opsHub.hub2go" target="_blank" rel="noopener noreferrer" onclick="toggleMobileMenu()">App mobile</a>
     <a href="#pricing" onclick="toggleMobileMenu()">Prezzi</a>
     <a href="/cos-e-opshub/" onclick="toggleMobileMenu()"><i class="fas fa-info-circle"></i> Info Complete</a>
@@ -1654,10 +1657,13 @@
 </div>
 
 <!-- Hero Section -->
-<section class="hero-section">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6 hero-content">
+<section class="hero-section landing-photo-scene">
+  <picture class="landing-hero-photo" aria-hidden="true">
+    <source media="(max-width: 991px)" srcset="/static/public/seo/opshub-landing-cantieri-mobile.webp">
+    <img src="/static/public/seo/opshub-landing-cantieri-desktop.webp" width="1774" height="887" alt="" fetchpriority="high" decoding="async">
+  </picture>
+  <div class="container landing-photo-inner">
+    <div class="hero-content landing-photo-copy">
         <h1 class="hero-title">
           Smetti di gestire le tue squadre su WhatsApp.
         </h1>
@@ -1681,34 +1687,6 @@
             50% { transform: scale(1.05); box-shadow: 0 15px 50px rgba(245, 158, 11, 0.6); }
           }
         </style>
-      </div>
-      <div class="col-lg-6">
-        <div class="hero-image-wrapper">
-          <img src="/static/public/seo/landing/dashboard-preview.png" alt="Dashboard OpsHub" class="hero-mockup" onerror="this.parentElement.querySelector('.hero-fallback').style.display='flex'; this.style.display='none';">
-          <div class="hero-fallback" style="display: none; background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)); border-radius: 20px; padding: 2rem; min-height: 400px; flex-direction: column; justify-content: center; align-items: center; border: 1px solid rgba(255,255,255,0.2);">
-            <i class="fas fa-chart-line" style="font-size: 4rem; color: rgba(255,255,255,0.3); margin-bottom: 1rem;"></i>
-            <span style="color: rgba(255,255,255,0.5); font-size: 1.1rem;">Dashboard OpsHub</span>
-          </div>
-          <div class="hero-floating-card card-1">
-            <div class="d-flex align-items-center gap-2">
-              <i class="fas fa-list-check text-success"></i>
-              <div>
-                <div style="font-weight: 700; line-height: 1.2;">Tracciabilità reale</div>
-                <div style="color: var(--gray-500); font-size: 0.85rem;">chi / cosa / quando / dove</div>
-              </div>
-            </div>
-          </div>
-          <div class="hero-floating-card card-2">
-            <div class="d-flex align-items-center gap-2">
-              <i class="fas fa-file-export text-primary"></i>
-              <div>
-                <div style="font-weight: 700; line-height: 1.2;">Report immediati</div>
-                <div style="color: var(--gray-500); font-size: 0.85rem;">export e riepiloghi senza sbatti</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>

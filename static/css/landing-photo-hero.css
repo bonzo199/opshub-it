@@ -1,0 +1,76 @@
+/* Only /landing/: shared viewport gradient joins the sticky navbar to the photo. */
+body[data-landing-photo] { --landing-photo-scale: var(--opshub-ui-scale, 1); }
+html.opshub-ui-scale--off body[data-landing-photo] { --landing-photo-scale: 1; }
+body[data-landing-photo] .navbar-landing,
+body[data-landing-photo] .landing-photo-scene::before {
+  background-image: linear-gradient(135deg, #1e40af 0%, #2563eb 55%, #4f46e5 100%);
+  background-size: calc(100vw / var(--landing-photo-scale)) calc(100vh / var(--landing-photo-scale));
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+body[data-landing-photo] .navbar-landing,
+body[data-landing-photo] .navbar-landing.scrolled {
+  position: sticky;
+  top: 0;
+  border-bottom: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+body[data-landing-photo] .landing-photo-scene {
+  position: relative;
+  isolation: isolate;
+  min-height: 700px;
+  padding: 4.5rem 0;
+  margin: 0;
+  border: 0;
+  background: #1e40af;
+}
+.landing-hero-photo { position: absolute; inset: 0; z-index: -3; display: block; }
+.landing-hero-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+body[data-landing-photo] .landing-photo-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 180px;
+  opacity: 1;
+  z-index: -1;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.85) 18%, rgba(0,0,0,.45) 52%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.85) 18%, rgba(0,0,0,.45) 52%, transparent 100%);
+}
+body[data-landing-photo] .landing-photo-scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(30,64,175,.65) 0%, rgba(30,64,175,.60) 40%, rgba(30,64,175,.18) 56%, transparent 70%);
+}
+.landing-photo-inner { position: relative; z-index: 1; }
+.landing-photo-copy { width: 50%; max-width: 640px; }
+@media (max-width: 991px) {
+  body[data-landing-photo] .landing-photo-scene {
+    display: block;
+    min-height: 0;
+    padding: 2.5rem 0 clamp(320px, 62vw, 520px);
+    background: linear-gradient(135deg, #1e40af 0%, #2563eb 55%, #4f46e5 100%);
+    background-size: calc(100vw / var(--landing-photo-scale)) calc(100vh / var(--landing-photo-scale));
+    background-attachment: fixed;
+  }
+  .landing-photo-copy { width: 100%; max-width: 680px; margin-inline: auto; }
+  .landing-photo-copy .hero-subtitle { max-width: none; }
+  .landing-hero-photo { top: auto; height: clamp(360px, 70vw, 560px); -webkit-mask-image: linear-gradient(180deg, transparent, #000 30%); mask-image: linear-gradient(180deg, transparent, #000 30%); }
+  .landing-hero-photo img { object-position: 100% center; }
+  body[data-landing-photo] .landing-photo-scene::after { display: none; }
+}
+@media (max-width: 575px) {
+  body[data-landing-photo] .landing-photo-scene { padding-top: 2rem; padding-bottom: 300px; }
+  .landing-hero-photo { height: 330px; }
+  .landing-photo-copy .hero-points { justify-content: center; }
+}
+
+/* The full navigation needs desktop width; keep all links in the existing drawer. */
+@media (max-width: 1399.98px) {
+  body[data-landing-photo] .navbar-landing .d-lg-flex { display: none !important; }
+  body[data-landing-photo] .navbar-landing .mobile-menu-btn { display: inline-flex !important; }
+}
