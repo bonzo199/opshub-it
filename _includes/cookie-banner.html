@@ -1,0 +1,64 @@
+<div id="siteCookieBanner" class="site-cookie-wrap" tabindex="-1">
+  <div class="site-cookie-banner" role="dialog" aria-modal="true" aria-labelledby="siteCookieBannerTitle" aria-describedby="siteCookieBannerShort">
+    <div class="site-cookie-banner-header">
+      <div class="site-cookie-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path><path d="M8.5 8.5v.01M16 15.5v.01M12 12v.01M11 17v.01M7 14v.01"></path></svg></div>
+      <h2 id="siteCookieBannerTitle" class="site-cookie-title">Prima di continuare: cookie e privacy</h2>
+      <div class="site-cookie-actions">
+        <button id="siteCookieAccept" type="button" class="btn btn-primary">Accetta tutto</button>
+        <button id="siteCookieReject" type="button" class="btn btn-outline-secondary">Solo cookie necessari</button>
+      </div>
+    </div>
+    <div class="site-cookie-banner-body">
+      <p id="siteCookieBannerShort" class="site-cookie-text">Usiamo cookie necessari al funzionamento del sito. Con “Accetta tutto” autorizzi anche i cookie di analisi e marketing. Puoi continuare con “Solo cookie necessari” oppure personalizzare le preferenze. La scelta resta salvata passando da una pagina all’altra.</p>
+      <button id="siteCookieDetailsToggle" type="button" class="site-cookie-details-toggle" aria-expanded="false" aria-controls="siteCookieBannerDetails">Vuoi saperne di più?</button>
+      <div id="siteCookieBannerDetails" class="site-cookie-details" hidden>
+        <p class="site-cookie-text">Gli strumenti pubblicitari includono LinkedIn Insight Tag e, solo sulla pagina /test, Meta Pixel per le visite. Il consenso alla misurazione del completamento del test è separato e si sceglie nel questionario. Puoi modificare o revocare le preferenze da “Gestisci cookie”.</p>
+        <button id="siteCookieSettings" type="button" class="btn btn-link p-0 mt-3">Personalizza le preferenze</button>
+      </div>
+      <p class="site-cookie-policy"><a href="/cookie-policy/">Informativa privacy e cookie</a></p>
+    </div>
+  </div>
+</div>
+<button id="siteCookieReopen" type="button" class="site-cookie-reopen" aria-label="Modifica preferenze cookie">Gestisci cookie</button>
+
+<div id="siteCookieSettingsModal" class="site-cookie-modal-wrap" role="dialog" aria-modal="true" aria-labelledby="siteCookieSettingsTitle" aria-hidden="true">
+  <div class="site-cookie-modal">
+    <div class="site-cookie-modal-header">
+      <h2 class="site-cookie-modal-title" id="siteCookieSettingsTitle">Personalizza</h2>
+      <button type="button" class="site-cookie-modal-close" id="siteCookieModalClose" aria-label="Chiudi">&times;</button>
+    </div>
+    <div class="site-cookie-modal-body">
+      <div class="mb-3">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="siteCookieEssential" checked disabled>
+          <label class="form-check-label" for="siteCookieEssential">
+            <strong>Cookie necessari</strong>
+            <small class="d-block text-muted">Sempre attivi — necessari per il funzionamento del sito</small>
+          </label>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="siteCookieAnalytics">
+          <label class="form-check-label" for="siteCookieAnalytics">
+            <strong>Analisi e misurazione</strong>
+            <small class="d-block text-muted">Permettono di comprendere, in forma statistica, come viene utilizzato il sito.</small>
+          </label>
+        </div>
+      </div>
+      <div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="siteCookieMarketing">
+          <label class="form-check-label" for="siteCookieMarketing">
+            <strong>Marketing e pubblicità</strong>
+            <small class="d-block text-muted">Permettono di misurare le campagne pubblicitarie e creare audience per annunci pertinenti. Include LinkedIn Insight Tag e, solo sulla pagina /test, Meta Pixel: invia a Meta la visita, l’indirizzo IP e i dati del browser, con possibili identificativi pubblicitari. Il consenso al completamento del test si sceglie separatamente nel questionario.</small>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="site-cookie-modal-footer">
+      <button type="button" class="btn btn-secondary" id="siteCookieModalCancel">Annulla</button>
+      <button type="button" class="btn btn-primary" id="siteCookieSaveSettings">Salva preferenze</button>
+    </div>
+  </div>
+</div>
