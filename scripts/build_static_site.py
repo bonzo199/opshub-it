@@ -29,6 +29,8 @@ def build(output):
         text = text.replace(MARKER, fragment.rstrip())
         if text.count('id="siteCookieBanner"') != 1 or text.count('id="siteCookieSettingsModal"') != 1:
             raise ValueError("Duplicate cookie dialog")
+        if text.count('/static/js/opshub-meta-pixel.js?v=20261121-site1') != 1 or 'opshub-test-meta-pixel.js' in text:
+            raise ValueError("Missing or duplicate site-wide Meta integration")
         path.write_text(text, encoding="utf-8", newline="\n")
         rendered += 1
     print("STATIC_SITE=READY pages=" + str(rendered) + " redirects=" + str(redirects))
